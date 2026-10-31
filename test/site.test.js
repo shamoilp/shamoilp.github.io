@@ -25,6 +25,7 @@ describe('page basics', () => {
     assert.notEqual(meta('og:title'), '');
     assert.notEqual(meta('og:description'), '');
     assert.match(meta('og:image'), /^https:\/\/shamoilp\.github\.io\/assets\/.+\.png$/);
+    assert.notEqual(meta('og:image:alt'), '', 'the preview image is described');
   });
 });
 
