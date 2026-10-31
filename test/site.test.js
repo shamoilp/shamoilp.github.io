@@ -69,6 +69,7 @@ describe('links', () => {
       'https://shamoilp.github.io/worth-winning/',
       'https://github.com/shamoilp/trade-chokepoint',
       'https://github.com/shamoilp/property-game-series',
+      'https://github.com/shamoilp/edge-ledger',
     ]) {
       assert.ok(hrefs.includes(url), url);
     }
