@@ -17,6 +17,12 @@ describe('page basics', () => {
     assert.equal(document.documentElement.lang, 'en');
   });
 
+  test('states the professional qualification up front and in the preview', () => {
+    assert.match(document.querySelector('.hero').textContent, /Chartered Accountant \(ICAI, India\)/);
+    assert.match(meta('description'), /Chartered Accountant/);
+    assert.match(meta('og:title'), /Chartered Accountant/);
+  });
+
   test('has one main heading', () => {
     assert.equal(all('h1').length, 1);
   });
