@@ -1,0 +1,13 @@
+{
+  "name": "shamoilp-portfolio",
+  "private": true,
+  "type": "module",
+  "description": "Portfolio site for Shamoil Plumber, served by GitHub Pages at shamoilp.github.io",
+  "scripts": {
+    "test": "node --test \"test/*.test.js\""
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "jsdom": "^26.1.0"
+  }
+}
