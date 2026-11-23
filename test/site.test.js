@@ -206,6 +206,22 @@ describe('KSA Treaty Library page', () => {
     }
   });
 
+  test('every treaty has an MLI status, and every changed treaty has dates and a source', () => {
+    const mli = data('mli.json');
+    const index = data('index.json');
+    assert.equal(Object.keys(mli.treaties).length, index.treaties.length);
+    for (const treaty of index.treaties) {
+      const record = mli.treaties[treaty.iso2];
+      assert.ok(['changed', 'pending', 'not'].includes(record?.status), treaty.iso2);
+      if (record.status !== 'changed') continue;
+      assert.match(record.effect.wht, /^\d{4}-\d{2}-\d{2}$/, treaty.iso2);
+      assert.match(record.effect.other, /^\d{4}-\d{2}-\d{2}$/, treaty.iso2);
+      assert.ok(['synth', 'positions'].includes(record.checked), treaty.iso2);
+      if (record.synth) assert.match(record.synth.url, /^https:\/\//, treaty.iso2);
+    }
+    for (const source of Object.values(mli.sources)) assert.match(source.url, /^https:\/\//);
+  });
+
   test('the removed KSA view and Other countries files are gone', () => {
     for (const file of ['ksa.json', 'views.json', 'un.json']) assert.ok(!existsSync(new URL(`ksa-treaty-library/data/${file}`, root)), file);
   });

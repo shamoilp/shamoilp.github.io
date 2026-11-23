@@ -8,7 +8,7 @@ Three static pages, with no build step and no cookies or tracking:
 
 - `index.html`: services, how client books are kept safe, free tools, and how to get in touch. No JavaScript.
 - `saudi-wht-checker/index.html`: the **Saudi WHT Checker** at https://shamoilp.github.io/saudi-wht-checker/. It runs its rules in the visitor's browser and sends nothing anywhere.
-- `ksa-treaty-library/`: the **KSA Treaty Library** at https://shamoilp.github.io/ksa-treaty-library/. Saudi Arabia's treaties article by article: the text, a plain-words guide with diagrams, and the OECD Commentary digest. The UAE treaty also has an unofficial English translation. The page reads its own JSON files in `ksa-treaty-library/data/` and loads nothing from other sites.
+- `ksa-treaty-library/`: the **KSA Treaty Library** at https://shamoilp.github.io/ksa-treaty-library/. Saudi Arabia's treaties article by article: the text, a plain-words guide with diagrams, the OECD Commentary digest and the BEPS MLI changes. The UAE treaty also has an unofficial English translation. The page reads its own JSON files in `ksa-treaty-library/data/` and loads nothing from other sites.
 
 ## Edit and preview
 
@@ -35,6 +35,7 @@ All content sits in `ksa-treaty-library/data/`:
 - `index.json`: the treaty list (country, dates, ZATCA links, article titles and groups), each treaty's withholding rates (from the Saudi WHT Checker data) and its key time limits read from the text (PE thresholds, the employment day limit, the MAP deadline), and the `asAt` date shown in the header.
 - `t/<ISO>.json`: one treaty's text, split into preamble, articles and protocol, as extracted from ZATCA's PDF. Nine treaties are in Arabic only; the UAE file also holds an unofficial English translation, paragraph by paragraph (`en`, `titleEn`, `preambleEn`). ZATCA publishes no text for Taiwan.
 - `plain.json`: the plain-words guide for each kind of article, the note on claiming a treaty rate in Saudi Arabia (with its ZATCA source) and Saudi Arabia's own withholding rates. The diagrams are drawn by the page from these notes and the treaty's figures.
+- `mli.json`: the BEPS MLI status of each treaty (changed, not yet, or not changed, with the reason), the MLI rules that apply and the dates they take effect in Saudi Arabia, and a link to the official synthesised text where one exists. It is built from the OECD's records of each country's MLI choices and its status list; re-check it when the OECD updates the list or a partner ratifies.
 - `oecd/<article>.json`: the OECD Commentary digest for Articles 5, 7, 10, 11, 12, 21, 25 and 29, with paragraph references and OECD PDF page numbers.
 
 When a source changes, edit the entry, update `asAt` in `index.json`, and keep the source reference beside the text. `ksa-treaty-library/og.jpg` is the image shown when the link is shared.
