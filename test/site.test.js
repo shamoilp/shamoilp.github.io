@@ -69,6 +69,7 @@ describe('links', () => {
       'https://shamoilp.github.io/worth-winning/',
       'https://shamoilp.github.io/saudi-wht-checker/',
       'https://shamoilp.github.io/ksa-treaty-library/',
+      'https://shamoilp.github.io/ksa-dmt-study/',
       'https://github.com/shamoilp/trade-chokepoint',
       'https://github.com/shamoilp/property-game-series',
       'https://github.com/shamoilp/edge-ledger',
@@ -224,5 +225,72 @@ describe('KSA Treaty Library page', () => {
 
   test('the removed KSA view and Other countries files are gone', () => {
     for (const file of ['ksa.json', 'views.json', 'un.json']) assert.ok(!existsSync(new URL(`ksa-treaty-library/data/${file}`, root)), file);
+  });
+});
+
+describe('KSA DMT Study page', () => {
+  const studyHtml = readFileSync(new URL('ksa-dmt-study/index.html', root), 'utf8');
+  const study = new JSDOM(studyHtml).window.document;
+  const studyMeta = (key) => study.querySelector(`meta[property="${key}"], meta[name="${key}"]`)?.content ?? '';
+  const embedded = (id) => JSON.parse(study.getElementById(id).textContent);
+  const arabic = /[؀-ۿ]/;
+
+  test('has a title, description, canonical address and link preview', () => {
+    assert.match(study.title, /KSA DMT Study/);
+    assert.match(studyMeta('description'), /Domestic Minimum Tax/);
+    assert.equal(study.querySelector('link[rel="canonical"]')?.getAttribute('href'), 'https://shamoilp.github.io/ksa-dmt-study/');
+    assert.match(studyMeta('og:image'), /^https:\/\/shamoilp\.github\.io\/ksa-dmt-study\/.+\.(png|jpg)$/);
+    assert.notEqual(studyMeta('og:image:alt'), '');
+  });
+
+  test('the link-preview image is in the repo', () => {
+    const path = new URL(studyMeta('og:image')).pathname.slice(1);
+    assert.ok(existsSync(new URL(path, root)), path);
+  });
+
+  test('loads nothing from other sites and keeps only its own progress in the browser', () => {
+    assert.equal(study.querySelectorAll('script[src]').length, 0);
+    assert.equal(study.querySelectorAll('link[rel="stylesheet"], link[rel="preconnect"]').length, 0);
+    assert.doesNotMatch(studyHtml, /\bfetch\(|XMLHttpRequest|sendBeacon|sessionStorage|indexedDB|document\.cookie|googleapis|gstatic/);
+    assert.match(studyHtml, /const KEY = "ksaDmtStudy\.v1"/);
+    const uses = studyHtml.match(/localStorage\.\w+\([^)]*\)/g) ?? [];
+    assert.ok(uses.length > 0);
+    for (const use of uses) assert.match(use, /^localStorage\.(getItem|setItem)\(KEY\b/, use);
+  });
+
+  test('covers all 106 articles, and every quiz answer and flashcard cites one', () => {
+    const law = embedded('law-data');
+    const { modules } = embedded('course-data');
+    assert.equal(law.length, 106);
+    assert.equal(modules.length, 15);
+    const covered = new Set(modules.flatMap((m) => m.arts));
+    for (let n = 1; n <= 106; n++) assert.ok(covered.has(n), `article ${n}`);
+    const cites = (refs) => refs.length > 0 && refs.every((r) => {
+      const n = parseInt(String(r), 10);
+      return n >= 1 && n <= 106;
+    });
+    for (const m of modules) {
+      assert.equal(m.cases.length, 3, `module ${m.id} case studies`);
+      assert.equal(m.quiz.length, 12, `module ${m.id} questions`);
+      assert.equal(m.cards.length, 12, `module ${m.id} flashcards`);
+      for (const q of m.quiz) {
+        assert.ok(Number.isInteger(q.a) && q.a >= 0 && q.a < q.o.length, q.q[0]);
+        assert.ok(cites(q.r), q.q[0]);
+      }
+      for (const c of m.cards) assert.ok(cites(c.r), c.f[0]);
+    }
+  });
+
+  test('every module, question and flashcard has Arabic as well as English', () => {
+    const { modules } = embedded('course-data');
+    for (const m of modules) {
+      assert.ok(m.title[0] && arabic.test(m.title[1]), `module ${m.id} title`);
+      assert.ok(m.goal[0] && arabic.test(m.goal[1]), `module ${m.id} goal`);
+      for (const q of m.quiz) {
+        assert.ok(arabic.test(q.q[1]), q.q[0]);
+        for (const o of q.o) assert.ok(o[0] && o[1], q.q[0]);
+      }
+      for (const c of m.cards) assert.ok(arabic.test(c.f[1]) && arabic.test(c.b[1]), c.f[0]);
+    }
   });
 });
