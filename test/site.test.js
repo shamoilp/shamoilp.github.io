@@ -67,6 +67,7 @@ describe('links', () => {
     const hrefs = all('#tools a').map((link) => link.getAttribute('href'));
     for (const url of [
       'https://shamoilp.github.io/worth-winning/',
+      'https://shamoilp.github.io/saudi-wht-checker/',
       'https://github.com/shamoilp/trade-chokepoint',
       'https://github.com/shamoilp/property-game-series',
       'https://github.com/shamoilp/edge-ledger',
@@ -96,5 +97,36 @@ describe('images and files', () => {
   test('the link-preview image is in the repo', () => {
     const path = new URL(meta('og:image')).pathname.slice(1);
     assert.ok(existsSync(new URL(path, root)), path);
+  });
+});
+
+describe('Saudi WHT Checker page', () => {
+  const checkerHtml = readFileSync(new URL('saudi-wht-checker/index.html', root), 'utf8');
+  const checker = new JSDOM(checkerHtml).window.document;
+  const checkerMeta = (key) => checker.querySelector(`meta[property="${key}"], meta[name="${key}"]`)?.content ?? '';
+
+  test('has a title, description, canonical address and link preview', () => {
+    assert.match(checker.title, /Saudi WHT Checker/);
+    assert.match(checkerMeta('description'), /withholding tax/i);
+    assert.equal(checker.querySelector('link[rel="canonical"]')?.getAttribute('href'), 'https://shamoilp.github.io/saudi-wht-checker/');
+    assert.match(checkerMeta('og:image'), /^https:\/\/shamoilp\.github\.io\/saudi-wht-checker\/.+\.(png|jpg)$/);
+    assert.notEqual(checkerMeta('og:image:alt'), '');
+  });
+
+  test('the link-preview image is in the repo', () => {
+    const path = new URL(checkerMeta('og:image')).pathname.slice(1);
+    assert.ok(existsSync(new URL(path, root)), path);
+  });
+
+  test('loads nothing from other sites, so answers stay in the browser', () => {
+    assert.equal(checker.querySelectorAll('script[src]').length, 0);
+    assert.equal(checker.querySelectorAll('link[rel="stylesheet"]').length, 0);
+    assert.doesNotMatch(checkerHtml, /\bfetch\(|XMLHttpRequest|sendBeacon|localStorage|document\.cookie/);
+  });
+
+  test('carries no review banner and no rule awaiting sign-off', () => {
+    assert.equal(checker.querySelector('.review-banner'), null);
+    const data = JSON.parse(checkerHtml.match(/^const DATA = (\{.*\});$/m)[1]);
+    assert.deepEqual(data.pendingSignoff, []);
   });
 });

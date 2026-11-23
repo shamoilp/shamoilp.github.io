@@ -1,0 +1,1643 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Saudi WHT Checker · Shamoil Plumber</title>
+<meta name="description" content="Free checker for Saudi withholding tax on payments to non-residents: the domestic rate, the treaty ceiling for your payee's country, and the documents to claim relief.">
+<meta name="theme-color" content="#0b3d2e">
+<link rel="canonical" href="https://shamoilp.github.io/saudi-wht-checker/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f766e'/%3E%3Cpath d='M16 44 48 20' stroke='%23e7c877' stroke-width='6' stroke-linecap='round'/%3E%3Ccircle cx='20' cy='22' r='6' fill='%23e7c877'/%3E%3Ccircle cx='44' cy='42' r='6' fill='%23e7c877'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Shamoil Plumber">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://shamoilp.github.io/saudi-wht-checker/">
+<meta property="og:title" content="Saudi WHT Checker: withholding tax on payments to non-residents">
+<meta property="og:description" content="Free checker for Saudi withholding tax on payments to non-residents: the domestic rate, the treaty ceiling for your payee&#39;s country, and the documents to claim relief.">
+<meta property="og:image" content="https://shamoilp.github.io/saudi-wht-checker/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Saudi WHT Checker: choose the payment and the payee's country to see the Saudi withholding rate and any treaty ceiling.">
+<meta name="twitter:card" content="summary_large_image">
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<style>
+/* Same family as shamoilp.github.io and Worth Winning. Layout: form on the left, withholding slip on the right. */
+:root {
+  --bg: #f6f4ee;
+  --surface: #ffffff;
+  --surface-2: #f0ede4;
+  --ink: #14211c;
+  --ink-soft: #4d5b55;
+  --line: #ddd8cb;
+  --brand: #0f766e;
+  --brand-ink: #ffffff;
+  --gold: #8a6a1f;
+  --gold-soft: #f5e6c4;
+  --gold-ink: #4f3c0d;
+  --hero-from: #0b3d2e;
+  --hero-to: #0f766e;
+  --on-hero: #f1f8f6;
+  --on-hero-soft: #cfe4df;
+  --hero-accent: #e7c877;
+  --focus: #0b3d2e;
+  --radius: 14px;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d1513;
+    --surface: #15201d;
+    --surface-2: #1b2925;
+    --ink: #e9efe9;
+    --ink-soft: #a3b2ab;
+    --line: #2b3b36;
+    --brand: #2bb3a3;
+    --brand-ink: #062a24;
+    --gold: #d9b867;
+    --gold-soft: #33290f;
+    --gold-ink: #f0dca6;
+    --hero-from: #08251c;
+    --hero-to: #0c4f47;
+    --focus: #d9b867;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #0d1513;
+  --surface: #15201d;
+  --surface-2: #1b2925;
+  --ink: #e9efe9;
+  --ink-soft: #a3b2ab;
+  --line: #2b3b36;
+  --brand: #2bb3a3;
+  --brand-ink: #062a24;
+  --gold: #d9b867;
+  --gold-soft: #33290f;
+  --gold-ink: #f0dca6;
+  --hero-from: #08251c;
+  --hero-to: #0c4f47;
+  --focus: #d9b867;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  width: min(1120px, 100%);
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+a { color: var(--brand); text-underline-offset: 2px; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+h1, h2, h3, h4 { text-wrap: balance; line-height: 1.25; margin: 0; }
+p, ul { margin: 0; }
+ul { padding-left: 1.15em; display: grid; gap: 6px; }
+
+/* Hero */
+.hero {
+  background: linear-gradient(120deg, var(--hero-from), var(--hero-to));
+  color: var(--on-hero);
+  padding-block: 32px 28px;
+}
+.hero .wrap { display: grid; gap: 10px; }
+.eyebrow {
+  color: var(--hero-accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.hero h1 { font-size: clamp(1.6rem, 4vw, 2.3rem); max-width: 22em; }
+.lede { color: var(--on-hero-soft); max-width: 62ch; }
+.hero-facts {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+  font-size: 0.875rem;
+  color: var(--on-hero-soft);
+}
+.hero-facts strong { color: var(--on-hero); font-variant-numeric: tabular-nums; }
+
+/* Layout */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+  padding-block: 24px;
+}
+@media (max-width: 820px) { .layout { grid-template-columns: minmax(0, 1fr); } }
+
+/* Form */
+.form-card {
+  display: grid;
+  gap: 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+.field { display: grid; gap: 6px; border: 0; margin: 0; padding: 0; min-width: 0; }
+.field > label, legend { font-weight: 600; font-size: 0.95rem; padding: 0; }
+legend { margin-bottom: 6px; }
+select, input[type="date"] {
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface-2);
+  color: var(--ink);
+  font: inherit;
+}
+.help { color: var(--ink-soft); font-size: 0.85rem; }
+.date-row { display: flex; gap: 8px; min-width: 0; }
+.date-row input { flex: 1 1 auto; min-width: 0; }
+.secondary {
+  flex: none;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--brand);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--brand);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.choices { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.choice { display: block; cursor: pointer; }
+.choice input { position: absolute; opacity: 0; }
+.choice span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface-2);
+  font-weight: 600;
+}
+.choice input:checked + span { background: var(--brand); border-color: var(--brand); color: var(--brand-ink); }
+.choice input:focus-visible + span { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+/* Answer */
+.result { min-width: 0; }
+.answer {
+  display: grid;
+  gap: 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  min-width: 0;
+}
+.answer h2 { font-size: 1.3rem; }
+.example-note {
+  background: var(--gold-soft);
+  color: var(--gold-ink);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.pill {
+  justify-self: start;
+  border-radius: 999px;
+  padding: 2px 12px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+.pill-good { background: var(--brand); color: var(--brand-ink); }
+.pill-warn { background: var(--gold-soft); color: var(--gold-ink); }
+.pill-quiet { background: var(--surface-2); color: var(--ink-soft); }
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 8px;
+}
+.stat {
+  display: grid;
+  gap: 2px;
+  align-content: start;
+  background: var(--surface-2);
+  border-radius: 12px;
+  padding: 12px 14px;
+  min-width: 0;
+}
+.stat strong { font-size: 1.7rem; line-height: 1.15; font-variant-numeric: tabular-nums; }
+.stat-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-soft); }
+.stat-note { font-size: 0.82rem; color: var(--ink-soft); }
+.stat-main { background: linear-gradient(120deg, var(--hero-from), var(--hero-to)); color: var(--on-hero); }
+.stat-main strong { font-size: 2.3rem; }
+.stat-main .stat-label { color: var(--hero-accent); }
+.stat-main .stat-note { color: var(--on-hero-soft); }
+
+.verdict { font-size: 1.02rem; }
+.callout {
+  background: var(--gold-soft);
+  color: var(--gold-ink);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 0.92rem;
+}
+.cite, .rule-text { color: var(--ink-soft); font-size: 0.85rem; }
+
+.block { display: grid; gap: 10px; border-top: 1px solid var(--line); padding-top: 14px; min-width: 0; }
+.block h3 { font-size: 1.05rem; }
+.block h4 { font-size: 0.92rem; margin-top: 4px; }
+.block ul { font-size: 0.94rem; }
+.links { font-size: 0.9rem; }
+.doc-columns { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.doc-columns > div { display: grid; gap: 6px; align-content: start; min-width: 0; }
+
+.table-scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+th { text-align: left; font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-soft); }
+th, td { padding: 8px 10px 8px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.num { font-variant-numeric: tabular-nums; font-weight: 700; white-space: nowrap; }
+
+.provenance summary, .royalty-list summary { cursor: pointer; font-weight: 700; }
+.provenance { font-size: 0.92rem; }
+.rule-ids { list-style: none; padding: 0; font-size: 0.85rem; color: var(--ink-soft); }
+.rule-ids code { font-family: var(--mono); color: var(--ink); overflow-wrap: anywhere; }
+
+/* Notes and footer */
+.notes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  padding-block: 8px 24px;
+  font-size: 0.94rem;
+}
+.notes > div { display: grid; gap: 10px; align-content: start; min-width: 0; }
+.notes h2 { font-size: 1.1rem; }
+.footer { display: grid; gap: 8px; padding-block: 16px 32px; border-top: 1px solid var(--line); color: var(--ink-soft); font-size: 0.86rem; }
+
+.support {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border: 1px solid var(--brand);
+  border-radius: 12px;
+  background: var(--surface-2);
+}
+
+.support p {
+  margin: 0;
+}
+
+.support p + p {
+  margin-top: 6px;
+  overflow-wrap: anywhere;
+}
+</style>
+</head>
+<body><header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Saudi WHT Checker · free</p>
+    <h1>How much Saudi withholding tax on this payment?</h1>
+    <p class="lede">Choose the payment and the payee's country. See the Saudi withholding rate, any treaty ceiling, and the documents you need to claim it.</p>
+    <ul class="hero-facts">
+      <li><strong>63</strong> treaties</li>
+      <li>Rules as at <strong>23 Nov 2026</strong></li>
+      <li>Version <strong>2026.11.23</strong></li>
+    </ul>
+  </div>
+</header>
+
+<main class="wrap layout">
+  <form id="form" class="form-card" aria-label="Payment details"></form>
+  <section id="result" class="result" aria-live="polite" aria-label="Result"></section>
+</main>
+
+<section class="wrap notes" aria-labelledby="limits-title">
+  <div>
+    <h2 id="limits-title">What the checker leaves out</h2>
+    <ul>
+      <li>You choose the payment type. It does not read your contract, and what the work actually is decides the category.</li>
+      <li>It has no treaty rule for rent, freight, insurance or software payments ZATCA treats as other income. A treaty may still give relief on those.</li>
+      <li>Its treaty rules start on 1 Jan 2025. For earlier payments it shows the domestic rate and sends you to an adviser.</li>
+      <li>It has no rates for payments before 19 Mar 2014.</li>
+      <li>Software and databases follow ZATCA's January 2024 guideline, which covers domestic law only. Under a treaty ZATCA assesses them case by case, so any treaty figure is conditional.</li>
+      <li>ZATCA says the scope of royalties is still under discussion, so other licences and know-how go to an adviser when they could be read another way.</li>
+      <li>Directors' fees, how the delay fine treats part of a 30-day period, and how it is counted when the 10th falls on a weekend or public holiday, follow a practitioner's position because ZATCA has published no rule on them. Answers say so and show the other readings.</li>
+    </ul>
+  </div>
+  <div>
+    <h2>How the rates were checked</h2>
+    <ul>
+      <li>Domestic rates come from Income Tax Law art. 68 and Bylaws art. 63, read in a consolidated English translation up to October 2020. The Arabic text prevails.</li>
+      <li>Software categories and the royalty definition come from ZATCA's software guideline and its General Guideline for Withholding Tax, May 2026, read in English. The Arabic text prevails.</li>
+      <li>Rates for 58 treaties come from a secondary compilation. Rates for 5 were read from the treaty text ZATCA publishes.</li>
+      <li>A qualified practitioner reviewed and signed off every rule and treaty record. This is not a legal opinion.</li>
+    </ul>
+  </div>
+</section>
+
+<footer class="wrap footer">
+  <p><strong>General information, not tax advice.</strong> Using this page creates no adviser relationship. Check the current Arabic text of the law and the treaty, or ask a qualified adviser, before you rely on a rate. Not affiliated with ZATCA. Your answers stay in your browser.</p>
+  <p>Built by <a href="https://shamoilp.github.io/" rel="noopener">Shamoil Plumber</a>, Chartered Accountant (India) and tax advisor in Saudi Arabia.</p>
+</footer>
+
+<script>
+(() => {
+'use strict';
+const DATA = {"rulesVersion":"2026.11.23","asAt":"2026-11-23","pendingSignoff":[],"netOfTax":"Where the contract is net of tax, gross up before applying the rate: gross = net / (1 - rate). The WHT is on the grossed amount.","categories":{"DIVIDEND":{"authority":"Bylaws art. 63(6)","test":"a distribution by a resident company to a non-resident shareholder, including liquidation proceeds in excess of paid-in capital"},"MANAGEMENT_FEE":{"authority":"Bylaws art. 63(2)","test":"payment under a management services contract","definition":"payments for management services contracts, such as hotel management contracts, ship management contracts, etc."},"DIRECTORS_FEES":{"authority":"Meaning: ZATCA General WHT Guideline, May 2026, section 2.2.2.1(6)(C). Rate: practice position","test":"fees paid by a company for services rendered by board members","definition":"fees paid by a company, including full-time fees, meeting attendance allowances and similar payments, for services rendered by board members"},"SOFTWARE_DATABASE":{"authority":"ZATCA's software payments guideline, January 2024","test":"a payment for software rights or database access: the rights received decide the category"},"ROYALTY":{"authority":"Law art. 68(a)(2); Bylaws art. 63(1); definition in Law art. 1, as set out in ZATCA's General WHT Guideline, May 2026","test":"royalty or proceeds","definition":"payments received for the use of, or the right to use, intellectual property, including copyrights, patents, designs, industrial secrets, trademarks and trade names, know-how, trade secrets, goodwill, information on industrial, commercial or scientific expertise, and the right to exploit natural or mineral resources"},"TECHNICAL_CONSULTING":{"authority":"Bylaws art. 63(3)","test":"technical, technological or scientific services","definition":"any type of technical, technological and scientific services, including studies and research on different fields, surveying work of scientific, geological and industrial nature, consulting or supervisory services, or any type of engineering services including relevant designs"},"INTERNATIONAL_TELECOM":{"authority":"Bylaws art. 63(5)","test":"services related to provision of international telecommunications services from the Kingdom"},"RENT":{"authority":"Law art. 68(a)(1); Bylaws art. 63(1)","test":"rental payment"},"AIR_SEA_FREIGHT":{"authority":"Bylaws art. 63(4)","test":"paid_in_kingdom_to_carrier_or_agent == true and is_import_shipping_to_ksa_ports == false"},"LOAN_CHARGES":{"authority":"Bylaws art. 63(1)","test":"loan charges / return on loans"},"INSURANCE":{"authority":"Bylaws art. 63(1)","test":"insurance or reinsurance premium"},"OTHER_PAYMENTS":{"authority":"Bylaws art. 63(7)","test":"RESIDUAL — services other than those named above"}},"rules":{"WHT.SCOPE":{"id":"WHT.SCOPE","statement":"WHT applies to amounts paid to a non-resident from a source in the Kingdom. Every resident person, whether or not a taxpayer, and every permanent establishment of a non-resident in the Kingdom must withhold.","value":{"payee":"non-resident","source":"in the Kingdom","withholders":["resident person, taxpayer or not","permanent establishment of a non-resident in the Kingdom"]},"tier":"A","status":"confirmed","instrument":"Income Tax Law art. 68(a)","url":"https://zatca.gov.sa","effectiveFrom":"2004-07-30","effectiveTo":null,"attested":false},"WHT.SERVICES.DEFINITION":{"id":"WHT.SERVICES.DEFINITION","statement":"'Services' means any work performed for compensation, except the purchase and sale of goods or any other property.","value":{"services":"any work performed for compensation","excludes":["purchase and sale of goods","purchase and sale of any other property"]},"tier":"A","status":"confirmed","instrument":"Income Tax Law art. 68(h)","url":"https://zatca.gov.sa","effectiveFrom":"2004-07-30","effectiveTo":null,"attested":false},"WHT.FINAL_TAX":{"id":"WHT.FINAL_TAX","statement":"WHT withheld under Law art. 68 is a final tax: no further tax is imposed on that income and no amount paid is refunded. Exception: where the payment is directly connected with the payee's permanent establishment in the Kingdom, it enters the PE's tax base and the WHT is credited against the tax due (art. 68(f)-(g)). Where tax was withheld above a treaty rate, the excess is refundable under the treaty (Law art. 35; WHT.TREATY.PROCEDURE).","value":{"final":true,"refundable":false,"pe_connected_exception":"enters PE tax base; WHT credited (Law art. 68(f)-(g))","treaty_excess_refundable":true,"treaty_rules":["WHT.TREATY.OVERRIDE","WHT.TREATY.PROCEDURE"]},"tier":"A","status":"confirmed","instrument":"Law art. 68(e) and 68(g)","url":"https://zatca.gov.sa","effectiveFrom":"2004-07-30","effectiveTo":null,"attested":true},"WHT.DIVIDEND.HYDROCARBON_CARVEOUT":{"id":"WHT.DIVIDEND.HYDROCARBON_CARVEOUT","statement":"Dividends paid by companies engaged in natural gas investment, oil and hydrocarbons are not subject to withholding tax.","value":{"subject_to_wht":false,"applies_to":"dividends paid by companies engaged in natural gas investment, oil and hydrocarbons","overrides":"WHT.CAT.DIVIDEND"},"tier":"A","status":"confirmed","instrument":"Bylaws art. 63(6)(a)","url":"https://zatca.gov.sa","effectiveFrom":"2004-07-30","effectiveTo":null,"attested":true},"WHT.SOFTWARE.GUIDELINE":{"id":"WHT.SOFTWARE.GUIDELINE","statement":"Software and database payments to a non-resident are categorised by the rights the payer receives. The medium and the payment method are generally not decisive. ZATCA groups royalties, technical services and other income under withholding tax, and commercial profits and capital gains under corporate income.","value":{"test":"the rights granted to the purchaser, and their limitations and exclusivity","rights_help":"Pick what the contract lets you do. How the software reaches you (download, disk or cloud) and whether you pay once or monthly do not generally decide this.","withholding_categories":["royalty","technical","other_income"],"corporate_income_categories":["commercial_profits","capital_gains"],"cases":[{"id":"use_only","short":"Use only","label":"A non-exclusive, non-transferable right only to use standard or customised software in your business","section":"3.3.11 cases 1 and 2","categories":["commercial_profits"],"note":"If the licence also lets you reproduce copies or modify the software, ZATCA treats it as a royalty. Read the licence before relying on this."},{"id":"use_modify","short":"Use and modify","label":"A non-exclusive, non-transferable right to use it in your business, plus the right to modify it","section":"3.3.11 case 3","categories":["royalty"],"note":"ZATCA reads \"modify\" as any degree of modification or customisation."},{"id":"site_licence","short":"Copies for your own business","label":"The right to reproduce and install copies for your own business only (site, enterprise or network licence)","section":"3.3.5","categories":["royalty"],"note":"ZATCA reads \"reproduce\" widely: making copies actively or passively, directly or indirectly, or making copies available."},{"id":"reproduce_resell","short":"Copy or modify to sell on","label":"The right to reproduce, copy or modify the software and sell it on, exclusive or not, including loading it on devices you sell","section":"3.3.2 and 3.3.3","categories":["royalty"]},{"id":"source_code","short":"Source code","label":"Access to the source code, with the right to modify and update it","section":"3.3.4","categories":["royalty"]},{"id":"distribute_only","short":"Distribute only","label":"The right to distribute copies only, with no right to reproduce or modify","section":"3.3.6","categories":["commercial_profits"]},{"id":"dev_own","short":"Written for you, you own it","label":"Software written for you, with full copyright passing to you on completion","section":"3.3.7 cases 1 and 2","categories":["technical"]},{"id":"dev_use","short":"Written for you, developer owns it","label":"Software written for you, where the developer keeps the copyright and you get only a non-exclusive right to use it","section":"3.3.7 case 3","categories":["commercial_profits"],"note":"ZATCA reached this because only a right to use passes to you. If you can also copy or modify the software, this example does not fit."},{"id":"support_separate","short":"Separate support","label":"Support, maintenance, updates or training that are separate from the software","section":"General WHT Guideline, May 2026, section 2.2.2.2(3) and section 5","categories":["technical"],"effective_from":"2026-05-01","note":"ZATCA treats these as technical services only to the extent they are supplementary to and separate from the software, not part of it. Not every service counts: using technology to deliver a service does not make it technical."},{"id":"db_public","short":"Public database","label":"A subscription to an online database of public content only","section":"3.3.8 case 1","categories":["other_income"],"note":"ZATCA's May 2026 General WHT Guideline lists subscription fees for technical or scientific information or databases as royalties. The domestic rate is the same either way, but the treaty treatment may differ."},{"id":"db_private","short":"Private database","label":"A subscription to an online database of private and confidential data, or a mix of private and public","section":"3.3.8 case 2","categories":["royalty"]},{"id":"exclusive_licence","short":"Exclusive licence","label":"An exclusive, transferable copyright licence that lasts for the software's remaining life or has no time limit, limited only by language or territory","section":"3.3.10","categories":["capital_gains"]},{"id":"full_copyright","short":"Whole copyright","label":"You buy the whole copyright outright","section":"3.3.1","categories":["capital_gains"]},{"id":"rights_and_extras","short":"Rights plus extras","label":"Rights to reproduce and modify or incorporate the software, plus services or spare parts in the same contract","section":"3.3.9","follow_up":true},{"id":"none","short":"None of these","label":"None of these, or you are not sure","section":"3.2","categories":[]}],"extras":[{"id":"ancillary","short":"Needed help","label":"Help that is needed to deliver the contract and cannot be dissociated from it","section":"3.3.9 case 1","categories":["royalty"]},{"id":"services_separable","short":"Separable services","label":"Other services that can be separated from the rest of the contract","section":"3.3.9 case 2","categories":["royalty","technical"]},{"id":"goods_separable","short":"Separable goods","label":"Spare parts or other goods that can be separated from the rest of the contract","section":"3.3.9 case 3","categories":["royalty","commercial_profits"]},{"id":"not_separable","short":"Cannot be separated","label":"Other services or goods that cannot be separated from the rest of the contract","section":"3.3.9 closing paragraph","categories":["royalty"]}]},"tier":"B","status":"confirmed","instrument":"ZATCA Guideline for Taxation of Software Payments in the context of domestic Income Tax Law, Version 1, January 2024","url":"https://www.zatca.gov.sa/en/HelpCenter/guidelines/Documents/guidelines%20for%20Taxation%20of%20Software%20Payments%20in%20the%20context%20of%20domestic%20Income%20Tax%20Law%20%20En.pdf","effectiveFrom":"2024-01-01","effectiveTo":null,"attested":false,"contraryReading":"ZATCA reviews all the facts and circumstances, and its examples are not exhaustive. The guideline covers domestic law only: under a treaty, treatment is assessed case by case on the treaty's wording. It records the OECD view that a simple right to use software is business income rather than a royalty, and a UN proposal that would treat it as a royalty in treaties adopting that wording."},"WHT.ROYALTY.DEFINITION":{"id":"WHT.ROYALTY.DEFINITION","statement":"A royalty is a payment received for the use of, or the right to use, intellectual property, including copyrights, patents, designs, industrial secrets, trademarks and trade names, know-how, trade secrets, goodwill, payments for information relating to industrial, commercial or scientific expertise, and payments for the right to exploit natural or mineral resources. The method of payment does not matter.","value":{"method_of_payment_relevant":false,"classification_list":[{"payment":"Use of, or the right to use, patents, trademarks, confidential processes and assemblies, goodwill, franchise rights, knowledge transfer and similar rights","royalty":true},{"payment":"Rental of industrial, commercial or scientific equipment","royalty":false},{"payment":"Roaming services","royalty":false},{"payment":"Exclusive distribution rights for a product or service in a specific territory","royalty":false},{"payment":"Design implementation","royalty":false},{"payment":"Monthly payments for maintenance","royalty":false},{"payment":"Consultancy services involving technical knowledge and expertise","royalty":false},{"payment":"The right to exploit natural or mineral resources","royalty":true},{"payment":"Copyrights in films or television programs","royalty":true},{"payment":"Purchasing advertising space","royalty":false},{"payment":"The right to use a database in the beneficiary's business for resale as part of its product","royalty":true},{"payment":"One-time payment for the right to reproduce a song","royalty":true},{"payment":"Branch to parent, for the use of intellectual property rights","royalty":true},{"payment":"Customisable software requiring the transfer of exploitation rights, such as modification rights or rights to use open-source code","royalty":true},{"payment":"Subscription fees to access technical or scientific information or databases","royalty":true},{"payment":"Subscription fees to access a magazine or newspaper","royalty":false},{"payment":"Software for personal or recreational use","royalty":false},{"payment":"Support and development services not bundled with the software","royalty":false}],"know_how_note":"ZATCA treats a payment as a royalty where knowledge is communicated so that the recipient can use it. Its English text then limits knowledge transfer in practice to proprietary computer programming skills, and the Arabic text prevails, so ask an adviser before relying on either."},"tier":"B","status":"confirmed","instrument":"ZATCA General Guideline for Withholding Tax, Second Version, May 2026, Definitions and sections 5.1 and 5.2","url":"https://zatca.gov.sa/en/HelpCenter/guidelines/Documents/General-Guideline-for-Withholding-Tax-In-accordance-with-the-provisions-of-the-Income-Tax-Law-and-its-Implementing-Regulations.pdf","effectiveFrom":"2026-05-01","effectiveTo":null,"attested":false,"contraryReading":"ZATCA accepts that the scope of \"royalties\" is still under discussion, and that a royalty for knowledge transfer can be hard to tell from a fee for services."},"WHT.CAT.DIVIDEND":{"id":"WHT.CAT.DIVIDEND","statement":"Dividends paid to a non-resident: withholding tax at 5% of the gross payment.","value":{"rate":0.05,"basis":"gross payment","includes":["partial or full liquidation proceeds in excess of paid-in capital (Bylaws art. 63(6)(b))"],"distributor_taxed_precludes_wht":false},"tier":"A","status":"confirmed","instrument":"Income Tax Law (RD M/1, 1425H) art. 68 + Implementing Regulations art. 63","url":"https://zatca.gov.sa","effectiveFrom":"2014-03-19","effectiveTo":null,"attested":true},"WHT.CAT.LOAN_RETURN":{"id":"WHT.CAT.LOAN_RETURN","statement":"Return on loans paid to a non-resident: withholding tax at 5% of the gross payment.","value":{"rate":0.05,"basis":"gross payment"},"tier":"A","status":"confirmed","instrument":"Income Tax Law (RD M/1, 1425H) art. 68 + Implementing Regulations art. 63","url":"https://zatca.gov.sa","effectiveFrom":"2014-03-19","effectiveTo":null,"attested":true},"WHT.CAT.ROYALTY":{"id":"WHT.CAT.ROYALTY","statement":"Royalties, incl. exploitation of intellectual rights: withholding tax at 15% of the gross payment.","value":{"rate":0.15,"basis":"gross payment","excludes_per_zatca_circular":["sale of full ownership of industrial or intellectual property"]},"tier":"A","status":"confirmed","instrument":"Income Tax Law (RD M/1, 1425H) art. 68 + Implementing Regulations art. 63","url":"https://zatca.gov.sa","effectiveFrom":"2014-03-19","effectiveTo":null,"attested":true},"WHT.CAT.TECHNICAL.RELATED_2014":{"id":"WHT.CAT.TECHNICAL.RELATED_2014","statement":"19 Mar 2014 to 14 Sep 2023: technical or consulting services paid to a head office or associated company: withholding tax at 15% of the gross payment.","value":{"rate":0.15,"basis":"gross payment"},"tier":"A","status":"confirmed","instrument":"Income Tax Law (RD M/1, 1425H) art. 68 + Implementing Regulations art. 63","url":"https://zatca.gov.sa","effectiveFrom":"2014-03-19","effectiveTo":"2023-09-14","attested":true,"condition":{"related_party":true}},"WHT.CAT.TECHNICAL.UNRELATED_2014":{"id":"WHT.CAT.TECHNICAL.UNRELATED_2014","statement":"19 Mar 2014 to 14 Sep 2023: technical or consulting services paid to anyone other than a head office or associated company: withholding tax at 5% of the gross payment.","value":{"rate":0.05,"basis":"gross payment"},"tier":"A","status":"confirmed","instrument":"Income Tax Law (RD M/1, 1425H) art. 68 + Implementing Regulations art. 63","url":"https://zatca.gov.sa","effectiveFrom":"2014-03-19","effectiveTo":"2023-09-14","attested":true,"condition":{"related_party":false}},"WHT.CAT.TECHNICAL":{"id":"WHT.CAT.TECHNICAL","statement":"Technical / consulting services, incl. to head office or related party: withholding tax at 5% of the gross payment.","value":{"rate":0.05,"basis":"gross payment","place_of_performance_relevant":false},"tier":"A","status":"confirmed","instrument":"Income Tax Law (RD M/1, 1425H) art. 68 + Implementing Regulations art. 63","url":"https://zatca.gov.sa","effectiveFrom":"2023-09-15","effectiveTo":null,"attested":true,"contraryReading":"Characterisation drives the rate: technical/consulting (5%) vs management fee (20%) is the most common ZATCA challenge. Classify on the substance of the contract, not its title."},"WHT.CAT.MGMT_FEE":{"id":"WHT.CAT.MGMT_FEE","statement":"Management fees: withholding tax at 20% of the gross payment.","value":{"rate":0.2,"basis":"gross payment"},"tier":"A","status":"confirmed","instrument":"Income Tax Law (RD M/1, 1425H) art. 68 + Implementing Regulations art. 63","url":"https://zatca.gov.sa","effectiveFrom":"2014-03-19","effectiveTo":null,"attested":true,"contraryReading":"Characterisation drives the rate: technical/consulting (5%) vs management fee (20%) is the most common ZATCA challenge. Classify on the substance of the contract, not its title."},"WHT.CAT.TELECOM":{"id":"WHT.CAT.TELECOM","statement":"International telecommunication services: withholding tax at 5% of the gross payment.","value":{"rate":0.05,"basis":"gross payment"},"tier":"A","status":"confirmed","instrument":"Income Tax Law (RD M/1, 1425H) art. 68 + Implementing Regulations art. 63","url":"https://zatca.gov.sa","effectiveFrom":"2014-03-19","effectiveTo":null,"attested":true,"contraryReading":"19 Mar 2014 to 14 Sep 2023: ZATCA applied the Bylaws art. 63(1) rate of 15% to payments to a head office or associated company. This checker follows Law art. 68(a)(5), which set a flat 5% and ranks above the Bylaws. Expect a ZATCA challenge on assessments for that period."},"WHT.CAT.OTHER_SERVICES":{"id":"WHT.CAT.OTHER_SERVICES","statement":"Other services not otherwise categorised: withholding tax at 15% of the gross payment.","value":{"rate":0.15,"basis":"gross payment"},"tier":"A","status":"confirmed","instrument":"Income Tax Law (RD M/1, 1425H) art. 68 + Implementing Regulations art. 63","url":"https://zatca.gov.sa","effectiveFrom":"2014-03-19","effectiveTo":null,"attested":true,"contraryReading":"Residual category: a payment lands here only if it fits no named category in Bylaws art. 63(1). The usual dispute is whether a service is really technical or consulting (WHT.CAT.TECHNICAL) or management (WHT.CAT.MGMT_FEE) rather than residual."},"WHT.CAT.RENT":{"id":"WHT.CAT.RENT","statement":"Rent paid to a non-resident: withholding tax at 5% of the gross payment.","value":{"rate":0.05,"basis":"gross payment","includes_per_zatca_circular":["lease of immovable property","lease of movable property located in the Kingdom"]},"tier":"A","status":"confirmed","instrument":"Income Tax Law (RD M/1, 1425H) art. 68 + Implementing Regulations art. 63","url":"https://zatca.gov.sa","effectiveFrom":"2014-03-19","effectiveTo":null,"attested":true},"WHT.CAT.AIR_FREIGHT":{"id":"WHT.CAT.AIR_FREIGHT","statement":"Air tickets, air freight and maritime freight paid in the Kingdom to transport companies, their agents or representatives in the Kingdom: withholding tax at 5% of the gross payment. Payment for shipping materials from abroad to the Kingdom's ports is excluded.","value":{"rate":0.05,"basis":"gross payment","scope":"paid in the Kingdom to air and maritime transport companies, their agents or representatives in the Kingdom","excludes":["payment for shipping materials from abroad to the Kingdom's ports"]},"tier":"A","status":"confirmed","instrument":"Income Tax Law (RD M/1, 1425H) art. 68 + Implementing Regulations art. 63","url":"https://zatca.gov.sa","effectiveFrom":"2014-03-19","effectiveTo":null,"attested":true},"WHT.CAT.INSURANCE":{"id":"WHT.CAT.INSURANCE","statement":"Insurance / reinsurance premiums: withholding tax at 5% of the gross payment.","value":{"rate":0.05,"basis":"gross payment"},"tier":"A","status":"confirmed","instrument":"Income Tax Law (RD M/1, 1425H) art. 68 + Implementing Regulations art. 63","url":"https://zatca.gov.sa","effectiveFrom":"2014-03-19","effectiveTo":null,"attested":true},"WHT.CAT.DIRECTORS_FEES":{"id":"WHT.CAT.DIRECTORS_FEES","statement":"In practice, directors' fees paid to a non-resident are treated as technical, professional and consultancy fees, so withholding tax applies at the technical and consulting rate on the gross payment. Before 15 Sep 2023, when that rate depended on the payee, the rate for a payee other than a head office or associated company applies in every case.","value":{"rate_rules":["WHT.CAT.TECHNICAL","WHT.CAT.TECHNICAL.UNRELATED_2014"],"basis":"gross payment","meaning":"fees paid by a company, including full-time fees, meeting attendance allowances and similar payments, for services rendered by board members","treaty_rule":"WHT.TREATY.BUSINESS_PROFITS"},"tier":"C","status":"confirmed","instrument":"ZATCA General Guideline for Withholding Tax, Second Version, May 2026 (meaning only: it states no rate for these fees)","url":"https://zatca.gov.sa/en/HelpCenter/guidelines/Documents/General-Guideline-for-Withholding-Tax-In-accordance-with-the-provisions-of-the-Income-Tax-Law-and-its-Implementing-Regulations.pdf","effectiveFrom":"2014-03-19","effectiveTo":null,"attested":false,"contraryReading":"ZATCA's May 2026 General Guideline explains board fees but gives them no rate, and its rate table has no line for them. Its source-of-income wording lists them beside management fees and dividends, and its January 2025 treaty circular lists \"management or directors' fees\" as a single type of income, so ZATCA could read them as management fees at 20%. Bylaws art. 63(7) treats services not itemised as other payments, which ZATCA's rate table taxes at 15%. This checker follows the technical and consulting rate of 5%, for earlier payments too. From 19 Mar 2014 to 14 Sep 2023 technical services paid to a head office or associated company were taxed at 15%, so ZATCA could read a fee paid to one of them in that period at 15%. ZATCA may challenge this."},"WHT.GROSS_BASIS":{"id":"WHT.GROSS_BASIS","statement":"WHT is imposed on the total amount paid to the non-resident, with no deduction for the payee's costs and regardless of whether the payer may deduct the payment. It also applies to payments under contracts concluded before the Law took effect.","value":{"basis":"total amount paid","deduct_payee_costs":false,"depends_on_payer_deductibility":false,"applies_to_pre_law_contracts":true},"tier":"A","status":"confirmed","instrument":"Bylaws art. 63(8)","url":"https://zatca.gov.sa","effectiveFrom":"2004-07-30","effectiveTo":null,"attested":true},"WHT.REMIT.DEADLINE":{"id":"WHT.REMIT.DEADLINE","statement":"WHT must be remitted to ZATCA within the first 10 days of the month following the month of payment.","value":{"day_of_month":10,"reference_month":"month following payment","trigger":"payment to the beneficiary, not accrual"},"tier":"A","status":"confirmed","instrument":"Income Tax Law (RD M/1, 1425H) art. 68 + Implementing Regulations art. 63","url":"https://zatca.gov.sa","effectiveFrom":"2004-07-30","effectiveTo":null,"attested":true},"WHT.ANNUAL_RETURN":{"id":"WHT.ANNUAL_RETURN","statement":"An annual WHT information return is filed within 120 days of the withholder's fiscal year end (60 days for partnerships), in addition to the monthly statements and remittances.","value":{"frequency":"annual","days_after_fy_end":120,"partnership_days_after_fy_end":60},"tier":"A","status":"confirmed","instrument":"Income Tax Law (RD M/1, 1425H) art. 68 + Implementing Regulations art. 63","url":"https://zatca.gov.sa","effectiveFrom":"2004-07-30","effectiveTo":null,"attested":true},"WHT.RECORDS.RETENTION":{"id":"WHT.RECORDS.RETENTION","statement":"WHT records are kept for at least 10 years after payment, and longer while any case on them is under consideration by ZATCA or a competent committee.","value":{"min_years":10,"from":"payment date","extended_while_case_open":true,"required_fields":["recipient name","recipient address","payment type","payment amount","amount withheld"]},"tier":"A","status":"confirmed","instrument":"Bylaws art. 63(9)(c)","url":"https://zatca.gov.sa","effectiveFrom":"2004-07-30","effectiveTo":null,"attested":true},"WHT.PENALTY.DELAY":{"id":"WHT.PENALTY.DELAY","statement":"A delay fine of 1% of the unpaid tax for every 30 days of delay, from the due date to the date of payment. It expressly covers tax required to be withheld and advance payments.","value":{"rate":0.01,"per_days":30,"from":"tax due date","to":"payment date","covers":["unpaid tax","tax required to be withheld","advance payments"]},"tier":"A","status":"confirmed","instrument":"Law art. 77(a); Bylaws art. 68(1)","url":"https://zatca.gov.sa","effectiveFrom":"2004-07-30","effectiveTo":null,"attested":true},"WHT.PENALTY.UNDER_30_DAYS":{"id":"WHT.PENALTY.UNDER_30_DAYS","statement":"The delay fine does not apply if the delay is less than 30 days from the due date. The tax itself stays due.","value":{"rule":"WHT.PENALTY.DELAY","no_fine_below_days":30,"counted_from":"tax due date"},"tier":"A","status":"confirmed","instrument":"Bylaws art. 68(2)","url":"https://zatca.gov.sa","effectiveFrom":"2004-07-30","effectiveTo":null,"attested":true},"WHT.PENALTY.PART_PERIOD":{"id":"WHT.PENALTY.PART_PERIOD","statement":"Only completed 30-day periods count. A delay of 45 days carries 1%, and the fine becomes 2% once the delay reaches 60 days.","value":{"rule":"WHT.PENALTY.DELAY","part_period_counts":false,"examples":[{"delay_days":45,"periods_charged":1},{"delay_days":60,"periods_charged":2}],"load_bearing_for_rate":false},"tier":"C","status":"confirmed","instrument":"Practice position. Law art. 77(a) and Bylaws art. 68 on the fine","url":"https://zatca.gov.sa","effectiveFrom":"2004-07-30","effectiveTo":null,"attested":false,"contraryReading":"Law art. 77(a) says \"for every thirty days of delay\", and Bylaws art. 68(2) rules out the fine only until the delay completes 30 days. Neither says how part of a later period counts, so ZATCA could charge a period once it starts, which would make 45 days 2%. Bylaws art. 66(5) ignores a period of less than 30 days when ZATCA compensates a late refund, but it does not cover the fine. Another reading adds the second 1% only from day 61. This checker counts completed periods, as one adviser's published example does, so 60 days carries 2%."},"WHT.REMIT.NON_WORKING_DAY":{"id":"WHT.REMIT.NON_WORKING_DAY","statement":"The due date is the 10th of the month, even when it falls on a weekend or public holiday, and the 30-day delay periods for the fine run from the 10th.","value":{"due_date_moves":false,"delay_count_starts":"the 10th (the due date), even on a weekend or public holiday","applies_to":["WHT.REMIT.DEADLINE","WHT.PENALTY.DELAY"],"load_bearing_for_rate":false},"tier":"C","status":"confirmed","instrument":"Practice position. Law art. 77(a) and Bylaws art. 68(1) on the fine; ZATCA monthly withholding tax notices, 2024 to 2026","url":"https://zatca.gov.sa/en/MediaCenter/News/Pages/Submit-WH-Return-for-Mar-2026.aspx","effectiveFrom":"2004-07-30","effectiveTo":null,"attested":false,"contraryReading":"Law art. 77(a) counts the fine from the tax due date and does not mention weekends or holidays. ZATCA's monthly notices differ. Some set the next working day when the 10th was a Friday or Saturday: 12 May 2024, 11 August 2024, 12 October 2025 and 11 January 2026. The two most recent kept the 10th: Friday 10 April 2026 and Saturday 10 October 2026. ZATCA's 2026 tax calendar also gives 10 January for December 2025. The checker found no ZATCA withholding tax notice for a public holiday. ZATCA's zakat rules extend a period ending on an official holiday to the next working day, but they do not cover withholding tax. A delay of less than 30 days carries no fine, so this matters only when a payment lands at the end of a 30-day period."},"WHT.FAILURE.CONSEQUENCES":{"id":"WHT.FAILURE.CONSEQUENCES","statement":"Failing to withhold, remit or report WHT does not disallow the payer's expense deduction. The consequences are: the withholder is personally liable for the unpaid tax and delay fines (Law art. 68(c)); the beneficiary remains liable and ZATCA may recover from him, his agent or his sponsor (art. 68(d)); and the delay fine in WHT.PENALTY.DELAY runs from the due date (art. 77(a)).","value":{"deduction_disallowed":false,"withholder_personally_liable":true,"recoverable_from":["beneficiary","beneficiary's agent","beneficiary's sponsor"],"delay_fine_rule":"WHT.PENALTY.DELAY"},"tier":"A","status":"corrected","instrument":"Income Tax Law art. 68(c), 68(d), 77(a); Bylaws art. 63(8)","url":"https://zatca.gov.sa","effectiveFrom":"2004-07-30","effectiveTo":null,"attested":true},"WHT.TREATY.OVERRIDE":{"id":"WHT.TREATY.OVERRIDE","statement":"Where a tax treaty or international agreement to which the Kingdom is party is inconsistent with the Income Tax Law, the treaty prevails, except for the Law's own art. 63 anti-avoidance procedures.","value":{"treaty_prevails":true,"except":"Income Tax Law art. 63 anti-avoidance procedures (the LAW's art. 63, not the Bylaws')"},"tier":"A","status":"confirmed","instrument":"Income Tax Law art. 35","url":"https://zatca.gov.sa","effectiveFrom":"2004-07-30","effectiveTo":null,"attested":true,"mliNote":"MLI in force for KSA from 1 May 2020 — apply the principal purpose test before granting relief."},"WHT.TREATY.PROCEDURE":{"id":"WHT.TREATY.PROCEDURE","statement":"Treaty relief is claimed either at source (the payer applies the treaty rate at payment after filing the request on the ZATCA portal) or by refund (withhold at the domestic rate, then claim the excess). Claims must be lodged within 5 years.","value":{"routes":["benefit at source","refund"],"upfront_if_documents_held":true,"benefit_at_source_documents":["tax residency certificate from the foreign tax authority","request for application of the treaty on ZATCA's approved form, via the ZATCA portal","authentication by the Saudi Embassy, or an Apostille","Saudi payer's undertaking to settle any tax and penalties from wrong information, arithmetic error or treaty misinterpretation (Form Q/7C)"],"refund_documents":["tax residency certificate from the foreign tax authority","beneficiary's letter authorising the Saudi payer to receive the refund","request for application of the treaty on ZATCA's approved form","authentication by the Saudi Embassy, or an Apostille","copy of the WHT return and the remittance receipt","Chamber of Commerce-attested letter from the payer that the amount was never refunded, transferred or set off"],"claim_limitation_years":5,"if_documents_missing":"withhold at the domestic rate; claim the excess by refund"},"tier":"B","status":"confirmed","instrument":"ZATCA Tax Circular: Implementation of Withholding Tax (WHT) Under the Double Taxation Agreement, Version 1, January 2025, section 4; Bylaws art. 66 (limitation)","url":"https://zatca.gov.sa/en/MediaCenter/Publications/Documents/Tax-Circular-WHT-Implementation-Under-Double-Taxation-Agreement.PDF","effectiveFrom":"2020-05-01","effectiveTo":null,"attested":false},"WHT.TREATY.CEILING":{"id":"WHT.TREATY.CEILING","statement":"A treaty rate is a ceiling: Saudi WHT on a treaty-covered payment is the lower of the domestic rate and the treaty rate for the tier whose condition the beneficial owner meets. Relief requires the recipient to be the beneficial owner; a conduit is taxed at the domestic rate.","value":{"apply":"lower of domestic rate and treaty tier rate","requires_beneficial_owner":true,"conduit_treatment":"domestic rate"},"tier":"B","status":"confirmed","instrument":"ZATCA Tax Circular: Implementation of Withholding Tax (WHT) Under the Double Taxation Agreement, Version 1, January 2025, paras 3.2.8 and 3.2.10; treaty wording 'shall not exceed'","url":"https://zatca.gov.sa/en/MediaCenter/Publications/Documents/Tax-Circular-WHT-Implementation-Under-Double-Taxation-Agreement.PDF","effectiveFrom":"2025-01-01","effectiveTo":null,"attested":false},"WHT.TREATY.BUSINESS_PROFITS":{"id":"WHT.TREATY.BUSINESS_PROFITS","statement":"A fee for services paid to a treaty resident with no permanent establishment in the Kingdom is taxable only in the payee's state (business profits article), so no Saudi WHT applies, unless: the treaty taxes the fee under a technical-fees or royalty article; the payee is an individual with a fixed base in the Kingdom or present 183 days or more in any 12-month period; or the payment is a director's fee.","value":{"saudi_wht_if_no_pe":false,"unless":["treaty has a technical-fees article or taxes the fee as a royalty (see fts_treaties)","payee is an individual with a fixed base in the Kingdom, or present 183 days or more in any 12-month period","payment is a director's fee"],"fts_treaties":["WHT.TREATY.RATE.VN","WHT.TREATY.RATE.QA","WHT.TREATY.RATE.KW"],"relief_route":"WHT.TREATY.PROCEDURE"},"tier":"B","status":"confirmed","instrument":"ZATCA Tax Circular: Implementation of Withholding Tax (WHT) Under the Double Taxation Agreement, Version 1, January 2025, paras 3.2.5, 3.2.11-3.2.13","url":"https://zatca.gov.sa/en/MediaCenter/Publications/Documents/Tax-Circular-WHT-Implementation-Under-Double-Taxation-Agreement.PDF","effectiveFrom":"2025-01-01","effectiveTo":null,"attested":false}},"treaties":{"AL":{"iso2":"AL","country":"Albania","ruleId":"WHT.TREATY.RATE.AL","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/default.aspx","textUrl":null,"entryIntoForce":"2019-12-01","entryIntoEffect":"2020-01-01","effectiveFrom":"2020-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"all cases"}],"interest":[{"rate":0.06,"condition":"all cases"}],"royalties":[{"rate":0.05,"condition":"use of, or right to use, industrial, commercial or scientific equipment"},{"rate":0.08,"condition":"all other cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"reviewer"},"DZ":{"iso2":"DZ","country":"Algeria","ruleId":"WHT.TREATY.RATE.DZ","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/algeria-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/%D8%A7%D9%84%D8%AC%D8%B2%D8%A7%D8%A6%D8%B1.pdf","entryIntoForce":"2016-03-01","entryIntoEffect":"2017-01-01","effectiveFrom":"2017-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0,"condition":"all cases"}],"interest":[{"rate":0,"condition":"all cases"}],"royalties":[{"rate":0.07,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"AT":{"iso2":"AT","country":"Austria","ruleId":"WHT.TREATY.RATE.AT","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/austria-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/AUSTRIA.pdf","entryIntoForce":"2007-06-01","entryIntoEffect":"2008-01-01","effectiveFrom":"2008-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"all cases"}],"interest":[{"rate":0.05,"condition":"all cases"}],"royalties":[{"rate":0.1,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"AZ":{"iso2":"AZ","country":"Azerbaijan","ruleId":"WHT.TREATY.RATE.AZ","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/azerbaijan-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/Azerbaijan.pdf","entryIntoForce":"2015-05-01","entryIntoEffect":"2016-01-01","effectiveFrom":"2016-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"beneficial owner is the government, central bank or a wholly government-owned entity of the other state"},{"rate":0.05,"condition":"beneficial owner has invested at least USD 300,000 in the payer's capital"},{"rate":0.07,"condition":"all other cases"}],"interest":[{"rate":0,"condition":"paid to the government, central bank or a wholly government-owned entity of the other state, or under a government-approved loan agreement"},{"rate":0.07,"condition":"all other cases"}],"royalties":[{"rate":0.1,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"BD":{"iso2":"BD","country":"Bangladesh","ruleId":"WHT.TREATY.RATE.BD","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/bangladesh-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/BANGLADESH.pdf","entryIntoForce":"2011-10-01","entryIntoEffect":"2012-01-01","effectiveFrom":"2012-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.1,"condition":"all cases"}],"interest":[{"rate":0.075,"condition":"all cases"}],"royalties":[{"rate":0.1,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"BY":{"iso2":"BY","country":"Belarus","ruleId":"WHT.TREATY.RATE.BY","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/belarus-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/BELARUS.pdf","entryIntoForce":"2010-08-01","entryIntoEffect":"2011-01-01","effectiveFrom":"2011-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"all cases"}],"interest":[{"rate":0.05,"condition":"all cases"}],"royalties":[{"rate":0.1,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"BG":{"iso2":"BG","country":"Bulgaria","ruleId":"WHT.TREATY.RATE.BG","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/bulgaria-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/Bulgaria.pdf","entryIntoForce":"2018-11-01","entryIntoEffect":"2019-01-01","effectiveFrom":"2019-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"all cases"}],"interest":[{"rate":0.05,"condition":"all cases"}],"royalties":[{"rate":0.05,"condition":"use of, or right to use, industrial, commercial or scientific equipment"},{"rate":0.1,"condition":"all other cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"CN":{"iso2":"CN","country":"China, People’s Republic of","ruleId":"WHT.TREATY.RATE.CN","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/default.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/China.pdf","entryIntoForce":"2006-10-01","entryIntoEffect":"2007-01-01","effectiveFrom":"2007-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"all cases"}],"interest":[{"rate":0.1,"condition":"all cases"}],"royalties":[{"rate":0.1,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"reviewer"},"TW":{"iso2":"TW","country":"China, Republic of (Taiwan)","ruleId":"WHT.TREATY.RATE.TW","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/default.aspx","textUrl":null,"entryIntoForce":"2021-11-01","entryIntoEffect":"2022-01-01","effectiveFrom":"2022-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.125,"condition":"all cases"}],"interest":[{"rate":0,"condition":"paid to the central bank of the other territory or a financial institution wholly owned or controlled by its public authority"},{"rate":0.1,"condition":"all other cases"}],"royalties":[{"rate":0.04,"condition":"use of, or right to use, industrial, commercial or scientific equipment"},{"rate":0.1,"condition":"all other cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"reviewer"},"HR":{"iso2":"HR","country":"Croatia","ruleId":"WHT.TREATY.RATE.HR","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/croatia-convention.aspx","textUrl":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Documents/Croatia.pdf","entryIntoForce":"2025-06-24","entryIntoEffect":"2026-01-01","effectiveFrom":"2026-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0,"condition":"beneficial owner is the Government of Croatia or a body named in Art. 22(3), such as the Croatian National Bank or the Croatian Bank for Reconstruction and Development, or an entity wholly owned by them: taxable only in Croatia (Art. 22)"},{"rate":0.05,"condition":"all other cases"}],"interest":[{"rate":0,"condition":"beneficial owner is the Government of Croatia or a body named in Art. 22(3), such as the Croatian National Bank or the Croatian Bank for Reconstruction and Development, or an entity wholly owned by them: taxable only in Croatia (Art. 22)"},{"rate":0.05,"condition":"all other cases"}],"royalties":[{"rate":0.1,"condition":"all cases, including the use of, or the right to use, industrial, commercial or scientific equipment"}]},"fts":{"present":false},"ratesSource":"treaty_text","datesSource":"zatca"},"CY":{"iso2":"CY","country":"Cyprus","ruleId":"WHT.TREATY.RATE.CY","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/cyprus-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/CYPRUS.pdf","entryIntoForce":"2019-03-01","entryIntoEffect":"2020-01-01","effectiveFrom":"2020-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0,"condition":"beneficial owner is a company (other than a partnership) holding, directly or indirectly, at least 25% of the payer's capital"},{"rate":0.05,"condition":"all other cases"}],"interest":[{"rate":0,"condition":"all cases"}],"royalties":[{"rate":0.05,"condition":"use of, or right to use, industrial, commercial or scientific equipment"},{"rate":0.08,"condition":"all other cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"CZ":{"iso2":"CZ","country":"Czech Republic","ruleId":"WHT.TREATY.RATE.CZ","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/czech-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/Czech.pdf","entryIntoForce":"2013-05-01","entryIntoEffect":"2014-01-01","effectiveFrom":"2014-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"all cases"}],"interest":[{"rate":0,"condition":"all cases"}],"royalties":[{"rate":0.1,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"EG":{"iso2":"EG","country":"Egypt","ruleId":"WHT.TREATY.RATE.EG","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/egypt-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/%D9%85%D8%B5%D8%B1.pdf","entryIntoForce":"2017-07-01","entryIntoEffect":"2018-01-01","effectiveFrom":"2018-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"beneficial owner is a company (other than a partnership) directly holding at least 20% of the payer's capital"},{"rate":0.1,"condition":"all other cases"}],"interest":[{"rate":0,"condition":"payer or beneficial owner is the government of the other state"},{"rate":0.1,"condition":"all other cases"}],"royalties":[{"rate":0,"condition":"payer or beneficial owner is the government of the other state"},{"rate":0.1,"condition":"all other cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"ET":{"iso2":"ET","country":"Ethiopia","ruleId":"WHT.TREATY.RATE.ET","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/ethiopia-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/ETHIOPIA.pdf","entryIntoForce":"2016-10-01","entryIntoEffect":"2017-01-01","effectiveFrom":"2017-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"all cases"}],"interest":[{"rate":0,"condition":"payer or beneficial owner is the government, an administrative subdivision, local authority, central bank or wholly government-owned financial institution of the other state"},{"rate":0.05,"condition":"all other cases"}],"royalties":[{"rate":0.075,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"FR":{"iso2":"FR","country":"France","ruleId":"WHT.TREATY.RATE.FR","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/france-convention.aspx","textUrl":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Documents/CONVENTIONS%20of%20Double%20Tax%20Avoidance%20between%20KSA%26France%20_En_01.pdf","entryIntoForce":"1983-02-01","entryIntoEffect":"1981-01-01","effectiveFrom":"1981-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0,"condition":"all cases"}],"interest":[{"rate":0,"condition":"all cases"}],"royalties":[{"rate":0,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"GA":{"iso2":"GA","country":"Gabon","ruleId":"WHT.TREATY.RATE.GA","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/Gabon-convention.aspx","textUrl":null,"entryIntoForce":"2021-02-01","entryIntoEffect":"2022-01-01","effectiveFrom":"2022-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"all cases"}],"interest":[{"rate":0.075,"condition":"all cases"}],"royalties":[{"rate":0.1,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"reviewer"},"GE":{"iso2":"GE","country":"Georgia","ruleId":"WHT.TREATY.RATE.GE","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/1193.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/GEORGIA.pdf","entryIntoForce":"2019-04-01","entryIntoEffect":"2020-01-01","effectiveFrom":"2020-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0,"condition":"paid to the government of the other state"},{"rate":0.05,"condition":"all other cases"}],"interest":[{"rate":0,"condition":"paid to the government of the other state"},{"rate":0.05,"condition":"all other cases"}],"royalties":[{"rate":0.05,"condition":"use of, or right to use, industrial, commercial or scientific equipment"},{"rate":0.08,"condition":"all other cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"GR":{"iso2":"GR","country":"Greece","ruleId":"WHT.TREATY.RATE.GR","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/greece-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/Greece.pdf","entryIntoForce":"2010-05-01","entryIntoEffect":"2011-01-01","effectiveFrom":"2011-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"all cases"}],"interest":[{"rate":0.05,"condition":"all cases"}],"royalties":[{"rate":0.1,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"HK":{"iso2":"HK","country":"Hong Kong","ruleId":"WHT.TREATY.RATE.HK","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/1192.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/HONG%20KONG.pdf","entryIntoForce":"2018-09-01","entryIntoEffect":"2019-01-01","effectiveFrom":"2019-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"all cases"}],"interest":[{"rate":0,"condition":"all cases"}],"royalties":[{"rate":0.05,"condition":"use of, or right to use, industrial, commercial or scientific equipment"},{"rate":0.08,"condition":"all other cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"HU":{"iso2":"HU","country":"Hungary","ruleId":"WHT.TREATY.RATE.HU","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/default.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/Hungary.pdf","entryIntoForce":"2015-05-01","entryIntoEffect":"2016-01-01","effectiveFrom":"2016-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"all cases"}],"interest":[{"rate":0,"condition":"all cases"}],"royalties":[{"rate":0.05,"condition":"use of, or right to use, industrial, commercial or scientific equipment"},{"rate":0.08,"condition":"all other cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"reviewer"},"IS":{"iso2":"IS","country":"Iceland","ruleId":"WHT.TREATY.RATE.IS","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/KSAxIceland.aspx","textUrl":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Documents/CONVENTION_BETWEEN_SAUDI_ARABIA_%26_ICELAND.pdf","entryIntoForce":"2025-12-01","entryIntoEffect":"2026-01-01","effectiveFrom":"2026-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0,"condition":"beneficial owner is Iceland, its administrative or political subdivisions or local authorities, or a recognised Icelandic pension fund"},{"rate":0.05,"condition":"beneficial owner is a company holding directly at least 10% of the payer's capital throughout a 365-day period that includes the payment date"},{"rate":0.1,"condition":"all other cases"}],"interest":[{"rate":0,"condition":"beneficial owner is Iceland, its subdivisions or local authorities, or a recognised pension fund; or paid by such an entity; or paid on a loan guaranteed, secured or insured by a Contracting State or a financial institution wholly owned by it; or derived by a financial institution unrelated to and dealing wholly independently with the payer (Art. 11(3))"},{"rate":0.05,"condition":"all other cases"}],"royalties":[{"rate":0.05,"condition":"for the use of, or the right to use, industrial, commercial or scientific equipment"},{"rate":0.1,"condition":"all other cases"}]},"fts":{"present":false},"ratesSource":"treaty_text","datesSource":"zatca"},"IN":{"iso2":"IN","country":"India","ruleId":"WHT.TREATY.RATE.IN","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/india-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/India.pdf","entryIntoForce":"2006-11-01","entryIntoEffect":"2007-01-01","effectiveFrom":"2007-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"all cases"}],"interest":[{"rate":0.1,"condition":"all cases"}],"royalties":[{"rate":0.1,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"IE":{"iso2":"IE","country":"Ireland","ruleId":"WHT.TREATY.RATE.IE","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/ireland-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/IRELAND.pdf","entryIntoForce":"2012-12-01","entryIntoEffect":"2013-01-01","effectiveFrom":"2013-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0,"condition":"beneficial owner is a company (other than a partnership) directly holding at least 25% of the payer's capital, or the Irish government, central bank or a wholly government-owned institution, agency or fund"},{"rate":0.05,"condition":"all other cases"}],"interest":[{"rate":0,"condition":"all cases"}],"royalties":[{"rate":0.05,"condition":"use of, or right to use, industrial, commercial or scientific equipment"},{"rate":0.08,"condition":"all other cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"IT":{"iso2":"IT","country":"Italy","ruleId":"WHT.TREATY.RATE.IT","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/italy-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/Italy.pdf","entryIntoForce":"2009-12-01","entryIntoEffect":"2010-01-01","effectiveFrom":"2010-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"beneficial owner is a company (other than a partnership) that has owned, directly or indirectly, at least 25% of the payer's capital for at least 12 months before the dividend was declared"},{"rate":0.1,"condition":"all other cases"}],"interest":[{"rate":0.05,"condition":"all cases"}],"royalties":[{"rate":0.1,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"JP":{"iso2":"JP","country":"Japan","ruleId":"WHT.TREATY.RATE.JP","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/japan-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/Japan.pdf","entryIntoForce":"2011-09-01","entryIntoEffect":"2012-01-01","effectiveFrom":"2012-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"beneficial owner is a company holding at least 10% of the voting or total issued shares throughout the 183 days ending on the date entitlement is determined"},{"rate":0.1,"condition":"all other cases"}],"interest":[{"rate":0.1,"condition":"all cases"}],"royalties":[{"rate":0.05,"condition":"use of, or right to use, industrial, commercial or scientific equipment"},{"rate":0.1,"condition":"all other cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"JO":{"iso2":"JO","country":"Jordan","ruleId":"WHT.TREATY.RATE.JO","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/1047.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86.pdf","entryIntoForce":"2017-09-01","entryIntoEffect":"2018-01-01","effectiveFrom":"2018-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"all cases"}],"interest":[{"rate":0.05,"condition":"all cases"}],"royalties":[{"rate":0.07,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"KZ":{"iso2":"KZ","country":"Kazakhstan","ruleId":"WHT.TREATY.RATE.KZ","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/kazakhstan-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/Kazakhstan.pdf","entryIntoForce":"2016-09-01","entryIntoEffect":"2017-01-01","effectiveFrom":"2017-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0,"condition":"payer or beneficial owner is the government, an administrative subdivision, local authority, central bank or wholly government-owned financial institution of the other state"},{"rate":0.05,"condition":"all other cases"}],"interest":[{"rate":0,"condition":"payer or beneficial owner is the government, an administrative subdivision, local authority, central bank or wholly government-owned financial institution of the other state"},{"rate":0.1,"condition":"all other cases"}],"royalties":[{"rate":0,"condition":"payer or beneficial owner is the government, an administrative subdivision, local authority, central bank or wholly government-owned financial institution of the other state"},{"rate":0.1,"condition":"all other cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"XK":{"iso2":"XK","country":"Kosovo","ruleId":"WHT.TREATY.RATE.XK","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/default.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/kosovo.pdf","entryIntoForce":"2020-08-01","entryIntoEffect":"2021-01-01","effectiveFrom":"2021-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"all cases"}],"interest":[{"rate":0,"condition":"beneficially owned by the government, a subdivision, local authority, central bank or wholly government-owned institution of the other state, or on debt guaranteed, insured or indirectly financed by them"},{"rate":0.05,"condition":"all other cases"}],"royalties":[{"rate":0.05,"condition":"use of, or right to use, industrial, commercial or scientific equipment"},{"rate":0.1,"condition":"all other cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"reviewer"},"KW":{"iso2":"KW","country":"Kuwait","ruleId":"WHT.TREATY.RATE.KW","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/kuwait-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/%d8%a7%d9%84%d9%83%d9%88%d9%8a%d8%aa.pdf","entryIntoForce":"2025-08-01","entryIntoEffect":"2026-01-01","effectiveFrom":"2026-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"all cases"}],"interest":[{"rate":0,"condition":"all cases: income from debt-claims is taxable only in the payee's state (Art. 11(1))"}],"royalties":[{"rate":0.1,"condition":"all cases"}]},"fts":{"present":true,"where":"Article 13 (income from technical services)","rate":0.1,"covers":"any service of a managerial, technical or consultancy nature","excludes":["payment to an employee of the payer","payment for teaching in or by an educational institution","payment by an individual for services for an individual's personal use"],"source_rule":"arises in the Kingdom if the payer is a Saudi resident, or a PE or fixed base in the Kingdom bears it; does not arise in the Kingdom if the Saudi payer's PE or fixed base in the other state bears it (Art. 13(5)-(6))"},"ratesSource":"treaty_text","datesSource":"zatca"},"KG":{"iso2":"KG","country":"Kyrgyzstan","ruleId":"WHT.TREATY.RATE.KG","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/default.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/Kyrgyzstan.pdf","entryIntoForce":"2015-10-01","entryIntoEffect":"2016-01-01","effectiveFrom":"2016-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0,"condition":"all cases"}],"interest":[{"rate":0,"condition":"all cases"}],"royalties":[{"rate":0.075,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"reviewer"},"LV":{"iso2":"LV","country":"Latvia","ruleId":"WHT.TREATY.RATE.LV","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/Latvia-convention.aspx","textUrl":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Documents/Double%20Tax%20Avoidance%20KSA%20%26%20Lativia.pdf","entryIntoForce":"2021-07-01","entryIntoEffect":"2022-01-01","effectiveFrom":"2022-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0,"condition":"beneficial owner is the other state's government, central bank, a wholly government-owned financial institution, or a company (other than a partnership) directly holding at least 25% of the payer's capital"},{"rate":0.05,"condition":"all other cases"}],"interest":[{"rate":0,"condition":"derived and beneficially owned by the other state's government, central bank, a wholly government-owned financial institution, a company (other than a partnership) resident there, or any resident on a loan guaranteed by either government"},{"rate":0.05,"condition":"all other cases"}],"royalties":[{"rate":0.05,"condition":"use of, or right to use, industrial, commercial or scientific equipment"},{"rate":0.07,"condition":"all other cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"LU":{"iso2":"LU","country":"Luxembourg","ruleId":"WHT.TREATY.RATE.LU","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/luxembourg-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/LUXEMBOURG.pdf","entryIntoForce":"2014-09-01","entryIntoEffect":"2015-01-01","effectiveFrom":"2015-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"all cases"}],"interest":[{"rate":0,"condition":"all cases"}],"royalties":[{"rate":0.05,"condition":"use of, or right to use, industrial, commercial or scientific equipment"},{"rate":0.07,"condition":"all other cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"MY":{"iso2":"MY","country":"Malaysia","ruleId":"WHT.TREATY.RATE.MY","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/default.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/MALAYSIA.pdf","entryIntoForce":"2007-07-01","entryIntoEffect":"2008-01-01","effectiveFrom":"2008-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"all cases"}],"interest":[{"rate":0.05,"condition":"all cases"}],"royalties":[{"rate":0.08,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"reviewer"},"MT":{"iso2":"MT","country":"Malta","ruleId":"WHT.TREATY.RATE.MT","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/default.aspx","textUrl":null,"entryIntoForce":"2012-12-01","entryIntoEffect":"2013-01-01","effectiveFrom":"2013-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"all cases"}],"interest":[{"rate":0,"condition":"all cases"}],"royalties":[{"rate":0.05,"condition":"use of, or right to use, industrial, commercial or scientific equipment"},{"rate":0.07,"condition":"all other cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"reviewer"},"MR":{"iso2":"MR","country":"Mauritania","ruleId":"WHT.TREATY.RATE.MR","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/mauritania-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/%d9%85%d9%88%d8%b1%d9%8a%d8%aa%d8%a7%d9%86%d9%8a%d8%a7.pdf","entryIntoForce":"2025-01-01","entryIntoEffect":"2026-01-01","effectiveFrom":"2026-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"all cases"}],"interest":[{"rate":0,"condition":"all cases: income from debt-claims is taxable only in the payee's state (Art. 11(1))"}],"royalties":[{"rate":0.07,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"treaty_text","datesSource":"zatca"},"MX":{"iso2":"MX","country":"Mexico","ruleId":"WHT.TREATY.RATE.MX","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/mexico-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/Mexico.pdf","entryIntoForce":"2018-03-01","entryIntoEffect":"2019-01-01","effectiveFrom":"2019-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"all cases"}],"interest":[{"rate":0.05,"condition":"paid to financial entities or pension funds"},{"rate":0.1,"condition":"all other cases"}],"royalties":[{"rate":0.1,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"MA":{"iso2":"MA","country":"Morocco","ruleId":"WHT.TREATY.RATE.MA","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/Morocco-Convention.aspx","textUrl":null,"entryIntoForce":"2022-08-01","entryIntoEffect":"2023-01-01","effectiveFrom":"2023-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"beneficial owner is a company (other than a partnership) directly holding at least 10% of the payer's capital"},{"rate":0.1,"condition":"all other cases"}],"interest":[{"rate":0,"condition":"payer or beneficial owner is the government, an administrative subdivision, local authority, central bank or wholly government-owned financial institution of the other state"},{"rate":0.1,"condition":"all other cases"}],"royalties":[{"rate":0.1,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"reviewer"},"NL":{"iso2":"NL","country":"Netherlands","ruleId":"WHT.TREATY.RATE.NL","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/holland-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/NETHERLANDS.pdf","entryIntoForce":"2010-12-01","entryIntoEffect":"2011-01-01","effectiveFrom":"2011-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"beneficial owner is a company (other than a partnership) directly holding at least 10% of the payer's capital"},{"rate":0.1,"condition":"all other cases"}],"interest":[{"rate":0.05,"condition":"all cases"}],"royalties":[{"rate":0.07,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"MK":{"iso2":"MK","country":"North Macedonia","ruleId":"WHT.TREATY.RATE.MK","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/republic-of-macedonia-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/MACEDONIA.pdf","entryIntoForce":"2016-05-01","entryIntoEffect":"2017-01-01","effectiveFrom":"2017-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"all cases"}],"interest":[{"rate":0,"condition":"payer is the government, subdivision, local authority, central bank or wholly government-owned financial institution of the paying state, or the beneficial owner is such a body of the other state"},{"rate":0.05,"condition":"all other cases"}],"royalties":[{"rate":0.1,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"PK":{"iso2":"PK","country":"Pakistan","ruleId":"WHT.TREATY.RATE.PK","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/pakistan-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/PAKISTAN.pdf","entryIntoForce":"2006-12-01","entryIntoEffect":"2007-01-01","effectiveFrom":"2007-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"beneficial owner is a company or an entity wholly owned by the government"},{"rate":0.1,"condition":"all other cases"}],"interest":[{"rate":0.1,"condition":"all cases"}],"royalties":[{"rate":0.1,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"PL":{"iso2":"PL","country":"Poland","ruleId":"WHT.TREATY.RATE.PL","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/poland-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/POLAND.pdf","entryIntoForce":"2012-06-01","entryIntoEffect":"2013-01-01","effectiveFrom":"2013-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"all cases"}],"interest":[{"rate":0.05,"condition":"all cases"}],"royalties":[{"rate":0.1,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"PT":{"iso2":"PT","country":"Portugal","ruleId":"WHT.TREATY.RATE.PT","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/portugal-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/Portuguese.pdf","entryIntoForce":"2016-09-01","entryIntoEffect":"2017-01-01","effectiveFrom":"2017-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"beneficial owner is a company (other than a partnership) directly holding at least 10% of the payer's capital, or a listed state entity (Saudi state incl. SAMA and wholly owned state entities; Portuguese state or Central Bank)"},{"rate":0.1,"condition":"all other cases"}],"interest":[{"rate":0,"condition":"paid to and beneficially owned by a listed state entity (Saudi state incl. SAMA and wholly owned state entities; Portuguese state or Central Bank)"},{"rate":0.1,"condition":"all other cases"}],"royalties":[{"rate":0.08,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"QA":{"iso2":"QA","country":"Qatar","ruleId":"WHT.TREATY.RATE.QA","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/qatar-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/%d9%82%d8%b7%d8%b1.pdf","entryIntoForce":"2025-01-01","entryIntoEffect":"2026-01-01","effectiveFrom":"2026-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"all cases"}],"interest":[{"rate":0,"condition":"all cases: income from debt-claims is taxable only in the payee's state (Art. 11(1))"}],"royalties":[{"rate":0.08,"condition":"all cases"}]},"fts":{"present":true,"where":"Article 13 (income from technical services)","rate":0.08,"covers":"any service of a managerial, technical or consultancy nature","excludes":["payment to an employee of the payer","payment for teaching in or by an educational institution","payment by an individual for services for an individual's personal use"],"source_rule":"arises in the Kingdom if the payer is a Saudi resident, or a PE or fixed base in the Kingdom bears it; does not arise in the Kingdom if the Saudi payer's PE or fixed base in the other state bears it (Art. 13(5)-(6))"},"ratesSource":"treaty_text","datesSource":"zatca"},"RO":{"iso2":"RO","country":"Romania","ruleId":"WHT.TREATY.RATE.RO","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/romania-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/Romania.pdf","entryIntoForce":"2012-07-01","entryIntoEffect":"2013-01-01","effectiveFrom":"2013-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"all cases"}],"interest":[{"rate":0.05,"condition":"all cases"}],"royalties":[{"rate":0.1,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"RU":{"iso2":"RU","country":"Russia","ruleId":"WHT.TREATY.RATE.RU","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/russia-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/Russia.pdf","entryIntoForce":"2010-02-01","entryIntoEffect":"2011-01-01","effectiveFrom":"2011-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"all cases"}],"interest":[{"rate":0.05,"condition":"all cases"}],"royalties":[{"rate":0.1,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"SG":{"iso2":"SG","country":"Singapore","ruleId":"WHT.TREATY.RATE.SG","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/singapore-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/SINGAPORE.pdf","entryIntoForce":"2011-07-01","entryIntoEffect":"2012-01-01","effectiveFrom":"2012-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"all cases"}],"interest":[{"rate":0.05,"condition":"all cases"}],"royalties":[{"rate":0.08,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"SK":{"iso2":"SK","country":"Slovakia","ruleId":"WHT.TREATY.RATE.SK","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/default.aspx","textUrl":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Documents/Solvakia.pdf","entryIntoForce":"2024-08-01","entryIntoEffect":"2025-01-01","effectiveFrom":"2025-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"all cases"}],"interest":[{"rate":0.1,"condition":"all cases"}],"royalties":[{"rate":0.1,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"reviewer"},"ZA":{"iso2":"ZA","country":"South Africa","ruleId":"WHT.TREATY.RATE.ZA","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/south-africa-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/South%20Africa.pdf","entryIntoForce":"2008-05-01","entryIntoEffect":"2009-01-01","effectiveFrom":"2009-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"beneficial owner is a company (other than a partnership) directly holding at least 10% of the payer's capital"},{"rate":0.1,"condition":"all other cases"}],"interest":[{"rate":0.05,"condition":"all cases"}],"royalties":[{"rate":0.1,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"KR":{"iso2":"KR","country":"South Korea (Republic of Korea)","ruleId":"WHT.TREATY.RATE.KR","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/korea-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/REPUBLIC%20OF%20KOREA.pdf","entryIntoForce":"2008-12-01","entryIntoEffect":"2009-01-01","effectiveFrom":"2009-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"beneficial owner is a company (other than a partnership) directly holding at least 25% of the payer's capital"},{"rate":0.1,"condition":"all other cases"}],"interest":[{"rate":0.05,"condition":"all cases"}],"royalties":[{"rate":0.05,"condition":"use of, or right to use, industrial, commercial or scientific equipment"},{"rate":0.1,"condition":"all other cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"ES":{"iso2":"ES","country":"Spain","ruleId":"WHT.TREATY.RATE.ES","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/spain-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/Spain.pdf","entryIntoForce":"2008-10-01","entryIntoEffect":"2009-01-01","effectiveFrom":"2009-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0,"condition":"beneficial owner is a company (other than a partnership) directly holding at least 25% of the payer's capital"},{"rate":0.05,"condition":"all other cases"}],"interest":[{"rate":0.05,"condition":"all cases"}],"royalties":[{"rate":0.08,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"SE":{"iso2":"SE","country":"Sweden","ruleId":"WHT.TREATY.RATE.SE","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/sweden-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/Sweden.pdf","entryIntoForce":"2016-08-31","entryIntoEffect":"2017-01-01","effectiveFrom":"2017-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"beneficial owner is a company (other than a partnership) directly holding at least 10% of the payer's capital"},{"rate":0.1,"condition":"all other cases"}],"interest":[{"rate":0,"condition":"all cases"}],"royalties":[{"rate":0.05,"condition":"use of, or right to use, industrial, commercial or scientific equipment"},{"rate":0.07,"condition":"all other cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"CH":{"iso2":"CH","country":"Switzerland","ruleId":"WHT.TREATY.RATE.CH","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/Switzerland-convention.aspx","textUrl":null,"entryIntoForce":"2021-04-01","entryIntoEffect":"2022-01-01","effectiveFrom":"2022-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"beneficial owner is a company directly holding at least 10% of the payer's capital"},{"rate":0.05,"condition":"beneficial owner is the other state's central bank, a wholly state-owned institution or fund, or a resident pension scheme"},{"rate":0.15,"condition":"all other cases"}],"interest":[{"rate":0,"condition":"paid to the government, central bank or a pension scheme of the other state; on a credit sale of equipment, merchandise or services; on any loan granted by a financial institution; or on loans between companies"},{"rate":0.05,"condition":"all other cases"}],"royalties":[{"rate":0.05,"condition":"use of, or right to use, industrial, commercial or scientific equipment"},{"rate":0.07,"condition":"all other cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"reviewer"},"SY":{"iso2":"SY","country":"Syria","ruleId":"WHT.TREATY.RATE.SY","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/syria-convention.aspx","textUrl":"https://zatca.gov.sa/en/RulesRegulations/Taxes/Documents/CONVENTIONS%20between%20KSA%26Syria%20EN.pdf","entryIntoForce":"2010-10-01","entryIntoEffect":"2011-01-01","effectiveFrom":"2011-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0,"condition":"all cases"}],"interest":[{"rate":0.075,"condition":"all cases"}],"royalties":[{"rate":0.15,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"TJ":{"iso2":"TJ","country":"Tajikistan","ruleId":"WHT.TREATY.RATE.TJ","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/default.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/Tajikistan.pdf","entryIntoForce":"2015-06-01","entryIntoEffect":"2016-01-01","effectiveFrom":"2016-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"beneficial owner is a company (other than a partnership) directly holding at least 25% of the payer's capital"},{"rate":0.1,"condition":"all other cases"}],"interest":[{"rate":0.08,"condition":"all cases"}],"royalties":[{"rate":0.08,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"reviewer"},"TN":{"iso2":"TN","country":"Tunisia","ruleId":"WHT.TREATY.RATE.TN","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/default.aspx","textUrl":null,"entryIntoForce":"2013-04-01","entryIntoEffect":"2014-01-01","effectiveFrom":"2014-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"all cases"}],"interest":[{"rate":0.025,"condition":"income from debt-claims of banking institutions"},{"rate":0.05,"condition":"all other cases"}],"royalties":[{"rate":0.05,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"reviewer"},"TR":{"iso2":"TR","country":"Turkey","ruleId":"WHT.TREATY.RATE.TR","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/turkey-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/Turkey.pdf","entryIntoForce":"2009-04-01","entryIntoEffect":"2010-01-01","effectiveFrom":"2010-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"beneficial owner is a company (other than a partnership) directly holding at least 20% of the payer's capital, or a central bank or wholly government-owned entity"},{"rate":0.1,"condition":"all other cases"}],"interest":[{"rate":0.1,"condition":"all cases"}],"royalties":[{"rate":0.1,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"TM":{"iso2":"TM","country":"Turkmenistan","ruleId":"WHT.TREATY.RATE.TM","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/turkmenistan-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/TURKMENISTAN.pdf","entryIntoForce":"2017-04-01","entryIntoEffect":"2018-01-01","effectiveFrom":"2018-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.1,"condition":"all cases"}],"interest":[{"rate":0.1,"condition":"all cases"}],"royalties":[{"rate":0.1,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"UA":{"iso2":"UA","country":"Ukraine","ruleId":"WHT.TREATY.RATE.UA","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/ukraine-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/Ukraine.pdf","entryIntoForce":"2012-12-01","entryIntoEffect":"2013-01-01","effectiveFrom":"2013-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"beneficial owner directly holds at least 20% of the payer's capital"},{"rate":0.15,"condition":"all other cases"}],"interest":[{"rate":0.1,"condition":"all cases"}],"royalties":[{"rate":0.1,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"AE":{"iso2":"AE","country":"United Arab Emirates","ruleId":"WHT.TREATY.RATE.AE","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/1194.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/%D8%A7%D9%84%D8%A3%D9%85%D8%A7%D8%B1%D8%A7%D8%AA.pdf","entryIntoForce":"2019-04-01","entryIntoEffect":"2020-01-01","effectiveFrom":"2020-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"all cases"}],"interest":[{"rate":0,"condition":"all cases"}],"royalties":[{"rate":0.1,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"GB":{"iso2":"GB","country":"United Kingdom","ruleId":"WHT.TREATY.RATE.GB","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/united-kingdom-and-ireland-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/UNITED%20KINGDOM%20OF%20GREAT%20BRITAIN%20AND%20NORTHERN%20IRELAND.pdf","entryIntoForce":"2009-01-01","entryIntoEffect":"2010-01-01","effectiveFrom":"2010-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.15,"condition":"qualifying dividends paid by a property investment vehicle"},{"rate":0.05,"condition":"all other cases"}],"interest":[{"rate":0,"condition":"all cases"}],"royalties":[{"rate":0.05,"condition":"use of, or right to use, industrial, commercial or scientific equipment"},{"rate":0.08,"condition":"all other cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"UZ":{"iso2":"UZ","country":"Uzbekistan","ruleId":"WHT.TREATY.RATE.UZ","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/uzbekistan-convention.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/UZBEKISTAN.pdf","entryIntoForce":"2010-11-01","entryIntoEffect":"2011-01-01","effectiveFrom":"2011-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.07,"condition":"all cases"}],"interest":[{"rate":0.07,"condition":"all cases"}],"royalties":[{"rate":0.1,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"VE":{"iso2":"VE","country":"Venezuela","ruleId":"WHT.TREATY.RATE.VE","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/1191.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/Venezuela.pdf","entryIntoForce":"2016-12-01","entryIntoEffect":"2017-01-01","effectiveFrom":"2017-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"all cases"}],"interest":[{"rate":0,"condition":"payer or beneficial owner is the government, an administrative subdivision, local authority, central bank or wholly government-owned financial institution of the other state"},{"rate":0.05,"condition":"all other cases"}],"royalties":[{"rate":0.08,"condition":"all cases"}]},"fts":{"present":false},"ratesSource":"secondary","datesSource":"zatca"},"VN":{"iso2":"VN","country":"Vietnam","ruleId":"WHT.TREATY.RATE.VN","tier":"A","status":"confirmed","attested":false,"url":"https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/default.aspx","textUrl":"https://zatca.gov.sa/ar/RulesRegulations/Agreements/Documents/VIETNAM.pdf","entryIntoForce":"2011-02-01","entryIntoEffect":"2012-01-01","effectiveFrom":"2012-01-01","effectiveTo":null,"rates":{"dividends":[{"rate":0.05,"condition":"beneficial owner is a company (other than a partnership) directly holding at least 50% of the payer's capital, or having invested USD 20 million or more in it"},{"rate":0.125,"condition":"all other cases"}],"interest":[{"rate":0.1,"condition":"all cases"}],"royalties":[{"rate":0.075,"condition":"royalties paid for technical or managerial services or assistance"},{"rate":0.1,"condition":"all other cases"}]},"fts":{"present":true,"where":"royalty article","rate":0.075,"covers":"technical or managerial services or assistance"},"ratesSource":"secondary","datesSource":"reviewer"}}};
+
+const CURRENT_TECHNICAL_RULES = [
+  'WHT.CAT.TECHNICAL.RELATED_2014',
+  'WHT.CAT.TECHNICAL.UNRELATED_2014',
+  'WHT.CAT.TECHNICAL',
+];
+
+const DIRECTORS_RULE = 'WHT.CAT.DIRECTORS_FEES';
+
+const PAYMENT_TYPES = [
+  { id: 'dividend', label: 'Dividend', node: 'DIVIDEND', treatyClass: 'dividends', ruleIds: ['WHT.CAT.DIVIDEND'] },
+  { id: 'loan', label: 'Interest or other return on a loan', node: 'LOAN_CHARGES', treatyClass: 'interest', ruleIds: ['WHT.CAT.LOAN_RETURN'] },
+  { id: 'royalty', label: 'Royalty', node: 'ROYALTY', treatyClass: 'royalties', ruleIds: ['WHT.CAT.ROYALTY'] },
+  { id: 'software', label: 'Software or database (licence, subscription, development or support)', node: 'SOFTWARE_DATABASE' },
+  { id: 'technical', label: 'Technical or consulting service', node: 'TECHNICAL_CONSULTING', treatyClass: 'services', ruleIds: CURRENT_TECHNICAL_RULES },
+  { id: 'mgmt', label: 'Management fee', node: 'MANAGEMENT_FEE', treatyClass: 'services', ruleIds: ['WHT.CAT.MGMT_FEE'] },
+  { id: 'telecom', label: 'International telecom service', node: 'INTERNATIONAL_TELECOM', treatyClass: 'services', ruleIds: ['WHT.CAT.TELECOM'] },
+  { id: 'other', label: 'Any other service', node: 'OTHER_PAYMENTS', treatyClass: 'services', ruleIds: ['WHT.CAT.OTHER_SERVICES'] },
+  { id: 'rent', label: 'Rent', node: 'RENT', treatyClass: null, ruleIds: ['WHT.CAT.RENT'] },
+  { id: 'freight', label: 'Air ticket, air freight or sea freight', node: 'AIR_SEA_FREIGHT', treatyClass: null, ruleIds: ['WHT.CAT.AIR_FREIGHT'] },
+  { id: 'insurance', label: 'Insurance or reinsurance premium', node: 'INSURANCE', treatyClass: null, ruleIds: ['WHT.CAT.INSURANCE'] },
+  { id: 'directors', label: "Director's fee", node: 'DIRECTORS_FEES', treatyClass: 'directors', ruleIds: [DIRECTORS_RULE] },
+  { id: 'goods', label: 'Goods only, no services', gate: 'out_of_scope' },
+  { id: 'mixed', label: 'Goods and services in one contract', gate: 'escalate' },
+];
+
+const SOFTWARE_RULE = 'WHT.SOFTWARE.GUIDELINE';
+const ROYALTY_DEFINITION_RULE = 'WHT.ROYALTY.DEFINITION';
+const SOFTWARE_RIGHTS_WITH_EXTRAS = 'rights_and_extras';
+
+const SOFTWARE_READING_TYPES = {
+  royalty: { id: 'software_royalty', software: true, label: 'Software or database payment, treated as a royalty', partLabel: 'Royalty', node: 'ROYALTY', treatyClass: 'royalties', ruleIds: ['WHT.CAT.ROYALTY'] },
+  technical: { id: 'software_technical', software: true, label: 'Software or database payment, treated as a technical service', partLabel: 'Technical service', node: 'TECHNICAL_CONSULTING', treatyClass: 'services', ruleIds: CURRENT_TECHNICAL_RULES },
+  other_income: { id: 'software_other_income', software: true, label: 'Software or database payment, treated as other income', partLabel: 'Other income', node: 'OTHER_PAYMENTS', treatyClass: null, ruleIds: ['WHT.CAT.OTHER_SERVICES'] },
+};
+
+const SOFTWARE_OUTSIDE_WHT = { commercial_profits: 'Commercial profits', capital_gains: 'Capital gains' };
+
+const ALL_READING_TYPES = [...PAYMENT_TYPES, ...Object.values(SOFTWARE_READING_TYPES)];
+const typeById = (id) => ALL_READING_TYPES.find((type) => type.id === id);
+
+const TYPES_THAT_POINT_TO_SOFTWARE = ['royalty', 'technical', 'other'];
+const ROYALTY_LIST_READINGS = ['royalty', 'software_royalty'];
+
+const BOUNDARY_READINGS = {
+  mgmt: ['mgmt', 'technical'],
+  royalty: ['royalty', 'technical'],
+  technical: ['technical', 'mgmt', 'royalty'],
+};
+
+const BOUNDARY_QUESTIONS = {
+  mgmt: 'Could the contract equally be read as technical or consulting services?',
+  royalty: 'Could this also be read as a technical service, for example a licence or know-how?',
+  technical: 'Could this also be read as a management fee or a royalty?',
+};
+
+const PRIMARY_QUESTIONS = ['paymentType', 'country', 'date', 'scope', 'hasPe'];
+
+const YES_NO_QUESTIONS = {
+  scope: 'Is this paid to a non-resident, from a source in Saudi Arabia?',
+  hasPe: 'Does the payee have a permanent establishment in Saudi Arabia?',
+  connected: 'Is this payment directly connected with that permanent establishment?',
+  hydro: 'Is the company paying the dividend engaged in natural gas investment, oil or hydrocarbons?',
+  freightPaid: 'Is it paid in the Kingdom to the transport company, or to its agent or representative in the Kingdom?',
+  freightImport: "Is it for shipping materials from abroad to the Kingdom's ports?",
+  related: 'Is the payee a head office or associated company of the payer?',
+  boundary: 'Could this payment be read another way?',
+  individual: 'Is the payee an individual with presence in the Kingdom?',
+};
+
+const FACT_LABELS = {
+  paymentType: 'Payment type',
+  softwareRights: 'Rights received',
+  softwareExtras: 'Extras in the same contract',
+  country: "Payee's country",
+  date: 'Payment date',
+  scope: 'Paid to a non-resident from a Saudi source',
+  hasPe: 'Payee has a permanent establishment in Saudi Arabia',
+  connected: 'Payment connected with that establishment',
+  hydro: 'Payer is in natural gas, oil or hydrocarbons',
+  freightPaid: 'Paid in the Kingdom to the carrier or its agent',
+  freightImport: "Shipping materials from abroad to the Kingdom's ports",
+  related: 'Payee is a head office or associated company',
+  boundary: 'Could be read as another payment type',
+  individual: 'Individual with a fixed base or qualifying presence',
+};
+
+const NO_TREATY_COUNTRY = 'NONE';
+const NO_TREATY_LABEL = 'Another country (no treaty listed)';
+
+const OBLIGATION_RULES = [
+  'WHT.GROSS_BASIS',
+  'WHT.REMIT.DEADLINE',
+  'WHT.ANNUAL_RETURN',
+  'WHT.RECORDS.RETENTION',
+  'WHT.PENALTY.DELAY',
+  'WHT.PENALTY.UNDER_30_DAYS',
+  'WHT.PENALTY.PART_PERIOD',
+  'WHT.REMIT.NON_WORKING_DAY',
+  'WHT.FAILURE.CONSEQUENCES',
+];
+
+const PRACTICE_RULE_IDS = [DIRECTORS_RULE, 'WHT.PENALTY.PART_PERIOD', 'WHT.REMIT.NON_WORKING_DAY'];
+
+const TREATY_RULES = ['WHT.TREATY.OVERRIDE', 'WHT.TREATY.PROCEDURE', 'WHT.TREATY.CEILING'];
+const SERVICES_RULE = 'WHT.TREATY.BUSINESS_PROFITS';
+
+const REQUIRED_RULE_IDS = [
+  'WHT.SCOPE',
+  'WHT.SERVICES.DEFINITION',
+  'WHT.FINAL_TAX',
+  'WHT.DIVIDEND.HYDROCARBON_CARVEOUT',
+  SOFTWARE_RULE,
+  ROYALTY_DEFINITION_RULE,
+  ...PAYMENT_TYPES.flatMap((type) => type.ruleIds ?? []),
+  ...OBLIGATION_RULES,
+  ...TREATY_RULES,
+  SERVICES_RULE,
+];
+
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+const HUNDRED = 100;
+const MAX_DECIMALS = 2;
+
+function formatRate(rate) {
+  return `${Number((rate * HUNDRED).toFixed(MAX_DECIMALS))}%`;
+}
+
+function formatDate(iso) {
+  const [year, month, day] = iso.split('-').map(Number);
+  return `${day} ${MONTHS[month - 1]} ${year}`;
+}
+
+function validDate(text) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(text ?? '')) return null;
+  const [year, month, day] = text.split('-').map(Number);
+  const parsed = new Date(Date.UTC(year, month - 1, day));
+  const isReal = parsed.getUTCMonth() === month - 1 && parsed.getUTCDate() === day;
+  return isReal ? text : null;
+}
+
+
+const SERVICE_TYPES_INSIDE_FTS_WORDING = ['technical', 'mgmt'];
+const DIRECTORS_TREATY_CLASS = 'directors';
+
+function inForce(record, date) {
+  const started = !record.effectiveFrom || date >= record.effectiveFrom;
+  const notEnded = !record.effectiveTo || date <= record.effectiveTo;
+  return started && notEnded;
+}
+
+const isDefaultTier = (tier) => /^all (other )?cases/.test(tier.condition);
+
+function ceilingFromTiers(tiers, domesticRate) {
+  const shown = tiers.map((tier) => ({
+    ...tier,
+    effective: Math.min(tier.rate, domesticRate),
+    isDefault: isDefaultTier(tier),
+  }));
+  return {
+    tiers: shown,
+    ceiling: shown.find((tier) => tier.isDefault).effective,
+    anyLower: shown.some((tier) => tier.effective < domesticRate),
+  };
+}
+
+function ftsTiers(fts) {
+  return [{ rate: fts.rate, condition: `all cases: ${fts.covers}` }];
+}
+
+const recordedTiers = (treaty, treatyClass) =>
+  treatyClass === 'services' ? ftsTiers(treaty.fts) : treaty.rates[treatyClass];
+
+function ruleIdsFor(treaty, treatyClass) {
+  const shared = [treaty.ruleId, ...TREATY_RULES];
+  return treatyClass === 'services' && !treaty.fts.present ? [...shared, SERVICES_RULE] : shared;
+}
+
+function periodGap(data, treaty, treatyClass, date) {
+  const needed = ruleIdsFor(treaty, treatyClass)
+    .filter((id) => id !== treaty.ruleId)
+    .map((id) => data.rules[id]);
+  const notInForce = needed.filter((rule) => !inForce(rule, date));
+  if (!notInForce.length) return null;
+  return notInForce.map((rule) => rule.effectiveFrom).sort().at(-1);
+}
+
+function assessServicesWithoutFts(treaty, facts, ruleIds) {
+  if (facts.hasPe === 'yes') return { status: 'needs_review', treaty, ruleIds };
+  if (facts.individual === 'yes') return { status: 'no_relief', treaty, ruleIds };
+  return { status: 'exempt', treaty, ruleIds };
+}
+
+function assessFts(treaty, type, domesticRate, ruleIds) {
+  return {
+    status: 'ceiling',
+    source: 'fts',
+    treaty,
+    ruleIds,
+    fitCheck: !SERVICE_TYPES_INSIDE_FTS_WORDING.includes(type.id),
+    ...ceilingFromTiers(ftsTiers(treaty.fts), domesticRate),
+  };
+}
+
+function assessDirectorsFee(data, treaty, date) {
+  const rule = data.rules[SERVICES_RULE];
+  if (!inForce(rule, date)) {
+    return { status: 'no_rule_for_period', treaty, from: rule.effectiveFrom, recordedTiers: [], ruleIds: [treaty.ruleId] };
+  }
+  return { status: 'directors_article', treaty, ruleIds: [treaty.ruleId, SERVICES_RULE] };
+}
+
+function assessTreaty(data, { type, domesticRate, facts, date }) {
+  if (facts.country === NO_TREATY_COUNTRY) return { status: 'none', ruleIds: [] };
+  const treaty = data.treaties[facts.country];
+  if (!inForce(treaty, date)) {
+    return { status: 'not_in_effect', treaty, from: treaty.effectiveFrom, ruleIds: [treaty.ruleId] };
+  }
+  const { treatyClass } = type;
+  if (!treatyClass) return { status: 'no_treaty_rule', treaty, ruleIds: [treaty.ruleId] };
+  if (treatyClass === DIRECTORS_TREATY_CLASS) return assessDirectorsFee(data, treaty, date);
+
+  const ruleIds = ruleIdsFor(treaty, treatyClass);
+  const gapFrom = periodGap(data, treaty, treatyClass, date);
+  if (gapFrom) {
+    const hasRecord = treatyClass !== 'services' || treaty.fts.present;
+    return {
+      status: 'no_rule_for_period',
+      treaty,
+      from: gapFrom,
+      recordedTiers: hasRecord ? recordedTiers(treaty, treatyClass) : [],
+      ruleIds: [treaty.ruleId],
+    };
+  }
+  if (treatyClass !== 'services') {
+    const tiers = ceilingFromTiers(treaty.rates[treatyClass], domesticRate);
+    return { status: 'ceiling', source: 'rates', treaty, ruleIds, ...tiers };
+  }
+  return treaty.fts.present
+    ? assessFts(treaty, type, domesticRate, ruleIds)
+    : assessServicesWithoutFts(treaty, facts, ruleIds);
+}
+
+
+const RELATED_WINDOW_RULE = 'WHT.CAT.TECHNICAL.RELATED_2014';
+const TELECOM_RULE = 'WHT.CAT.TELECOM';
+const TYPES_SPLIT_BY_RELATED_PARTY = ['technical', 'telecom'];
+
+const isAnswered = (id, facts) => {
+  if (id === 'date') return Boolean(validDate(facts.date));
+  return Boolean(facts[id]);
+};
+
+const softwareCase = (data, facts) => data.rules[SOFTWARE_RULE].value.cases.find(({ id }) => id === facts.softwareRights);
+const softwareExtra = (data, facts) => data.rules[SOFTWARE_RULE].value.extras.find(({ id }) => id === facts.softwareExtras);
+
+function softwareCategories(data, facts) {
+  const chosen = softwareCase(data, facts);
+  if (!chosen) return [];
+  return chosen.follow_up ? softwareExtra(data, facts)?.categories ?? [] : chosen.categories;
+}
+
+function readingsFor(data, facts) {
+  if (facts.paymentType === 'software') {
+    return softwareCategories(data, facts).flatMap((category) => SOFTWARE_READING_TYPES[category]?.id ?? []);
+  }
+  const boundary = BOUNDARY_READINGS[facts.paymentType];
+  if (boundary && facts.boundary === 'yes') return boundary;
+  return facts.paymentType ? [facts.paymentType] : [];
+}
+
+function insideRelatedWindow(data, date) {
+  return Boolean(date) && inForce(data.rules[RELATED_WINDOW_RULE], date);
+}
+
+function needsRelatedQuestion(data, facts) {
+  const date = validDate(facts.date);
+  return insideRelatedWindow(data, date) && readingsFor(data, facts).some((id) => TYPES_SPLIT_BY_RELATED_PARTY.includes(id));
+}
+
+function needsIndividualQuestion(data, facts) {
+  const date = validDate(facts.date);
+  const treaty = data.treaties[facts.country];
+  if (!date || !treaty || facts.hasPe !== 'no' || treaty.fts.present) return false;
+  if (!inForce(treaty, date) || !inForce(data.rules[SERVICES_RULE], date)) return false;
+  return readingsFor(data, facts).some((id) => typeById(id)?.treatyClass === 'services');
+}
+
+function applicableQuestions(data, facts) {
+  const type = facts.paymentType;
+  const conditional = [
+    [facts.hasPe === 'yes', 'connected'],
+    [type === 'software', 'softwareRights'],
+    [type === 'software' && facts.softwareRights === SOFTWARE_RIGHTS_WITH_EXTRAS, 'softwareExtras'],
+    [type === 'dividend', 'hydro'],
+    [type === 'freight', 'freightPaid'],
+    [type === 'freight', 'freightImport'],
+    [Boolean(BOUNDARY_READINGS[type]), 'boundary'],
+    [needsRelatedQuestion(data, facts), 'related'],
+    [needsIndividualQuestion(data, facts), 'individual'],
+  ];
+  return [...PRIMARY_QUESTIONS, ...conditional.filter(([applies]) => applies).map(([, id]) => id)];
+}
+
+function questionText(data, id, facts) {
+  if (id === 'boundary') return BOUNDARY_QUESTIONS[facts.paymentType] ?? YES_NO_QUESTIONS.boundary;
+  if (id === 'individual') {
+    const test = data.rules[SERVICES_RULE].value.unless.find((text) => text.includes('individual'));
+    return `Does this apply: ${test}?`;
+  }
+  return YES_NO_QUESTIONS[id];
+}
+
+function pruneToApplicable(data, facts) {
+  const keep = applicableQuestions(data, facts);
+  const pruned = Object.fromEntries(Object.entries(facts).filter(([id]) => keep.includes(id)));
+  return Object.keys(pruned).length === Object.keys(facts).length ? pruned : pruneToApplicable(data, pruned);
+}
+
+function applyAnswer(data, facts, id, value) {
+  const { [id]: _replaced, ...rest } = facts;
+  const withoutStaleBoundary = id === 'paymentType' ? withoutKey(rest, 'boundary') : rest;
+  const updated = value ? { ...withoutStaleBoundary, [id]: value } : withoutStaleBoundary;
+  return pruneToApplicable(data, updated);
+}
+
+function withoutKey(object, key) {
+  const { [key]: _removed, ...rest } = object;
+  return rest;
+}
+
+function selectRule(data, ruleIds, date, facts) {
+  const matchesCondition = (rule) => {
+    if (rule.condition?.related_party === undefined) return true;
+    return rule.condition.related_party === (facts.related === 'yes');
+  };
+  return ruleIds.map((id) => data.rules[id]).find((rule) => inForce(rule, date) && matchesCondition(rule)) ?? null;
+}
+
+function rateRuleFor(data, rule, date) {
+  if (!rule.value.rate_rules) return rule;
+  return rule.value.rate_rules.map((id) => data.rules[id]).find((candidate) => inForce(candidate, date));
+}
+
+const contestedPoint = (rule) => (rule.id === TELECOM_RULE ? undefined : rule.contraryReading);
+
+function isDisputedTelecom(data, facts) {
+  return facts.paymentType === 'telecom' && facts.related === 'yes' && insideRelatedWindow(data, validDate(facts.date));
+}
+
+function assessReading(data, typeId, facts, date) {
+  const type = typeById(typeId);
+  const rule = selectRule(data, type.ruleIds, date, facts);
+  const rateRule = rateRuleFor(data, rule, date);
+  const domesticRate = rateRule.value.rate;
+  const treaty = assessTreaty(data, { type, domesticRate, facts, date });
+  const exempt = treaty.status === 'exempt';
+  const relief = exempt || Boolean(treaty.anyLower);
+  const isSoftware = Boolean(type.software);
+  const showRoyaltyList = ROYALTY_LIST_READINGS.includes(typeId) && inForce(data.rules[ROYALTY_DEFINITION_RULE], date);
+  return {
+    typeId,
+    rule,
+    category: data.categories[type.node],
+    contested: isSoftware ? data.rules[SOFTWARE_RULE].contraryReading : contestedPoint(rule),
+    domesticRate,
+    treaty,
+    exempt,
+    withDocs: treaty.status === 'ceiling' ? treaty.ceiling : domesticRate,
+    withoutDocs: domesticRate,
+    relief,
+    treatyConditional: isSoftware && relief,
+    advisory: rule.tier === 'C',
+    showRoyaltyList,
+    ruleIds: [
+      rule.id,
+      rateRule.id,
+      ...(isSoftware ? [SOFTWARE_RULE] : []),
+      ...(showRoyaltyList ? [ROYALTY_DEFINITION_RULE] : []),
+      ...treaty.ruleIds,
+    ],
+  };
+}
+
+function factsRelied(data, facts) {
+  return applicableQuestions(data, facts)
+    .filter((id) => isAnswered(id, facts))
+    .map((id) => ({ id, label: FACT_LABELS[id], value: facts[id] }));
+}
+
+function provenance(data, ruleIds, facts) {
+  const treatiesByRule = new Map(Object.values(data.treaties).map((treaty) => [treaty.ruleId, treaty]));
+  const records = [...new Set(ruleIds)].map((id) => ({ ...(treatiesByRule.get(id) ?? data.rules[id]), id }));
+  return {
+    asAt: data.asAt,
+    version: data.rulesVersion,
+    rules: records.map(({ id, tier, status }) => ({ id, tier, status, pending: (data.pendingSignoff ?? []).includes(id) })),
+    tierCounts: records.reduce((counts, { tier }) => ({ ...counts, [tier]: (counts[tier] ?? 0) + 1 }), {}),
+    attested: records.some((record) => record.attested),
+    facts: factsRelied(data, facts),
+  };
+}
+
+const stopped = (data, facts, kind, ruleId, extra = {}) => ({
+  kind,
+  ruleId,
+  provenance: provenance(data, [ruleId], facts),
+  ...extra,
+});
+
+function earliestCategoryDate(data) {
+  const dates = Object.keys(data.rules)
+    .filter((id) => id.startsWith('WHT.CAT.'))
+    .map((id) => data.rules[id].effectiveFrom);
+  return dates.sort()[0];
+}
+
+function checkGates(data, facts) {
+  const date = validDate(facts.date);
+  const earliest = earliestCategoryDate(data);
+  if (date && date < earliest) return { kind: 'no_rule', from: earliest, provenance: provenance(data, [], facts) };
+  if (facts.scope === 'no') return stopped(data, facts, 'out_of_scope', 'WHT.SCOPE');
+
+  const type = typeById(facts.paymentType);
+  if (type?.gate === 'out_of_scope') return stopped(data, facts, 'out_of_scope', 'WHT.SERVICES.DEFINITION');
+  if (facts.paymentType === 'mixed') {
+    return stopped(data, facts, 'escalate', 'WHT.SERVICES.DEFINITION', { reason: 'mixed', readings: [] });
+  }
+  if (facts.hasPe === 'yes' && facts.connected === 'yes') return stopped(data, facts, 'route_pe', 'WHT.FINAL_TAX');
+  if (facts.paymentType === 'software' && date && !inForce(data.rules[SOFTWARE_RULE], date)) {
+    return stopped(data, facts, 'escalate', SOFTWARE_RULE, { reason: 'software_before_guideline', readings: [] });
+  }
+  return null;
+}
+
+function checkSoftwareStops(data, facts) {
+  const categories = softwareCategories(data, facts);
+  const escalate = (reason) => stopped(data, facts, 'escalate', SOFTWARE_RULE, { reason, readings: [] });
+  if (!categories.length) return escalate('software_unlisted');
+  const sourceDate = softwareCase(data, facts).effective_from;
+  if (sourceDate && validDate(facts.date) < sourceDate) return escalate('software_source_later');
+  if (categories.includes('capital_gains')) return escalate('software_capital_gains');
+  if (categories.every((category) => category === 'commercial_profits')) {
+    return stopped(data, facts, 'outside_wht', SOFTWARE_RULE, { softwareCase: softwareCase(data, facts) });
+  }
+  return null;
+}
+
+function checkPaymentSpecificStops(data, facts) {
+  if (facts.paymentType === 'software') return checkSoftwareStops(data, facts);
+  if (facts.paymentType === 'dividend' && facts.hydro === 'yes') {
+    return stopped(data, facts, 'not_subject', 'WHT.DIVIDEND.HYDROCARBON_CARVEOUT');
+  }
+  if (isDisputedTelecom(data, facts)) {
+    return stopped(data, facts, 'escalate', TELECOM_RULE, { reason: 'telecom_history', readings: [] });
+  }
+  if (facts.paymentType !== 'freight') return null;
+  const reason =
+    (facts.freightImport === 'yes' && 'freight_import') || (facts.freightPaid === 'no' && 'freight_outside');
+  return reason ? stopped(data, facts, 'escalate', 'WHT.CAT.AIR_FREIGHT', { reason, readings: [] }) : null;
+}
+
+function softwareOutcome(data, facts, readings, ruleIds) {
+  const categories = softwareCategories(data, facts);
+  if (categories.length > 1) {
+    const outsideParts = categories.filter((category) => SOFTWARE_OUTSIDE_WHT[category]);
+    return { kind: 'escalate', reason: 'software_split', readings, outsideParts, provenance: provenance(data, ruleIds, facts) };
+  }
+  return {
+    kind: 'result',
+    reading: { ...readings[0], softwareCase: softwareCase(data, facts) },
+    provenance: provenance(data, [...ruleIds, 'WHT.SCOPE', ...OBLIGATION_RULES], facts),
+  };
+}
+
+function evaluate(data, facts) {
+  const gated = checkGates(data, facts);
+  if (gated) return gated;
+
+  const missing = applicableQuestions(data, facts).filter((id) => !isAnswered(id, facts));
+  if (missing.length) return { kind: 'incomplete', missing };
+
+  const specific = checkPaymentSpecificStops(data, facts);
+  if (specific) return specific;
+
+  const date = validDate(facts.date);
+  const readings = readingsFor(data, facts).map((id) => assessReading(data, id, facts, date));
+  const ruleIds = readings.flatMap((reading) => reading.ruleIds);
+  if (facts.paymentType === 'software') return softwareOutcome(data, facts, readings, ruleIds);
+  if (facts.boundary === 'yes') {
+    return { kind: 'escalate', reason: 'boundary', readings, provenance: provenance(data, ruleIds, facts) };
+  }
+  return {
+    kind: 'result',
+    reading: readings[0],
+    provenance: provenance(data, [...ruleIds, 'WHT.SCOPE', ...OBLIGATION_RULES], facts),
+  };
+}
+
+
+const ADVISER_LINE = 'Take this to a Saudi tax adviser before you pay.';
+const SOFTWARE_LINK_TEXT = "ZATCA's software guideline (PDF)";
+
+function el(document, tag, props = {}, ...children) {
+  const node = document.createElement(tag);
+  for (const [key, value] of Object.entries(props)) {
+    if (key === 'class') node.className = value;
+    else if (key === 'dataset') Object.assign(node.dataset, value);
+    else node.setAttribute(key, value);
+  }
+  for (const child of children.flat()) {
+    if (child === null || child === undefined || child === false) continue;
+    node.append(child);
+  }
+  return node;
+}
+
+const PILLS = {
+  incomplete: ['Waiting for answers', 'quiet'],
+  out_of_scope: ['Outside Saudi WHT', 'quiet'],
+  not_subject: ['No WHT', 'good'],
+  outside_wht: ["Outside WHT on ZATCA's guideline", 'warn'],
+  route_pe: ['Not final WHT', 'warn'],
+  no_rule: ['No rule for this date', 'warn'],
+  escalate: ['Needs a person', 'warn'],
+  result: ['Rate found', 'good'],
+  advisory: ['Practice position, check before filing', 'warn'],
+};
+
+function withSupport(ctx, kind, body) {
+  if (kind === 'incomplete') return body;
+  return [...body.slice(0, -1), renderSupport(ctx), body.at(-1)];
+}
+
+function shell(ctx, kind, heading, ...body) {
+  const h = (...args) => el(ctx.document, ...args);
+  const [label, tone] = PILLS[kind];
+  return h(
+    'article',
+    { class: 'answer' },
+    ctx.isExample &&
+      h('p', { id: 'example-note', class: 'example-note' }, 'Example: a royalty paid to India. Fill in the form to check your own payment.'),
+    h('p', { id: 'result-kind', class: `pill pill-${tone}`, dataset: { kind } }, label),
+    h('h2', {}, heading),
+    ...withSupport(ctx, kind, body),
+  );
+}
+
+function citation(ctx, rule) {
+  return el(ctx.document, 'p', { class: 'cite' }, rule.instrument);
+}
+
+function renderIncomplete(ctx, result) {
+  const h = (...args) => el(ctx.document, ...args);
+  return shell(
+    ctx,
+    'incomplete',
+    'Answer these to see the rate',
+    h('ul', { class: 'checklist' }, result.missing.map((id) => h('li', {}, FACT_LABELS[id]))),
+    h('p', {}, 'The checker shows no rate until it has the facts it needs. A rate built on a missing fact can be wrong.'),
+  );
+}
+
+function renderOutOfScope(ctx, result) {
+  const rule = ctx.data.rules[result.ruleId];
+  const heading = result.ruleId === 'WHT.SCOPE' ? "Saudi withholding tax doesn't apply" : 'A purchase of goods is not a service';
+  const h = (...args) => el(ctx.document, ...args);
+  return shell(ctx, 'out_of_scope', heading, h('p', {}, rule.statement), citation(ctx, rule), renderProvenance(ctx, result.provenance));
+}
+
+function renderRoutePe(ctx, result) {
+  const rule = ctx.data.rules[result.ruleId];
+  const h = (...args) => el(ctx.document, ...args);
+  return shell(
+    ctx,
+    'route_pe',
+    "This payment goes into the establishment's tax base",
+    h('p', {}, rule.statement),
+    citation(ctx, rule),
+    h('p', {}, 'The checker stops here because tax on a permanent establishment is a separate calculation. Ask a Saudi tax adviser.'),
+    renderProvenance(ctx, result.provenance),
+  );
+}
+
+function renderNotSubject(ctx, result) {
+  const rule = ctx.data.rules[result.ruleId];
+  const h = (...args) => el(ctx.document, ...args);
+  return shell(ctx, 'not_subject', 'No withholding tax on this dividend', h('p', {}, rule.statement), citation(ctx, rule), renderProvenance(ctx, result.provenance));
+}
+
+function renderNoRule(ctx, result) {
+  const h = (...args) => el(ctx.document, ...args);
+  return shell(
+    ctx,
+    'no_rule',
+    'No rule for this date',
+    h('p', {}, `The checker's payment rules start on ${formatDate(result.from)}. It has no rate for an earlier payment, and it won't guess one.`),
+    renderProvenance(ctx, result.provenance),
+  );
+}
+
+function renderOutsideWht(ctx, result) {
+  const h = (...args) => el(ctx.document, ...args);
+  const rule = ctx.data.rules[result.ruleId];
+  const { softwareCase } = result;
+  return shell(
+    ctx,
+    'outside_wht',
+    'ZATCA treats this as commercial profits, not withholding tax',
+    h('p', {}, `The closest ZATCA example: ${softwareCase.label}. Reference: ${softwareCase.section}.`),
+    h('p', {}, "ZATCA's software guideline groups commercial profits under corporate income and gives no withholding rate for them. Whether the payee owes Saudi income tax is a separate question the checker does not answer."),
+    h('p', { class: 'callout' }, "ZATCA's May 2026 General Guideline for Withholding Tax lists income from the sale or licensing of the use of intellectual property in the Kingdom as within withholding tax, without mentioning these software cases. The checker follows the software guideline because it deals with them directly. That is a judgment, so ask an adviser if the amount matters."),
+    h('p', {}, 'If the contract also covers separate support, maintenance, updates or training, ZATCA treats that part as a technical service, which does carry withholding tax. Check it on its own as Separate support.'),
+    softwareCase.note && h('p', { class: 'callout' }, softwareCase.note),
+    h('p', { class: 'callout' }, rule.contraryReading),
+    h('p', {}, 'Keep the contract on file. ZATCA can ask for more information to assess the category.'),
+    citation(ctx, rule),
+    h('p', { class: 'links' }, link(ctx, rule.url, SOFTWARE_LINK_TEXT)),
+    renderProvenance(ctx, result.provenance),
+  );
+}
+
+const SCOPE_OF_WORK_LINE = 'The actual scope of work settles it, so record which features of the work drove your call.';
+
+const BOUNDARY_COPY = {
+  mgmt: 'Both definitions are open-ended, and this is the most frequent ZATCA reclassification.',
+  royalty: 'ZATCA says the scope of "royalties" is still under discussion, and a royalty for knowledge transfer can be hard to tell from a fee for services.',
+  technical: 'The definitions are open-ended. Management fee against technical service is the most frequent ZATCA reclassification, and ZATCA says the scope of "royalties" is still under discussion.',
+};
+
+const ESCALATION_COPY = {
+  software_before_guideline: {
+    heading: "This payment is earlier than ZATCA's software guideline",
+    text: "The guideline dates from January 2024, and the checker has no software rule for an earlier payment. It won't guess one.",
+    ruleId: SOFTWARE_RULE,
+  },
+  software_source_later: {
+    heading: "ZATCA's statement on this is later than the payment",
+    text: "The checker's source for separate support is ZATCA's May 2026 General Guideline for Withholding Tax. It won't assume the same treatment for an earlier payment.",
+    ruleId: SOFTWARE_RULE,
+    showContrary: true,
+  },
+  software_unlisted: {
+    heading: "The checker can't match this to a ZATCA example",
+    text: 'The rights in the contract decide the category, so this needs a person to read it.',
+    ruleId: SOFTWARE_RULE,
+    showContrary: true,
+  },
+  software_capital_gains: {
+    heading: 'ZATCA treats this as capital gains, which needs a person',
+    text: "ZATCA's software guideline groups capital gains under corporate income and gives no withholding rate. Its May 2026 General Guideline for Withholding Tax also lists income from the sale or licensing of intellectual property in the Kingdom as within withholding tax, and the checker can't work out tax on a gain.",
+    ruleId: SOFTWARE_RULE,
+    showContrary: true,
+  },
+  telecom_history: {
+    heading: 'ZATCA and the Law point to different rates for this period',
+    text: 'For a head office or associated company in this period, the rate is disputed. The checker shows the dispute and does not pick a side.',
+    ruleId: 'WHT.CAT.TELECOM',
+    showContrary: true,
+  },
+  mixed: {
+    heading: 'This contract needs splitting by a person',
+    text: 'Services are taxed and goods are not, so someone has to split the price between them. What the contract actually covers decides this, not its title.',
+    ruleId: 'WHT.SERVICES.DEFINITION',
+  },
+  freight_import: {
+    heading: 'Shipping to Saudi ports is excluded from the freight category',
+    text: "The checker can't say what applies instead.",
+    ruleId: 'WHT.CAT.AIR_FREIGHT',
+  },
+  freight_outside: {
+    heading: 'This payment falls outside the freight category',
+    text: "That category needs payment in the Kingdom to the carrier or its local agent. The checker can't say what applies instead.",
+    ruleId: 'WHT.CAT.AIR_FREIGHT',
+  },
+};
+
+function renderEscalation(ctx, result) {
+  if (result.reason === 'boundary') return renderBoundary(ctx, result);
+  if (result.reason === 'software_split') return renderSoftwareSplit(ctx, result);
+  const h = (...args) => el(ctx.document, ...args);
+  const copy = ESCALATION_COPY[result.reason];
+  const rule = ctx.data.rules[copy.ruleId];
+  return shell(
+    ctx,
+    'escalate',
+    copy.heading,
+    h('p', {}, copy.text),
+    copy.showContrary && h('p', { class: 'callout' }, rule.contraryReading),
+    h('p', {}, ADVISER_LINE),
+    h('p', { class: 'rule-text' }, rule.statement),
+    citation(ctx, rule),
+    copy.ruleId === SOFTWARE_RULE && h('p', { class: 'links' }, link(ctx, rule.url, SOFTWARE_LINK_TEXT)),
+    renderProvenance(ctx, result.provenance),
+  );
+}
+
+function renderSoftwareSplit(ctx, result) {
+  const h = (...args) => el(ctx.document, ...args);
+  const rule = ctx.data.rules[SOFTWARE_RULE];
+  const taxedRows = result.readings.map((reading) =>
+    h('tr', {}, h('td', {}, typeById(reading.typeId).partLabel), h('td', { class: 'num' }, formatRate(reading.domesticRate)), h('td', {}, readingTreatyLabel(reading))),
+  );
+  const outsideRows = result.outsideParts.map((part) =>
+    h('tr', {}, h('td', {}, SOFTWARE_OUTSIDE_WHT[part]), h('td', {}, 'Outside withholding tax'), h('td', {}, 'Not applicable')),
+  );
+  return shell(
+    ctx,
+    'escalate',
+    'Each part of this contract is taxed on its own',
+    h('p', {}, 'ZATCA taxes each part by its own category, as long as the parts can be separated in the contract. Show the price of each part in the contract, or ask an adviser how to estimate it.'),
+    h(
+      'div',
+      { class: 'table-scroll' },
+      h(
+        'table',
+        {},
+        h('thead', {}, h('tr', {}, h('th', {}, 'Part'), h('th', {}, 'Domestic rate'), h('th', {}, 'With the treaty'))),
+        h('tbody', {}, taxedRows, outsideRows),
+      ),
+    ),
+    result.readings.some((reading) => reading.treatyConditional) && h('p', { class: 'callout' }, TREATY_CONDITION_CALLOUT),
+    h('p', { class: 'callout' }, rule.contraryReading),
+    h('p', {}, ADVISER_LINE),
+    citation(ctx, rule),
+    h('p', { class: 'links' }, link(ctx, rule.url, SOFTWARE_LINK_TEXT)),
+    renderProvenance(ctx, result.provenance),
+  );
+}
+
+function renderReadingsTable(ctx, readings) {
+  const h = (...args) => el(ctx.document, ...args);
+  return h(
+    'div',
+    { class: 'table-scroll' },
+    h(
+      'table',
+      {},
+      h('thead', {}, h('tr', {}, h('th', {}, 'If it is a'), h('th', {}, 'Domestic rate'), h('th', {}, 'With the treaty'))),
+      h(
+        'tbody',
+        {},
+        readings.map((reading) =>
+          h(
+            'tr',
+            {},
+            h('td', {}, typeById(reading.typeId).label),
+            h('td', { class: 'num' }, formatRate(reading.domesticRate)),
+            h('td', {}, readingTreatyLabel(reading)),
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+function renderBoundary(ctx, result) {
+  const h = (...args) => el(ctx.document, ...args);
+  const contested = [...new Set(result.readings.map((reading) => reading.contested).filter(Boolean))];
+  return shell(
+    ctx,
+    'escalate',
+    'These readings give different rates',
+    h('p', {}, `${BOUNDARY_COPY[ctx.facts.paymentType]} ${SCOPE_OF_WORK_LINE}`),
+    renderReadingsTable(ctx, result.readings),
+    contested.map((text) => h('p', { class: 'callout' }, text)),
+    result.readings.some((reading) => reading.showRoyaltyList) && renderRoyaltyList(ctx),
+    h('p', {}, ADVISER_LINE),
+    renderProvenance(ctx, result.provenance),
+  );
+}
+
+function renderAnswer(ctx, result) {
+  const renderers = {
+    incomplete: renderIncomplete,
+    out_of_scope: renderOutOfScope,
+    route_pe: renderRoutePe,
+    not_subject: renderNotSubject,
+    outside_wht: renderOutsideWht,
+    no_rule: renderNoRule,
+    escalate: renderEscalation,
+    result: (context, value) => shell(context, value.reading.advisory ? 'advisory' : 'result', ...renderResult(context, value)),
+  };
+  return renderers[result.kind](ctx, result);
+}
+
+
+const treatyName = (treaty) => `${treaty.country} treaty`;
+
+const SUPPORT_CONTACT = {
+  name: 'Shamoil Plumber',
+  credential: 'Chartered Accountant (India) and tax advisor in Saudi Arabia',
+  email: 'shamoilp@outlook.com',
+  linkedin: 'https://www.linkedin.com/in/shamoilp/',
+};
+
+const ZATCA_TREATY_LIST = 'https://zatca.gov.sa/en/RulesRegulations/Agreements/Pages/default.aspx';
+
+const ratesSourceText = {
+  treaty_text: 'Rates read from the treaty text ZATCA publishes.',
+  secondary: 'Rates taken from a secondary compilation of Saudi treaty rates, not read against the treaty text.',
+};
+
+const datesSourceText = {
+  zatca: 'Dates come from ZATCA.',
+  reviewer: 'Some dates were supplied by the reviewing practitioner.',
+};
+
+const TREATY_CONDITION_NOTE = 'Only if the treaty treats it the same way';
+const TREATY_CONDITION_CALLOUT = 'Apply a treaty figure only if the treaty treats this payment the same way. ZATCA assesses that case by case, so ask an adviser first.';
+const PRACTICE_CALLOUT = 'This rate rests on practice, not on a published ZATCA rate, so it is not ready to file without review by an adviser.';
+const SOFTWARE_POINTER = 'For a software or database payment, choose Software or database instead. ZATCA decides those by the rights you receive, and the category can change.';
+
+function link(ctx, href, text) {
+  return el(ctx.document, 'a', { href, target: '_blank', rel: 'noopener' }, text);
+}
+
+function ceilingStat(treaty) {
+  const rate = formatRate(treaty.tiers.find((tier) => tier.isDefault).rate);
+  if (treaty.source === 'fts') return { value: rate, note: 'Technical-fees article' };
+  return { value: rate, note: treaty.tiers.length > 1 ? 'Unless a lower tier applies' : 'All cases' };
+}
+
+function noReliefStat(treaty) {
+  if (treaty.status === 'ceiling') return ceilingStat(treaty);
+  const labels = {
+    none: ['None', 'No treaty listed'],
+    not_in_effect: ['Not yet', `Applies from ${treaty.from ? formatDate(treaty.from) : ''}`],
+    no_treaty_rule: ['Not covered', 'See below'],
+    no_rule_for_period: ['Not applied', 'See below'],
+    no_relief: ['No relief', 'See below'],
+    directors_article: ['Not applied', 'See below'],
+    needs_review: ['Review', 'See below'],
+  };
+  const [value, note] = labels[treaty.status];
+  return { value, note };
+}
+
+function reliefStat({ exempt, treaty, withDocs, domesticRate }) {
+  if (exempt) return { value: 'Nil', note: 'Taxable in the payee state only' };
+  if (withDocs < domesticRate) return ceilingStat(treaty);
+  const lowest = Math.min(...treaty.tiers.map((tier) => tier.effective));
+  return { value: formatRate(lowest), note: 'Only if a tier condition below is met' };
+}
+
+function stats(reading) {
+  const domestic = formatRate(reading.domesticRate);
+  if (reading.relief) {
+    return [
+      { cls: 'stat-main', label: 'Without treaty documents', value: domestic, note: 'Withhold this unless the documents below are on file' },
+      { cls: '', label: 'With treaty documents', ...reliefStat(reading), ...(reading.treatyConditional && { note: TREATY_CONDITION_NOTE }) },
+    ];
+  }
+  return [
+    { cls: 'stat-main', label: 'You withhold', value: domestic, note: 'On the gross payment' },
+    { cls: '', label: 'Treaty ceiling', ...noReliefStat(reading.treaty) },
+  ];
+}
+
+function renderStats(ctx, reading) {
+  const h = (...args) => el(ctx.document, ...args);
+  return h(
+    'div',
+    { class: 'stats' },
+    stats(reading).map(({ cls, label, value, note }) =>
+      h('div', { class: `stat ${cls}` }, h('span', { class: 'stat-label' }, label), h('strong', {}, value), h('span', { class: 'stat-note' }, note)),
+    ),
+  );
+}
+
+function ceilingVerdict(reading) {
+  const { treaty, domesticRate, withDocs, relief, treatyConditional } = reading;
+  const name = treatyName(treaty.treaty);
+  const domestic = formatRate(domesticRate);
+  if (withDocs < domesticRate) {
+    return `${treatyConditional ? 'If the treaty treats this payment the same way, the' : 'The'} ${name} caps Saudi WHT at ${formatRate(withDocs)}, below the domestic ${domestic}. With the documents below you can apply it at source. Without them, withhold ${domestic} and claim the excess by refund.`;
+  }
+  if (relief) {
+    return `The ${name}'s default ceiling doesn't go below the domestic ${domestic}, but a lower tier below does if its condition is met.`;
+  }
+  return `The ${name}'s ceiling doesn't go below the domestic ${domestic}, so the domestic rate stands.`;
+}
+
+function verdictText(ctx, reading) {
+  const { treaty, domesticRate } = reading;
+  const domestic = formatRate(domesticRate);
+  const name = treaty.treaty && treatyName(treaty.treaty);
+  const copy = {
+    none: () => `The checker lists no treaty with this country, so the domestic rate applies. Its list is as at ${formatDate(ctx.data.asAt)}, so check ZATCA's list in case a treaty has since taken effect.`,
+    not_in_effect: () => `The ${name} applies to payments from ${formatDate(treaty.from)}. This payment is earlier, so it gets no treaty relief.`,
+    no_treaty_rule: () => `The checker has no treaty rule for this payment type, so it shows the domestic rate only. The ${name} may still change the result: read it or ask an adviser.`,
+    no_rule_for_period: () => `The checker's treaty rules start on ${formatDate(treaty.from)}, so it can't settle relief for this earlier payment. It shows the domestic rate, and any rate on record for the ${name} is listed below for reference. Ask an adviser.`,
+    exempt: () => `${reading.treatyConditional ? 'If the treaty treats this as a service fee, no' : 'No'} Saudi WHT applies under the ${name}: with no permanent establishment in the Kingdom, this fee is taxable only in the payee's state. Claim this at source with the documents below. Without them, withhold ${domestic} and claim a refund.`,
+    no_relief: () => `A fixed base or that much presence in the Kingdom takes the payee outside the ${name}'s relief for service fees, so the domestic rate applies.`,
+    needs_review: () => `This payee has a permanent establishment in the Kingdom, so the ${name}'s relief for service fees can't be assumed. The checker shows the domestic rate. Ask an adviser.`,
+    directors_article: () => `ZATCA's treaty circular says directors' fees under this article, generally Article 16, may be taxed in Saudi Arabia and would be subject to WHT where Saudi Arabia is the source. So the checker applies no treaty relief and shows the domestic rate. It has not read the ${name}'s own article.`,
+    ceiling: () => ceilingVerdict(reading),
+  };
+  return copy[treaty.status]();
+}
+
+function renderTiers(ctx, tiers, showEffective) {
+  const h = (...args) => el(ctx.document, ...args);
+  return h(
+    'div',
+    { class: 'table-scroll' },
+    h(
+      'table',
+      {},
+      h('thead', {}, h('tr', {}, h('th', {}, 'Condition'), h('th', {}, 'Treaty rate'), showEffective && h('th', {}, 'With documents'))),
+      h(
+        'tbody',
+        {},
+        tiers.map((tier) =>
+          h(
+            'tr',
+            {},
+            h('td', {}, tier.condition),
+            h('td', { class: 'num' }, formatRate(tier.rate)),
+            showEffective && h('td', { class: 'num' }, formatRate(tier.effective)),
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+function renderFtsDetail(ctx, treaty) {
+  const h = (...args) => el(ctx.document, ...args);
+  const { fts } = treaty.treaty;
+  return [
+    h('p', {}, `This treaty taxes these fees under its ${fts.where}. It covers ${fts.covers}.`),
+    fts.excludes && h('p', {}, `It excludes: ${fts.excludes.join('; ')}.`),
+    treaty.fitCheck && h('p', { class: 'callout' }, "Check that this service fits that wording. If it doesn't, a different treaty article may apply, so ask an adviser."),
+  ];
+}
+
+function renderTreatyDetail(ctx, reading) {
+  const h = (...args) => el(ctx.document, ...args);
+  const { treaty } = reading;
+  const record = treaty.treaty;
+  if (treaty.status === 'none') return h('p', {}, link(ctx, ZATCA_TREATY_LIST, "See ZATCA's treaty list"));
+  return h(
+    'section',
+    { class: 'block' },
+    h('h3', {}, record.country),
+    treaty.tiers && treaty.tiers.length > 1 && renderTiers(ctx, treaty.tiers, true),
+    treaty.recordedTiers?.length > 0 && renderTiers(ctx, treaty.recordedTiers, false),
+    treaty.source === 'fts' && renderFtsDetail(ctx, treaty),
+    h('p', { class: 'cite' }, `In force ${formatDate(record.entryIntoForce)}. WHT effect ${formatDate(record.entryIntoEffect)}. ${ratesSourceText[record.ratesSource]} ${datesSourceText[record.datesSource]}`),
+    h('p', { class: 'links' }, link(ctx, record.url, 'ZATCA treaty page'), record.textUrl && ' · ', record.textUrl && link(ctx, record.textUrl, 'Treaty text (PDF)')),
+  );
+}
+
+function renderList(ctx, items) {
+  const h = (...args) => el(ctx.document, ...args);
+  return h('ul', {}, items.map((item) => h('li', {}, item)));
+}
+
+function renderRelief(ctx) {
+  const h = (...args) => el(ctx.document, ...args);
+  const { value, instrument } = ctx.data.rules['WHT.TREATY.PROCEDURE'];
+  const conditions = [
+    "A treaty is in force between Saudi Arabia and the payee's state of residence.",
+    'The residency certificate covers the payment date.',
+    'The payee is the beneficial owner. A conduit gets the domestic rate.',
+    ctx.data.rules['WHT.TREATY.OVERRIDE'].mliNote,
+  ];
+  return h(
+    'section',
+    { class: 'block' },
+    h('h3', {}, 'Before you apply a lower rate'),
+    renderList(ctx, conditions),
+    h(
+      'div',
+      { class: 'doc-columns' },
+      h('div', {}, h('h4', {}, 'To apply it at source'), renderList(ctx, value.benefit_at_source_documents)),
+      h('div', {}, h('h4', {}, 'To claim a refund'), renderList(ctx, value.refund_documents)),
+    ),
+    h('p', {}, `If documents are missing: ${value.if_documents_missing}. Claims must be lodged within ${value.claim_limitation_years} years.`),
+    h('p', { class: 'cite' }, instrument),
+  );
+}
+
+const dutyLine = ({ statement, contraryReading }) => (contraryReading ? `${statement} ${contraryReading}` : statement);
+
+function renderDuties(ctx) {
+  const h = (...args) => el(ctx.document, ...args);
+  const { rules, netOfTax } = ctx.data;
+  return h(
+    'section',
+    { class: 'block' },
+    h('h3', {}, 'What you must do after this'),
+    renderList(ctx, [...OBLIGATION_RULES.map((id) => dutyLine(rules[id])), netOfTax]),
+  );
+}
+
+const softwareValue = (ctx) => ctx.data.rules[SOFTWARE_RULE].value;
+
+const factValue = (ctx, { id, value }) => {
+  if (id === 'paymentType') return typeById(value).label;
+  if (id === 'country') return value === NO_TREATY_COUNTRY ? NO_TREATY_LABEL : ctx.data.treaties[value].country;
+  if (id === 'date') return formatDate(value);
+  if (id === 'softwareRights') return softwareValue(ctx).cases.find((entry) => entry.id === value).label;
+  if (id === 'softwareExtras') return softwareValue(ctx).extras.find((entry) => entry.id === value).label;
+  return value === 'yes' ? 'Yes' : 'No';
+};
+
+function renderSupport(ctx) {
+  const h = (...args) => el(ctx.document, ...args);
+  const { name, credential, email, linkedin } = SUPPORT_CONTACT;
+  return h(
+    'aside',
+    { class: 'support' },
+    h('p', {}, h('strong', {}, 'Is your transaction more complex?'), ` Contact ${name}, ${credential}, for expert support.`),
+    h('p', { class: 'links' }, h('a', { href: `mailto:${email}` }, `Email ${email}`), ' · ', link(ctx, linkedin, 'LinkedIn')),
+  );
+}
+
+function renderProvenance(ctx, provenance) {
+  const h = (...args) => el(ctx.document, ...args);
+  const tierMix = Object.entries(provenance.tierCounts).map(([tier, count]) => `tier ${tier}: ${count}`).join(', ');
+  const signOff = provenance.rules.some((rule) => rule.pending)
+    ? 'Rules marked below are awaiting sign-off. Every other rule was signed off by a qualified practitioner.'
+    : 'Each rule was signed off by a qualified practitioner.';
+  return h(
+    'details',
+    { class: 'block provenance', open: '' },
+    h('summary', {}, 'How this answer was reached'),
+    h('p', {}, `Rules version ${provenance.version}, as at ${formatDate(provenance.asAt)}. ${tierMix ? `Rules used by authority, ${tierMix}.` : ''} ${signOff}`),
+    provenance.attested && h('p', {}, "Whether these rates are still current rests on a practitioner's attestation that the law has not materially changed since October 2020 other than by MR No. 25, not on a check against the current Arabic text."),
+    provenance.rules.length > 0 && h('ul', { class: 'rule-ids' }, provenance.rules.map(({ id, tier, status, pending }) => h('li', {}, h('code', {}, id), ` tier ${tier}, ${status}${pending ? ', awaiting sign-off' : ''}`))),
+    provenance.facts.length > 0 && h('h4', {}, 'Facts relied on'),
+    provenance.facts.length > 0 && renderList(ctx, provenance.facts.map((fact) => `${FACT_LABELS[fact.id]}: ${factValue(ctx, fact)}`)),
+    h('h4', {}, 'Not checked'),
+    h('p', {}, "Whether the payment really is the type you picked, whether the payee is the beneficial owner, whether any certificate is valid, and any net-of-tax clause in the contract. You answer for those facts."),
+  );
+}
+
+function readingTreatyLabel(reading) {
+  const labels = {
+    none: 'No treaty listed',
+    not_in_effect: 'Treaty not yet in effect',
+    no_treaty_rule: 'Not covered by the checker',
+    no_rule_for_period: 'Not settled for this date',
+    exempt: 'No Saudi WHT, with documents',
+    no_relief: 'No relief',
+    directors_article: 'Not applied',
+    needs_review: 'Needs review',
+  };
+  if (reading.treaty.status !== 'ceiling') return labels[reading.treaty.status];
+  return `${formatRate(reading.withDocs)}${reading.withDocs < reading.domesticRate ? ', with documents' : ''}`;
+}
+
+function renderRoyaltyList(ctx) {
+  const h = (...args) => el(ctx.document, ...args);
+  const rule = ctx.data.rules[ROYALTY_DEFINITION_RULE];
+  return h(
+    'details',
+    { class: 'block royalty-list' },
+    h('summary', {}, "ZATCA's list: what is and isn't a royalty"),
+    h('p', {}, rule.statement),
+    h('p', { class: 'callout' }, rule.contraryReading),
+    h(
+      'div',
+      { class: 'table-scroll' },
+      h(
+        'table',
+        {},
+        h('thead', {}, h('tr', {}, h('th', {}, 'Payment for'), h('th', {}, 'ZATCA says'))),
+        h(
+          'tbody',
+          {},
+          rule.value.classification_list.map(({ payment, royalty }) =>
+            h('tr', {}, h('td', {}, payment), h('td', {}, royalty ? 'Royalty' : 'Not a royalty')),
+          ),
+        ),
+      ),
+    ),
+    h('p', {}, rule.value.know_how_note),
+    h('p', { class: 'cite' }, 'These are examples. A non-royalty answer does not by itself mean no withholding tax.'),
+    h('p', { class: 'links' }, link(ctx, rule.url, rule.instrument)),
+  );
+}
+
+function renderSoftwareBasis(ctx, reading) {
+  const h = (...args) => el(ctx.document, ...args);
+  const rule = ctx.data.rules[SOFTWARE_RULE];
+  const { softwareCase, treatyConditional } = reading;
+  return [
+    h('p', {}, `The closest ZATCA example: ${softwareCase.label}. Reference: ${softwareCase.section}.`),
+    softwareCase.note && h('p', { class: 'callout' }, softwareCase.note),
+    treatyConditional && h('p', { class: 'callout' }, TREATY_CONDITION_CALLOUT),
+    h('p', { class: 'links' }, link(ctx, rule.url, "ZATCA's software guideline (PDF)")),
+  ];
+}
+
+function renderPracticeBasis(ctx, { rule }) {
+  const h = (...args) => el(ctx.document, ...args);
+  return [
+    h('p', {}, rule.statement),
+    h('p', { class: 'callout' }, PRACTICE_CALLOUT),
+    h('p', { class: 'links' }, link(ctx, rule.url, 'What ZATCA says about board fees (PDF)')),
+  ];
+}
+
+function renderResult(ctx, result) {
+  const h = (...args) => el(ctx.document, ...args);
+  const { reading, provenance } = result;
+  const type = typeById(reading.typeId);
+  const countryName = factValue(ctx, { id: 'country', value: ctx.facts.country });
+  const { category } = reading;
+  return [
+    `${type.label}, paid to ${countryName}`,
+    renderStats(ctx, reading),
+    h('p', { class: 'verdict' }, verdictText(ctx, reading)),
+    reading.softwareCase && renderSoftwareBasis(ctx, reading),
+    reading.advisory && renderPracticeBasis(ctx, reading),
+    TYPES_THAT_POINT_TO_SOFTWARE.includes(reading.typeId) && h('p', { class: 'callout' }, SOFTWARE_POINTER),
+    reading.contested && h('p', { class: 'callout' }, reading.contested),
+    h('p', { class: 'cite' }, `${category.authority}. ${reading.rule.instrument}. Paid ${formatDate(ctx.facts.date)}.`),
+    renderTreatyDetail(ctx, reading),
+    reading.showRoyaltyList && renderRoyaltyList(ctx),
+    reading.relief && renderRelief(ctx),
+    renderDuties(ctx),
+    renderProvenance(ctx, provenance),
+  ];
+}
+
+
+const EXAMPLE = { paymentType: 'royalty', country: 'IN', scope: 'yes', hasPe: 'no', boundary: 'no' };
+
+const FIELD_ORDER = [
+  'paymentType', 'softwareRights', 'softwareExtras', 'boundary', 'hydro', 'freightPaid', 'freightImport',
+  'country', 'date', 'related', 'scope', 'hasPe', 'connected', 'individual',
+];
+
+function selectField(document, { id, label, placeholder, options, help }) {
+  const h = (...args) => el(document, ...args);
+  return h(
+    'div',
+    { class: 'field', id: `q-${id}` },
+    h('label', { for: id }, label),
+    h(
+      'select',
+      { id, name: id },
+      h('option', { value: '' }, placeholder),
+      options.map(({ value, text }) => h('option', { value }, text)),
+    ),
+    help && h('p', { class: 'help', id: `${id}-help` }, help === true ? undefined : help),
+  );
+}
+
+function radioField(document, id) {
+  const h = (...args) => el(document, ...args);
+  const radio = (value, text) =>
+    h('label', { class: 'choice' }, h('input', { type: 'radio', name: id, value, id: `${id}-${value}` }), h('span', {}, text));
+  return h(
+    'fieldset',
+    { class: 'field', id: `q-${id}` },
+    h('legend', {}, YES_NO_QUESTIONS[id]),
+    h('div', { class: 'choices' }, radio('yes', 'Yes'), radio('no', 'No')),
+  );
+}
+
+function dateField(document) {
+  const h = (...args) => el(document, ...args);
+  return h(
+    'div',
+    { class: 'field', id: 'q-date' },
+    h('label', { for: 'date' }, 'Payment date'),
+    h(
+      'div',
+      { class: 'date-row' },
+      h('input', { type: 'date', id: 'date', name: 'date' }),
+      h('button', { type: 'button', id: 'use-today', class: 'secondary' }, 'Use today'),
+    ),
+    h('p', { class: 'help' }, 'Rates and treaty relief depend on when you pay the beneficiary.'),
+  );
+}
+
+function buildFields(document, data) {
+  const countries = Object.values(data.treaties).map(({ iso2, country }) => ({ value: iso2, text: country }));
+  const software = data.rules[SOFTWARE_RULE].value;
+  const asOptions = (entries) => entries.map(({ id, short, label }) => ({ value: id, text: `${short}: ${label}` }));
+  const fields = {
+    paymentType: selectField(document, {
+      id: 'paymentType',
+      label: 'What is the payment for?',
+      placeholder: 'Choose a payment type',
+      options: PAYMENT_TYPES.map(({ id, label }) => ({ value: id, text: label })),
+      help: true,
+    }),
+    softwareRights: selectField(document, {
+      id: 'softwareRights',
+      label: 'What rights do you receive?',
+      placeholder: 'Choose what the contract gives you',
+      options: asOptions(software.cases),
+      help: software.rights_help,
+    }),
+    softwareExtras: selectField(document, {
+      id: 'softwareExtras',
+      label: 'What else is in the same contract?',
+      placeholder: 'Choose what else the contract covers',
+      options: asOptions(software.extras),
+    }),
+    country: selectField(document, {
+      id: 'country',
+      label: "Payee's country of tax residence",
+      placeholder: 'Choose a country',
+      options: [...countries, { value: NO_TREATY_COUNTRY, text: NO_TREATY_LABEL }],
+    }),
+    date: dateField(document),
+  };
+  return FIELD_ORDER.map((id) => fields[id] ?? radioField(document, id));
+}
+
+function paymentTypeHelp(data, facts) {
+  const type = typeById(facts.paymentType);
+  const category = type?.node && data.categories[type.node];
+  if (!category) return 'Go by what the work is, not the title on the contract.';
+  const text = category.definition ?? category.test;
+  const description = `${text[0].toUpperCase()}${text.slice(1)}. ${category.authority}.`;
+  return TYPES_THAT_POINT_TO_SOFTWARE.includes(type.id) ? `${description} For software or a database, choose Software or database.` : description;
+}
+
+function syncForm(document, data, facts) {
+  const applicable = applicableQuestions(data, facts);
+  for (const id of FIELD_ORDER) {
+    const wrapper = document.getElementById(`q-${id}`);
+    wrapper.hidden = !applicable.includes(id);
+    const legend = wrapper.querySelector('legend');
+    if (legend) legend.textContent = questionText(data, id, facts);
+    if (!facts[id]) {
+      wrapper.querySelectorAll('input[type="radio"]').forEach((radio) => {
+        radio.checked = false;
+      });
+      wrapper.querySelectorAll('select').forEach((select) => {
+        select.value = '';
+      });
+    }
+  }
+  document.getElementById('paymentType-help').textContent = paymentTypeHelp(data, facts);
+}
+
+function mount(document, data, today) {
+  const form = document.getElementById('form');
+  const output = document.getElementById('result');
+  form.append(...buildFields(document, data));
+
+  let facts = {};
+  let isExample = true;
+
+  const show = () => {
+    const shownFacts = isExample ? { ...EXAMPLE, date: today } : facts;
+    const ctx = { document, data, facts: shownFacts, isExample };
+    output.replaceChildren(renderAnswer(ctx, evaluate(data, shownFacts)));
+    syncForm(document, data, facts);
+  };
+
+  const answer = (id, value) => {
+    facts = applyAnswer(data, facts, id, value);
+    isExample = false;
+    show();
+  };
+
+  form.addEventListener('submit', (event) => event.preventDefault());
+  form.addEventListener('change', ({ target }) => answer(target.name, target.value));
+  document.getElementById('use-today').addEventListener('click', () => {
+    document.getElementById('date').value = today;
+    answer('date', today);
+  });
+  show();
+}
+
+mount(document, DATA, new Date().toLocaleDateString('en-CA'));
+})();
+</script>
+
+</body></html>
