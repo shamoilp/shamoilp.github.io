@@ -1,0 +1,81 @@
+{
+  "source": {"title": "United Nations Model Double Taxation Convention between Developed and Developing Countries, 2021 update", "url": "https://desapublications.un.org/file/914/download", "note": "Summaries of the Article wording in our own words. The UN Commentary is not yet digested here."},
+  "articles": {
+    "5": {"points": [
+      {"ref": "UN Art. 5(3)(a)", "t": "Construction, assembly or installation projects, and supervisory activities connected with them, are a PE after more than six months (OECD: twelve months, with no mention of assembly or supervision)."},
+      {"ref": "UN Art. 5(3)(b)", "t": "Services PE: furnishing services, including consultancy, through employees or other personnel creates a PE if those activities continue in the State for more than 183 days in any 12-month period beginning or ending in the fiscal year. The OECD offers this only as an optional alternative in its Commentary."},
+      {"ref": "UN Art. 5(4)", "t": "The preparatory or auxiliary exceptions omit 'delivery': facilities and stocks used to deliver goods are not excluded, unlike in the OECD text."},
+      {"ref": "UN Art. 5(5)(b)", "t": "'Stock agent' PE: an agent who habitually keeps a stock of goods in the State and regularly delivers from it for the enterprise creates a PE, even without concluding contracts."},
+      {"ref": "UN Art. 5(6)", "t": "Insurance PE: an insurer (except for reinsurance) has a PE where it collects premiums or insures risks in the State through a person other than an independent agent."},
+      {"ref": "UN Art. 5(7) and 5(9)", "t": "Independent-agent and 'closely related' rules follow the 2017 OECD text, renumbered."}
+    ], "detect": [
+      {"label": "services PE (UN 5(3)(b))", "rx": "furnishing of services|consultancy services"},
+      {"label": "supervisory activities (UN 5(3)(a))", "rx": "supervisory activit"},
+      {"label": "six-month or 183-day construction threshold", "rx": "(?:six|6) months|183 days|182 days"},
+      {"label": "'delivery' kept in paragraph 4 (OECD style)", "rx": "storage, display or delivery"},
+      {"label": "stock agent (UN 5(5)(b))", "rx": "stock of goods or merchandise from which"},
+      {"label": "insurance PE (UN 5(6))", "rx": "collects premiums"}
+    ]},
+    "7": {"points": [
+      {"ref": "UN Art. 7(1)(b)–(c)", "t": "Limited force of attraction: besides PE profits, the source State may tax profits from sales there of goods of the same or similar kind as those sold through the PE, and from other similar business activities carried on there."},
+      {"ref": "UN Art. 7(3)", "t": "Expenses of the PE, including executive and general administrative expenses wherever incurred, are deductible. No deduction is allowed for internal royalties, fees, commissions or (except for banks) interest charged by head office, other than reimbursement of actual expenses, and such charges by the PE are ignored."},
+      {"ref": "UN Art. 7(4)–(5)", "t": "Apportionment of total profits is allowed where customary, and the same method must be used year by year. These are pre-2010 OECD features the UN keeps."},
+      {"ref": "UN Art. 7 (general)", "t": "The UN Model has not adopted the OECD's 2010 rewrite of Article 7 (the authorised OECD approach)."}
+    ], "detect": [
+      {"label": "limited force of attraction (UN 7(1)(b)–(c))", "rx": "same or similar kind as those sold"},
+      {"label": "deductions incl. executive and general administrative expenses", "rx": "executive and general administrative expenses"},
+      {"label": "no deduction for internal royalties, interest and similar (UN 7(3))", "rx": "otherwise than towards reimbursement of actual expenses"},
+      {"label": "2010 OECD corresponding-adjustment paragraph", "rx": "Where, in accordance with paragraph 2, a Contracting State adjusts"}
+    ]},
+    "10": {"points": [
+      {"ref": "UN Art. 10(2)", "t": "Source-State rates are left blank for bilateral negotiation (OECD: 5 and 15 per cent). The 25 per cent holding and 365-day period follow the 2017 OECD wording."},
+      {"ref": "UN Art. 10(4)–(5)", "t": "The PE exception and the ban on extraterritorial taxation also cover fixed bases used for independent personal services, because the UN Model keeps Article 14."}
+    ], "detect": []},
+    "11": {"points": [
+      {"ref": "UN Art. 11(2)", "t": "The source-State rate is left blank for negotiation (OECD: 10 per cent)."},
+      {"ref": "UN Art. 11(4)", "t": "The PE exception also covers debt-claims connected with business activities caught by the limited force of attraction in UN Article 7(1)(c), and with fixed bases."},
+      {"ref": "UN Art. 11(5)", "t": "Same source rule as the OECD (payer's residence, or the PE or fixed base bearing the interest)."}
+    ], "detect": []},
+    "12": {"points": [
+      {"ref": "UN Art. 12(1)–(2)", "t": "Royalties may be taxed by the source State at a negotiated maximum rate (OECD: residence State only)."},
+      {"ref": "UN Art. 12(3)", "t": "The definition includes payments for the use of, or right to use, industrial, commercial or scientific equipment, and films or tapes for radio or television broadcasting. The OECD removed equipment in 1992 (see OECD Commentary paragraph 9)."},
+      {"ref": "UN Art. 12(4)", "t": "The PE exception also covers rights connected with business activities caught by the limited force of attraction (UN Article 7(1)(c)), and with fixed bases."},
+      {"ref": "UN Art. 12(5)", "t": "Source rule: royalties arise where the payer is resident, or where the PE or fixed base bearing them is located. The OECD Article has no source rule."}
+    ], "detect": [
+      {"label": "equipment rentals in the royalty definition", "rx": "industrial,? commercial,? or scientific equipment"},
+      {"label": "source taxation allowed with a rate cap", "rx": "may also be taxed in the Contracting State in which they arise|shall not exceed"},
+      {"label": "royalty source rule (UN 12(5))", "rx": "deemed to arise in a Contracting State"},
+      {"label": "technical services or assistance mentioned", "rx": "technical (?:services|assistance)|fees for technical"}
+    ]},
+    "12A": {"points": [
+      {"ref": "UN Art. 12A(1)–(2)", "t": "Fees for technical services may be taxed by the source State on the gross amount at a negotiated maximum rate, without any need for a PE or physical presence."},
+      {"ref": "UN Art. 12A(3)", "t": "Covers payments for any service of a managerial, technical or consultancy nature, except payments to the payer's employee, for teaching in or by an educational institution, and by an individual for personal-use services."},
+      {"ref": "UN Art. 12A(4)", "t": "Fees effectively connected with a PE or fixed base, or with similar business activities under UN Article 7(1)(c), are taxed under Article 7 or 14 instead."},
+      {"ref": "UN Art. 12A(5)–(6)", "t": "Source rule: fees arise where the payer is resident, or where a PE or fixed base bearing them is located. They do not arise in the payer's State if they are borne by the payer's PE in the other State."},
+      {"ref": "UN Art. 12A(7)", "t": "Only the arm's length amount benefits from the Article where a special relationship inflates the fees."},
+      {"ref": "OECD", "t": "The OECD Model has no equivalent Article. Under the OECD approach such fees are business profits (Article 7), taxable at source only through a PE."}
+    ], "detect": [
+      {"label": "managerial, technical or consultancy definition", "rx": "managerial, technical or consultan"}
+    ]},
+    "21": {"points": [
+      {"ref": "UN Art. 21(3)", "t": "Other income arising in the other State may also be taxed there. This source right is absent from the OECD Model, which gives the residence State the exclusive right."},
+      {"ref": "UN Art. 21(2)", "t": "The PE exception also covers fixed bases."}
+    ], "detect": [
+      {"label": "source taxation of other income (UN 21(3))", "rx": "arising in the other Contracting State may also be taxed|may also be taxed in that other State"}
+    ]},
+    "25": {"points": [
+      {"ref": "UN Art. 25 Alternatives A and B", "t": "Alternative A has no arbitration. Alternative B adds arbitration of issues unresolved after three years, triggered at the request of either competent authority (not the taxpayer) and excluded where a court or tribunal has already decided the issue."},
+      {"ref": "UN Art. 25(1)", "t": "The UN text refers the case to the competent authority of the taxpayer's residence State (or nationality State for non-discrimination). The OECD and MLI minimum standard allow either State."},
+      {"ref": "UN Art. 25(4)", "t": "Communication is direct, including through a joint commission, as in the OECD."}
+    ], "detect": [
+      {"label": "arbitration clause", "rx": "arbitration"},
+      {"label": "case may be presented to either State", "rx": "competent authority of either Contracting State"}
+    ]},
+    "29": {"points": [
+      {"ref": "UN Art. 29", "t": "Since 2017 the UN Model has an Entitlement to benefits Article that mirrors the OECD's: limitation-on-benefits options with a 'qualified person' test, active business and derivative benefits tests, discretionary relief, and a principal purposes test."}
+    ], "detect": [
+      {"label": "principal purposes test", "rx": "principal purposes"},
+      {"label": "limitation-on-benefits ('qualified person')", "rx": "qualified person"}
+    ]}
+  }
+}

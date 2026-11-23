@@ -68,6 +68,7 @@ describe('links', () => {
     for (const url of [
       'https://shamoilp.github.io/worth-winning/',
       'https://shamoilp.github.io/saudi-wht-checker/',
+      'https://shamoilp.github.io/ksa-treaty-library/',
       'https://github.com/shamoilp/trade-chokepoint',
       'https://github.com/shamoilp/property-game-series',
       'https://github.com/shamoilp/edge-ledger',
@@ -128,5 +129,69 @@ describe('Saudi WHT Checker page', () => {
     assert.equal(checker.querySelector('.review-banner'), null);
     const data = JSON.parse(checkerHtml.match(/^const DATA = (\{.*\});$/m)[1]);
     assert.deepEqual(data.pendingSignoff, []);
+  });
+});
+
+describe('KSA Treaty Library page', () => {
+  const libHtml = readFileSync(new URL('ksa-treaty-library/index.html', root), 'utf8');
+  const lib = new JSDOM(libHtml).window.document;
+  const libMeta = (key) => lib.querySelector(`meta[property="${key}"], meta[name="${key}"]`)?.content ?? '';
+  const data = (path) => JSON.parse(readFileSync(new URL(`ksa-treaty-library/data/${path}`, root), 'utf8'));
+
+  test('has a title, description, canonical address and link preview', () => {
+    assert.match(lib.title, /KSA Treaty Library/);
+    assert.match(libMeta('description'), /tax treaties/i);
+    assert.equal(lib.querySelector('link[rel="canonical"]')?.getAttribute('href'), 'https://shamoilp.github.io/ksa-treaty-library/');
+    assert.match(libMeta('og:image'), /^https:\/\/shamoilp\.github\.io\/ksa-treaty-library\/.+\.(png|jpg)$/);
+    assert.notEqual(libMeta('og:image:alt'), '');
+  });
+
+  test('the link-preview image is in the repo', () => {
+    const path = new URL(libMeta('og:image')).pathname.slice(1);
+    assert.ok(existsSync(new URL(path, root)), path);
+  });
+
+  test('loads nothing from other sites and stores nothing in the browser', () => {
+    assert.equal(lib.querySelectorAll('script[src]').length, 0);
+    assert.equal(lib.querySelectorAll('link[rel="stylesheet"], link[rel="preconnect"]').length, 0);
+    assert.doesNotMatch(libHtml, /XMLHttpRequest|sendBeacon|localStorage|sessionStorage|indexedDB|document\.cookie|googleapis|gstatic/);
+    for (const call of libHtml.match(/get\('[^']*'/g) ?? []) assert.match(call, /^get\('data\//, call);
+  });
+
+  test('every treaty with a published text has its file, and every article has text', () => {
+    const index = data('index.json');
+    assert.equal(index.treaties.length, 63);
+    for (const treaty of index.treaties) {
+      if (treaty.missing) continue;
+      const text = data(`t/${treaty.iso2}.json`);
+      assert.ok(text.articles.length > 0, treaty.iso2);
+      assert.equal(text.articles.length, treaty.articles.length, treaty.iso2);
+    }
+    assert.deepEqual(index.treaties.filter((treaty) => treaty.missing).map((treaty) => treaty.iso2), ['TW']);
+  });
+
+  test('every core article has a digest with paragraph references and a source', () => {
+    for (const article of ['5', '7', '10', '11', '12', '21', '25', '29']) {
+      const digest = data(`oecd/${article}.json`);
+      assert.equal(digest.source.doi, 'https://doi.org/10.1787/db32e18b-en', article);
+      const entries = digest.sections.flatMap((section) => section.entries);
+      assert.ok(entries.length > 5, article);
+      for (const entry of entries) {
+        assert.ok(entry.p && entry.t, `${article} ${entry.p}`);
+        if (!entry.annex) assert.ok(entry.pdfPage > 0, `${article} ${entry.p}`);
+      }
+    }
+  });
+
+  test('every KSA view entry and partner position names a source that exists', () => {
+    const ksa = data('ksa.json');
+    const entries = [...ksa.general, ...Object.values(ksa.articles).flat(), ...Object.values(ksa.facts)];
+    for (const entry of entries) assert.ok(ksa.sources[entry.src], entry.src);
+    const codes = new Set(data('index.json').treaties.map((treaty) => treaty.iso2));
+    const views = data('views.json');
+    for (const [code, articles] of Object.entries(views.byPartner)) {
+      assert.ok(codes.has(code), code);
+      for (const list of Object.values(articles)) for (const entry of list) assert.ok(entry.p && entry.t, code);
+    }
   });
 });
