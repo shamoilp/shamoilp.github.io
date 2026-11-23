@@ -183,15 +183,30 @@ describe('KSA Treaty Library page', () => {
     }
   });
 
-  test('every KSA view entry and partner position names a source that exists', () => {
-    const ksa = data('ksa.json');
-    const entries = [...ksa.general, ...Object.values(ksa.articles).flat(), ...Object.values(ksa.facts)];
-    for (const entry of entries) assert.ok(ksa.sources[entry.src], entry.src);
-    const codes = new Set(data('index.json').treaties.map((treaty) => treaty.iso2));
-    const views = data('views.json');
-    for (const [code, articles] of Object.entries(views.byPartner)) {
-      assert.ok(codes.has(code), code);
-      for (const list of Object.values(articles)) for (const entry of list) assert.ok(entry.p && entry.t, code);
+  test('every article has a plain-words note, and every treaty has rates and time limits', () => {
+    const index = data('index.json');
+    const plain = data('plain.json');
+    for (const key of ['pre', 'prot', 'claim']) assert.ok(plain[key], key);
+    for (const treaty of index.treaties) {
+      for (const article of treaty.articles) assert.ok(plain[article.pk]?.one, `${treaty.iso2} ${article.n} ${article.pk}`);
+      assert.ok(treaty.rates?.dividends && treaty.rates?.interest && treaty.rates?.royalties, treaty.iso2);
+      if (treaty.missing) continue;
+      assert.ok(treaty.facts.map?.n >= 2, `${treaty.iso2} mutual agreement time limit`);
+      assert.ok(treaty.facts.emp?.n >= 182, `${treaty.iso2} employment day limit`);
     }
+  });
+
+  test('the UAE treaty has an English translation for every paragraph', () => {
+    const uae = data('t/AE.json');
+    assert.match(uae.translation.note, /Arabic text is the only authentic text/);
+    assert.equal(uae.preambleEn.length, uae.preamble.length);
+    for (const article of uae.articles) {
+      assert.ok(article.titleEn, article.n);
+      assert.equal(article.en.length, article.paras.length, article.n);
+    }
+  });
+
+  test('the removed KSA view and Other countries files are gone', () => {
+    for (const file of ['ksa.json', 'views.json', 'un.json']) assert.ok(!existsSync(new URL(`ksa-treaty-library/data/${file}`, root)), file);
   });
 });
