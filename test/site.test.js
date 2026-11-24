@@ -281,6 +281,11 @@ describe('KSA DMT Study page', () => {
     }
   });
 
+  test('the public page carries no reflection cards', () => {
+    const { modules } = embedded('course-data');
+    for (const m of modules) assert.equal(m.reflect, undefined, `module ${m.id}`);
+  });
+
   test('every module, question and flashcard has Arabic as well as English', () => {
     const { modules } = embedded('course-data');
     for (const m of modules) {
