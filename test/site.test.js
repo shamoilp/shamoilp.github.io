@@ -223,6 +223,36 @@ describe('KSA Treaty Library page', () => {
     for (const source of Object.values(mli.sources)) assert.match(source.url, /^https:\/\//);
   });
 
+  test('every case has a source, a date, an outcome and a treaty article that exists', () => {
+    const cases = data('cases.json');
+    const index = data('index.json');
+    const isos = new Set(index.treaties.map((t) => t.iso2));
+    assert.ok(cases.cases.length >= 30);
+    const seen = new Set();
+    for (const c of cases.cases) {
+      const key = c.id + (c.part ?? '');
+      assert.ok(!seen.has(key), key);
+      seen.add(key);
+      assert.ok(['taxpayer', 'zatca', 'split', 'remanded'].includes(c.outcome), key);
+      assert.ok(c.title && c.summary && c.habit && c.court && c.date && c.year, key);
+      assert.ok(c.src.length > 0, key);
+      for (const s of c.src) assert.match(s.u, /^https:\/\//, key);
+      if (c.forum === 'sa') for (const s of c.src) assert.match(s.u, /^https:\/\/gstc\.gov\.sa\/.+\.pdf#page=\d+$/, key);
+      for (const r of c.tr) {
+        if (!isos.has(r.iso)) { assert.equal(r.iso, 'US-SHIP', key); continue; }
+        const t = data(`t/${r.iso}.json`);
+        for (const n of r.arts) assert.ok(t.articles.some((a) => String(a.n) === String(n)), `${key} ${r.iso} ${n}`);
+      }
+    }
+  });
+
+  test('the treaty page offers a Cases tab and the case digest', () => {
+    const page = readFileSync(new URL('ksa-treaty-library/index.html', root), 'utf8');
+    assert.match(page, /\['cases','Cases'\]/);
+    assert.match(page, /data-cases="1"/);
+    assert.match(page, /data\/cases\.json/);
+  });
+
   test('the removed KSA view and Other countries files are gone', () => {
     for (const file of ['ksa.json', 'views.json', 'un.json']) assert.ok(!existsSync(new URL(`ksa-treaty-library/data/${file}`, root)), file);
   });

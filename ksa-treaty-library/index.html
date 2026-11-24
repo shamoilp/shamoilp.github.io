@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>KSA Treaty Library · Shamoil Plumber</title>
-<meta name="description" content="Saudi Arabia's 63 tax treaties, article by article: the treaty text, a plain-words guide with diagrams, a paragraph-by-paragraph digest of the OECD Commentary (2025 edition), the changes made by the BEPS MLI, and an English translation of the UAE treaty.">
+<meta name="description" content="Saudi Arabia's 63 tax treaties, article by article: the treaty text, a plain-words guide with diagrams, a paragraph-by-paragraph digest of the OECD Commentary (2025 edition), the changes made by the BEPS MLI, Saudi tax committee decisions and Indian rulings on the treaties, and an English translation of the UAE treaty.">
 <meta name="theme-color" content="#00463c">
 <link rel="canonical" href="https://shamoilp.github.io/ksa-treaty-library/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2300463c'/%3E%3Cpath d='M12 18h15a5 5 0 0 1 5 5v25a5 5 0 0 0-5-5H12z' fill='%23e6f5c8'/%3E%3Cpath d='M52 18H37a5 5 0 0 0-5 5v25a5 5 0 0 1 5-5h15z' fill='%23ffffff'/%3E%3C/svg%3E">
@@ -13,7 +13,7 @@
 <meta property="og:locale" content="en_GB">
 <meta property="og:url" content="https://shamoilp.github.io/ksa-treaty-library/">
 <meta property="og:title" content="KSA Treaty Library: Saudi tax treaties in plain words, with the OECD Commentary">
-<meta property="og:description" content="Saudi Arabia's 63 tax treaties, article by article: the treaty text, a plain-words guide with diagrams, a paragraph-by-paragraph digest of the OECD Commentary (2025 edition), the changes made by the BEPS MLI, and an English translation of the UAE treaty.">
+<meta property="og:description" content="Saudi Arabia's 63 tax treaties, article by article: the treaty text, a plain-words guide with diagrams, a paragraph-by-paragraph digest of the OECD Commentary (2025 edition), the changes made by the BEPS MLI, Saudi tax committee decisions and Indian rulings on the treaties, and an English translation of the UAE treaty.">
 <meta property="og:image" content="https://shamoilp.github.io/ksa-treaty-library/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -82,8 +82,22 @@ main{flex:1;display:grid;grid-template-columns:270px 270px minmax(0,1fr);min-hei
 .tabs button{border:1px solid var(--line);border-bottom:0;background:var(--pane);padding:10px 16px;min-height:44px;border-radius:8px 8px 0 0;cursor:pointer;font-weight:600;font-size:15px;white-space:nowrap}
 .tabs button[aria-selected=true]{background:var(--band);color:#fff;border-color:var(--band)}
 .panel{padding:16px max(var(--gut),calc((100% - var(--mw))/2)) 48px;display:none}
-#read.t-plain .panel-plain,#read.t-oecd .panel-oecd,#read.t-mli .panel-mli{display:block}
-.tabs2{display:none}
+#read.t-plain .panel-plain,#read.t-oecd .panel-oecd,#read.t-mli .panel-mli,#read.t-cases .panel-cases{display:block}
+.tabs2,.tabs4{display:none}
+.ctag{font-size:10.5px;font-weight:700;border-radius:4px;padding:0 5px;background:var(--sel);color:var(--selink);margin-inline-start:6px;vertical-align:2px;letter-spacing:.03em}
+.case{border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:0 0 12px;background:var(--bg)}
+.case h4{margin:0 0 4px;font:700 16px/1.3 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;text-wrap:balance}
+.case .cm{font-size:13px;color:var(--muted);margin:0 0 8px}
+.case p{margin:0 0 8px;font-size:15px}
+.case .hb{border-inline-start:3px solid var(--band);padding-inline-start:10px;font-size:14.5px}
+.case .hb b{font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);margin-inline-end:6px}
+.case .cs{font-size:13px;margin:0}.case .cs a{margin-inline-end:12px}
+.case .tchip{border:1px solid var(--line);background:var(--pane);border-radius:999px;padding:1px 9px;font-size:12.5px;font-weight:600;cursor:pointer;margin:0 6px 4px 0}
+.oc{display:inline-block;font-weight:700;font-size:12px;padding:1px 8px;border-radius:999px;margin-inline-end:6px;vertical-align:1px;white-space:nowrap}
+.oc.taxpayer{background:var(--sel);color:var(--selink)}.oc.zatca{background:var(--coral);color:var(--coralink)}.oc.split,.oc.remanded{background:var(--note);color:var(--ink);border:1px solid var(--line)}
+.clist{list-style:none;padding:0;margin:0 0 12px}.clist li{padding:6px 0;border-top:1px dashed var(--line);font-size:15px}.clist li:first-child{border-top:0}
+.clist .lnk{text-align:start}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,520px),1fr));gap:0 20px;align-items:start}
 .mpill{display:inline-block;font-weight:700;font-size:13px;letter-spacing:.03em;padding:3px 11px;border-radius:999px;margin:0 0 10px}
 .mpill.changed{background:var(--coral);color:var(--coralink)}
 .mpill.not{background:var(--sel);color:var(--selink)}
@@ -211,22 +225,25 @@ h3{font:700 18px/1.2 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",
   .tabs2 button[aria-selected=true]{background:var(--band);color:#fff;border-color:var(--band)}
   .panel{overflow-y:auto;min-height:0}
   #read .panel-plain{display:block;grid-column:2;grid-row:1 / span 2;border-inline-end:1px solid var(--line)}
-  #read .panel-oecd,#read .panel-mli{display:none;grid-column:3;grid-row:2}
-  #read.c3-oecd .panel-oecd,#read.c3-mli .panel-mli{display:block}
+  #read[class] .panel-oecd,#read[class] .panel-mli,#read[class] .panel-cases{display:none;grid-column:3;grid-row:2}
+  #read.c3-oecd .panel-oecd,#read.c3-mli .panel-mli,#read.c3-cases .panel-cases{display:block}
   .ph{display:block}
   #read:not(.ovmode) .rhead{padding-inline:max(var(--gut),calc((33.333% - var(--mw))/2))}
 }
 @media(min-width:3000px){
-  #read:not(.ovmode) .cols{grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:minmax(0,1fr)}
-  .c-text{grid-row:1}
+  #read:not(.ovmode) .cols{grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:auto minmax(0,1fr)}
+  .c-text{grid-row:1 / span 2}
   .tabs2{display:none}
-  #read .panel-plain{grid-row:1}
-  #read .panel-oecd,#read .panel-mli{display:block;grid-row:1}
-  #read .panel-oecd{grid-column:3;border-inline-end:1px solid var(--line)}
-  #read .panel-mli{grid-column:4}
+  .tabs4{display:flex;gap:4px;grid-column:4;grid-row:1;padding:10px max(var(--gut),calc((100% - var(--mw))/2)) 0;border-bottom:1px solid var(--line);overflow-x:auto}
+  .tabs4 button{border:1px solid var(--line);border-bottom:0;background:var(--pane);padding:10px 16px;min-height:44px;border-radius:8px 8px 0 0;cursor:pointer;font-weight:600;font-size:15px;white-space:nowrap}
+  .tabs4 button[aria-selected=true]{background:var(--band);color:#fff;border-color:var(--band)}
+  #read .panel-plain{grid-row:1 / span 2}
+  #read[class] .panel-oecd{display:block;grid-column:3;grid-row:1 / span 2;border-inline-end:1px solid var(--line)}
+  #read[class] .panel-mli,#read[class] .panel-cases{display:none;grid-column:4;grid-row:2}
+  #read.c4-mli .panel-mli,#read.c4-cases .panel-cases{display:block}
   #read.no-oecd .cols{grid-template-columns:repeat(3,minmax(0,1fr))}
   #read.no-oecd .panel-oecd{display:none}
-  #read.no-oecd .panel-mli{grid-column:3}
+  #read.no-oecd .tabs4,#read.no-oecd .panel-mli,#read.no-oecd .panel-cases{grid-column:3}
   #read:not(.ovmode) .rhead{padding-inline:max(var(--gut),calc((25% - var(--mw))/2))}
   #read.no-oecd:not(.ovmode) .rhead{padding-inline:max(var(--gut),calc((33.333% - var(--mw))/2))}
 }
@@ -236,18 +253,19 @@ h3{font:700 18px/1.2 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",
 <body>
 <header>
   <h1>KSA Treaty Library</h1>
-  <p>Saudi Arabia's tax treaties, article by article: the text, a plain-words guide with diagrams, an OECD Commentary digest and the BEPS MLI changes. By <a href="https://shamoilp.github.io/">Shamoil Plumber</a>.</p>
+  <p>Saudi Arabia's tax treaties, article by article: the text, a plain-words guide with diagrams, an OECD Commentary digest, the BEPS MLI changes and the tax committee cases. By <a href="https://shamoilp.github.io/">Shamoil Plumber</a>.</p>
   <span class="as" id="asat">Loading…</span>
 </header>
 <nav class="trail" id="trail" aria-label="Where you are"></nav>
 <main id="main" class="v-read">
   <section class="pane" id="treaties" aria-label="Treaties">
-    <div class="find"><label for="q" class="sr">Find a treaty</label><input id="q" type="search" placeholder="Find a treaty" autocomplete="off"><small id="count"></small></div>
+    <div class="find"><label for="q" class="sr">Find a treaty</label><input id="q" type="search" placeholder="Find a treaty" autocomplete="off"><small id="count"></small><button class="lnk" data-cases="1" style="display:block;margin-top:6px;text-align:start;font-size:14px">Treaty cases: committee decisions and rulings</button></div>
     <ul class="list" id="tlist"></ul>
     <details class="about"><summary>About this library</summary>
       <p>Built by <a href="https://shamoilp.github.io/">Shamoil Plumber</a> as a ready reference for Saudi treaty work.</p>
       <p>Treaty texts are taken from the PDFs ZATCA publishes. The plain-words guide is written for this library: rates come from the Saudi WHT Checker data, and time limits are read from each treaty's text. The OECD Commentary digest summarises the OECD Model Tax Convention 2025 (Full Version), CC BY 4.0, adapted.</p>
       <p>The BEPS MLI tab works out, treaty by treaty, which MLI rules apply and from when, from the OECD's records of each country's MLI choices, checked against official synthesised texts where a tax authority has published one.</p>
+      <p>The Cases tab summarises, in our own words, the decisions in the Saudi tax committees' published volumes that turn on a tax treaty, and rulings in India on the India treaty, each linked to its source. Committee decisions are published without names; the Arabic text prevails over the English translations. Pending cases are not tracked.</p>
       <p>The UAE treaty's English text is an unofficial translation made for this library; the Arabic text is the only authentic version.</p>
       <p>The summaries are paraphrases, not the official texts. Check the original before relying on any point. This is not legal or tax advice.</p>
       <p>No cookies or tracking on this page.</p>
@@ -270,12 +288,12 @@ const money = x => x.toLocaleString('en-US');
 const dur = x => x ? x.n + ' ' + (x.n === 1 ? x.unit.replace(/s$/, '') : x.unit) : 'the treaty limit';
 const per = w => w === 'any 12-month period' ? 'in any 12 months' : w === 'calendar year' ? 'in a calendar year' : w === 'tax year' ? 'in the tax year' : '';
 const DIGESTS = ['5','7','10','11','12','21','25','29'];
-const TABS = [['plain','In plain words'],['oecd','OECD Commentary'],['mli','BEPS MLI']];
+const TABS = [['plain','In plain words'],['oecd','OECD Commentary'],['mli','BEPS MLI'],['cases','Cases']];
 const GROUPS = [['Who and what is covered',['pre','1','2','3','4']],['Business and property income',['5','6','7','8','9']],['Investment income and gains',['10','11','12','12A','13']],['Work, pensions and study',['14','15','16','17','18','19','20','teachers']],['Other income and capital',['21','22']],['Relief, disputes and information',['23','24','25','26','27','sparing']],['Special and final provisions',['28','29','30','31','32','govinv','special','headings','refunds','inherit','prot']]];
 const KIND = {'10':'dividends','11':'interest','12':'royalties','12A':'fts'};
 const NOUN = {dividends:'dividend', interest:'interest payment', royalties:'royalty', fts:'technical service fee'};
 const CHECKER = 'https://shamoilp.github.io/saudi-wht-checker/';
-let IDX = null, PL = null, MLI = null, cur = {iso:null, n:null, tab:'plain'}, treaty = null, lang = 'en', pref = 'plain', col3 = 'oecd';
+let IDX = null, PL = null, MLI = null, CS = null, cur = {iso:null, n:null, tab:'plain'}, treaty = null, lang = 'en', pref = 'plain', col3 = 'oecd', col4 = 'mli';
 const main = $('#main');
 const tOf = iso => IDX.treaties.find(x => x.iso2 === iso);
 const P = t => t.short || t.country;
@@ -307,12 +325,12 @@ function items(t) {
   return [{n:'pre', title:'', oecd:'', pk:'pre'}].concat(t.articles, t.hasProtocol ? [{n:'prot', title:'Protocol and notes', oecd:'', pk:'prot'}] : []);
 }
 function artList(t) {
-  const ar = t.lang === 'ar' && !t.tr, mc = mliChanged(t);
+  const ar = t.lang === 'ar' && !t.tr, mc = mliChanged(t), cc = caseArts(t);
   let g = -1, h = '';
   for (const a of items(t)) {
     const gi = groupOf(a.pk);
     if (gi !== g) { h += '<li class="grp">' + esc(GROUPS[gi][0]) + '</li>'; g = gi; }
-    h += '<li><button data-n="' + esc(a.n) + '" aria-current="' + (String(a.n) === String(cur.n)) + '"><span class="nm">' + esc(label(a.n)) + (mc.has(String(a.n)) ? '<span class="mtag" title="Changed by the BEPS MLI">MLI</span>' : '') + '</span>' +
+    h += '<li><button data-n="' + esc(a.n) + '" aria-current="' + (String(a.n) === String(cur.n)) + '"><span class="nm">' + esc(label(a.n)) + (mc.has(String(a.n)) ? '<span class="mtag" title="Changed by the BEPS MLI">MLI</span>' : '') + (cc.has(String(a.n)) ? '<span class="ctag" title="Published cases on this article">Case</span>' : '') + '</span>' +
       (DIGESTS.includes(a.oecd) ? '<span class="dot" title="Key article: OECD Commentary digest"></span>' : '<span></span>') +
       (a.title ? '<span class="sub"' + (ar ? ' dir="rtl" lang="ar"' : '') + '>' + esc(a.title) + '</span>' : '') + '</button></li>';
   }
@@ -325,14 +343,15 @@ function renderArts() {
     '<button class="lnk" data-ov="1">Treaty overview</button> · ' + (t.pdf ? '<a href="' + esc(t.pdf) + '">Official text (PDF)</a> · ' : '') + '<a href="' + esc(t.page) + '">ZATCA page</a></p>' +
     (t.missing ? '<p class="meta">ZATCA does not publish the text of this treaty, so it is listed without articles.</p>' :
      '<p class="legend"><span class="dot" aria-hidden="true"></span>Key article, with an OECD Commentary digest</p>' +
-     (mliChanged(t).size ? '<p class="legend"><span class="mtag" style="margin:0">MLI</span>Changed by the BEPS MLI</p>' : '') + artList(t));
+     (mliChanged(t).size ? '<p class="legend"><span class="mtag" style="margin:0">MLI</span>Changed by the BEPS MLI</p>' : '') +
+     (caseArts(t).size ? '<p class="legend"><span class="ctag" style="margin:0">Case</span>Has published cases</p>' : '') + artList(t));
 }
 
 async function openTreaty(iso, n, tab) {
   cur.iso = iso; cur.n = null; treaty = null;
   renderList(); renderArts();
   const t = tOf(iso);
-  if (!PL) [PL, MLI] = await Promise.all([get('data/plain.json'), get('data/mli.json')]);
+  if (!PL) [PL, MLI, CS] = await Promise.all([get('data/plain.json'), get('data/mli.json'), get('data/cases.json')]);
   if (t.missing) { overview(t); view('read'); setHash(iso.toLowerCase()); return; }
   treaty = await get('data/t/' + iso + '.json');
   if (cur.iso !== iso) return;
@@ -349,6 +368,7 @@ function articleObj(n) {
 function openArt(n, tab) {
   const a = articleObj(n); if (!a) { view('arts'); return; }
   cur.n = String(n); cur.tab = tab || pref;
+  if (tab && tab !== 'plain') { col3 = tab; if (tab !== 'oecd') col4 = tab; }
   renderArts();
   const t = tOf(cur.iso);
   const ar = treaty.language === 'ar', tr = !!treaty.translation;
@@ -356,7 +376,7 @@ function openArt(n, tab) {
   const title = tr ? (a.titleEn || a.title) : a.title;
   const R = $('#read');
   const hasO = DIGESTS.includes(k) || k === '12A';
-  R.className = 'pane' + (hasO ? '' : ' no-oecd') + ' t-' + cur.tab + ' c3-' + (hasO ? col3 : 'mli');
+  R.className = 'pane' + (hasO ? '' : ' no-oecd') + ' t-' + cur.tab + ' c3-' + (hasO || col3 !== 'oecd' ? col3 : 'mli') + ' c4-' + col4;
   R.innerHTML = '<div class="rhead"><p class="who">' + esc(t.country) + ' treaty</p><h2>' + esc(label(a.n)) + (title && (!ar || tr) && a.n !== 'pre' ? '<span style="font-weight:600">: ' + esc(title) + '</span>' : '') + '</h2>' +
     (ar && a.title && a.n !== 'pre' ? '<p class="artitle" dir="rtl" lang="ar">' + esc(a.title) + '</p>' : '') +
     '<div class="links">' + (k && k !== 'none' ? '<span>Matched to OECD Model Article ' + esc(k) + (k === '12A' ? ' (UN Model)' : '') + '</span>' : '') +
@@ -364,12 +384,15 @@ function openArt(n, tab) {
     '<div class="cols"><div class="c-text" id="ctext"></div><div class="c-side"><div class="tabs" role="tablist" aria-label="Notes on this article">' +
     TABS.map(([id, nm]) => '<button role="tab" id="tab-' + id + '" data-tab="' + id + '" aria-controls="p-' + id + '" aria-selected="false">' + nm + '</button>').join('') + '</div>' +
     '<div class="panel panel-plain" id="p-plain" role="tabpanel" aria-labelledby="tab-plain"></div>' +
-    '<div class="tabs2" role="tablist" aria-label="Third column">' + TABS.slice(1).map(([id, nm]) => '<button role="tab" data-c3="' + id + '" aria-selected="' + ((hasO ? col3 : 'mli') === id) + '">' + nm + '</button>').join('') + '</div>' +
+    '<div class="tabs2" role="tablist" aria-label="Third column">' + TABS.slice(1).map(([id, nm]) => '<button role="tab" data-c3="' + id + '" aria-selected="' + ((hasO || col3 !== 'oecd' ? col3 : 'mli') === id) + '">' + nm + '</button>').join('') + '</div>' +
     '<div class="panel panel-oecd" id="p-oecd" role="tabpanel" aria-labelledby="tab-oecd"><p class="empty">Loading…</p></div>' +
-    '<div class="panel panel-mli" id="p-mli" role="tabpanel" aria-labelledby="tab-mli"></div></div></div>';
+    '<div class="tabs4" role="tablist" aria-label="Fourth column">' + TABS.slice(2).map(([id, nm]) => '<button role="tab" data-c4="' + id + '" aria-selected="' + (col4 === id) + '">' + nm + '</button>').join('') + '</div>' +
+    '<div class="panel panel-mli" id="p-mli" role="tabpanel" aria-labelledby="tab-mli"></div>' +
+    '<div class="panel panel-cases" id="p-cases" role="tabpanel" aria-labelledby="tab-cases"></div></div></div>';
   renderText(a);
   $('#p-plain').innerHTML = '<p class="ph">In plain words</p>' + plainHTML(a, t);
   $('#p-mli').innerHTML = mliHTML(a, t);
+  $('#p-cases').innerHTML = casesHTML(a, t);
   showTab(cur.tab);
   loadOecd(k);
   view('read');
@@ -393,7 +416,7 @@ function showTab(id) {
   cur.tab = id; pref = id;
   document.querySelectorAll('.tabs button').forEach(b => b.setAttribute('aria-selected', b.dataset.tab === id));
   const R = $('#read');
-  ['plain', 'oecd', 'mli'].forEach(x => R.classList.toggle('t-' + x, x === id));
+  ['plain', 'oecd', 'mli', 'cases'].forEach(x => R.classList.toggle('t-' + x, x === id));
   if (cur.n) setHash(cur.iso.toLowerCase() + '-' + slug(cur.n) + '-' + id);
 }
 
@@ -645,11 +668,83 @@ function overview(t) {
     (rows.length ? '<h3>Can the country where the income arises tax it?</h3><table class="who"><thead><tr><th>Income</th><th>Tax where it arises</th></tr></thead><tbody>' + rows.map(([a, b]) => '<tr><td>' + esc(a) + '</td><td>' + b + '</td></tr>').join('') + '</tbody></table>' +
       '<p class="src">The home country may tax all of these too, and gives relief for tax paid where the income arises. ' + (r ? (r.src === 'text' ? 'Rates read from the treaty text.' : 'Rates as in the Saudi WHT Checker.') : '') + '</p>' : '') +
     '</div>';
-  const mid = '<div>' + (notes.length ? '<h3>Points to note</h3><ul class="pts">' + notes.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' : '') + mliOverview(t) + claimHTML() + '</div>';
-  const right = '<div>' + (t.missing ? '' : '<h3>Articles</h3><p class="legend" style="margin:0 0 8px"><span class="dot" aria-hidden="true"></span>Key article, with an OECD Commentary digest</p>' + artList(t)) +
+  const mid = '<div>' + (notes.length ? '<h3>Points to note</h3><ul class="pts">' + notes.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' : '') + mliOverview(t) + casesOverview(t) + claimHTML() + '</div>';
+  const right = '<div>' + (t.missing ? '' : '<h3>Articles</h3><p class="legend" style="margin:0 0 8px"><span class="dot" aria-hidden="true"></span>Key article, with an OECD Commentary digest</p>' +
+    (caseArts(t).size ? '<p class="legend" style="margin:0 0 8px"><span class="ctag" style="margin:0">Case</span>Has published cases</p>' : '') + artList(t)) +
     '<p class="src">' + esc(PL.gen.note) + '</p></div>';
   R.innerHTML = head + '<div class="ov">' + left + mid + right + '</div>';
   R.scrollTop = 0;
+}
+
+/* ---------- cases ---------- */
+const KEYNAME = {'2':'Taxes covered','3':'Definitions','4':'Residence','5':'Permanent establishment','7':'Business profits','8':'Shipping and air transport','10':'Dividends and branch profits','11':'Interest','12':'Royalties','13':'Capital gains','21':'Other income','25':'Mutual agreement procedure'};
+const KEYORDER = ['4','5','7','8','10','11','12','13','21','25','2','3'];
+const OUT = {taxpayer:'Taxpayer won', zatca:'ZATCA won', split:'Split result', remanded:'Sent back'};
+const OUTIN = {taxpayer:'For the Saudi resident', zatca:'For the tax department'};
+const STAT = {upheld:'Upheld on appeal', final:'Final', 'part-remanded':'Partly sent back to the assessing officer', ruling:'Advance ruling'};
+const caseList = () => CS ? CS.cases : [];
+const casesOn = iso => caseList().filter(c => c.tr.some(r => r.iso === iso));
+function caseArts(t) {
+  const s = new Set();
+  casesOn(t.iso2).forEach(c => c.tr.filter(r => r.iso === t.iso2).forEach(r => r.arts.forEach(n => s.add(String(n)))));
+  return s;
+}
+function caseStatus(c) {
+  if (c.forum !== 'sa') return c.status === 'open' ? 'Further appeal not checked' : STAT[c.status] || '';
+  if (c.status === 'open') return 'Appeal status not stated in the volume';
+  if (c.status === 'final') return c.level === 'appeal' ? 'Final (appeal decision)' : 'Final, not appealed';
+  return STAT[c.status] || '';
+}
+function caseCard(c, here) {
+  const out = c.forum === 'sa' ? OUT[c.outcome] : (OUTIN[c.outcome] || OUT[c.outcome]);
+  const chips = c.tr.map(r => {
+    const ok = IDX.treaties.some(x => x.iso2 === r.iso);
+    const lbl = (ok ? tOf(r.iso).country : r.name) + (r.arts.length ? ', Art. ' + r.arts.join(', ') : '');
+    return ok && !(here && r.iso === here) ? '<button class="tchip" data-goto="' + r.iso + '|' + (r.arts[0] || '') + '">' + esc(lbl) + '</button>' : '<span class="tchip" style="cursor:default">' + esc(lbl) + '</span>';
+  }).join('');
+  const src = c.src.map(s => (s.d ? esc(s.d) + ': ' : '') + '<a href="' + esc(s.u) + '"' + (s.ar ? ' lang="ar" dir="rtl"' : '') + '>' + esc(s.t) + (s.p ? ', p. ' + s.p : '') + '</a>').join('');
+  return '<article class="case"><h4>' + esc(c.title) + '</h4><p class="cm"><span class="oc ' + esc(c.outcome) + '">' + esc(out) + '</span>' +
+    esc((c.name ? c.name + ' · ' : '') + c.court + ' · ' + (/^\d{4}-\d{2}-\d{2}$/.test(c.date) ? fmt(c.date) : c.date) + (c.ay ? ' · AY ' + c.ay : '') + ' · ' + c.id + (c.part ? ' (' + c.part + ')' : '')) + '</p>' +
+    '<p>' + chips + (c.artnote ? '<span class="src">Article matched by subject; the decision cites no number.</span>' : '') + '</p><p>' + esc(c.summary) + (c.also ? ' <span class="src">See also ' + esc(c.also.join(', ')) + '.</span>' : '') + '</p>' +
+    '<p class="hb"><b>Habit</b>' + esc(c.habit) + '</p>' +
+    '<p class="cs src">' + esc(caseStatus(c)) + '. ' + src + '</p></article>';
+}
+function casesFoot() {
+  return '<div class="foot"><p>' + esc(CS.note) + '</p><p>Covers decisions in the published volumes of the Saudi tax committees (<a href="' + esc(CS.sources.sa) + '">GSTC</a>) that turn on a tax treaty, and rulings in India on the India treaty. Pending cases are not tracked. As at ' + esc(CS.asAt) + '. <button class="lnk" data-cases="1">All ' + caseList().length + ' cases</button></p></div>';
+}
+function casesHTML(a, t) {
+  if (!CS) return '<p class="empty">Cases could not be loaded.</p>';
+  const k = a.oecd || '', n = String(a.n);
+  const own = casesOn(t.iso2).filter(c => c.tr.some(r => r.iso === t.iso2 && r.arts.map(String).includes(n)));
+  const other = k && k !== 'none' ? caseList().filter(c => !own.includes(c) && c.keys.includes(k)) : [];
+  let h = '<p class="ph">Cases</p>';
+  if (!own.length && !other.length) return h + '<p class="lead">No published decisions found on this article.</p>' + casesFoot();
+  if (own.length) h += '<h3 style="margin-top:0">On this treaty</h3>' + own.map(c => caseCard(c, t.iso2)).join('');
+  else h += '<p class="lead">No published decision on this article of the ' + esc(P(t)) + ' treaty yet.</p>';
+  if (other.length) h += '<h3>Same topic under other treaties</h3><p class="src">Matched to OECD Model Article ' + esc(k) + '. Wording differs between treaties; read the article itself.</p>' + other.map(c => caseCard(c)).join('');
+  return h + casesFoot();
+}
+function casesOverview(t) {
+  const L = casesOn(t.iso2); if (!L.length) return '';
+  return '<h3>Cases on this treaty</h3><ul class="clist">' + L.map(c => {
+    const r = c.tr.find(x => x.iso === t.iso2), go = r && r.arts.length ? 'data-goto="' + t.iso2 + '|' + r.arts[0] + '"' : 'data-cases="1"';
+    return '<li><span class="oc ' + esc(c.outcome) + '">' + esc(c.forum === 'sa' ? OUT[c.outcome] : (OUTIN[c.outcome] || OUT[c.outcome])) + '</span><button class="lnk" ' + go + '>' + esc(c.title) + '</button> <span class="src">' + esc(c.court.split(',')[0] + ', ' + c.year) + '</span></li>';
+  }).join('') + '</ul>';
+}
+async function allCases() {
+  if (!CS) [PL, MLI, CS] = await Promise.all([get('data/plain.json'), get('data/mli.json'), get('data/cases.json')]);
+  cur.n = null;
+  const R = $('#read'); R.className = 'pane ovmode';
+  const prim = c => KEYNAME[c.group] ? c.group : 'proc';
+  const sa = caseList().filter(c => c.forum === 'sa'), abroad = caseList().filter(c => c.forum !== 'sa');
+  const groups = {}; sa.forEach(c => { const g = prim(c); (groups[g] = groups[g] || []).push(c); });
+  const order = KEYORDER.filter(k => groups[k]).concat(groups.proc ? ['proc'] : []);
+  const won = o => sa.filter(c => c.outcome === o).length;
+  R.innerHTML = '<div class="rhead"><p class="who">Case digest</p><h2>Treaty cases</h2><div class="links"><a href="' + esc(CS.sources.sa) + '">Tax committee publications (GSTC)</a></div></div>' +
+    '<div class="ov" style="display:block"><p class="lead">' + sa.length + ' Saudi tax committee decisions that turn on a tax treaty (' + won('taxpayer') + ' for the taxpayer, ' + won('zatca') + ' for ZATCA, the rest split or sent back), and ' + abroad.length + ' rulings in India on the India treaty. Most Saudi cases are won or lost on documents: contracts, residency certificates, certified forms, invoices and accounts.</p>' +
+    order.map(g => '<h3>' + esc(g === 'proc' ? 'Procedure and evidence' : KEYNAME[g] + ' (OECD Article ' + g + ')') + '</h3><div class="cgrid">' + groups[g].map(c => caseCard(c)).join('') + '</div>').join('') +
+    '<h3>Rulings in India on the India treaty</h3><div class="cgrid">' + abroad.map(c => caseCard(c)).join('') + '</div>' + casesFoot() + '</div>';
+  view('read'); trail('read'); setHash('cases'); R.scrollTop = 0;
 }
 
 /* ---------- OECD Commentary digest ---------- */
@@ -666,13 +761,14 @@ async function oecdTab(k) {
 
 function route() {
   const h = location.hash.slice(1).toLowerCase();
-  const m = h.match(/^([a-z]{2})(?:-([a-z0-9]+))?(?:-(plain|oecd|mli|ksa|other))?$/);
+  if (h === 'cases') return allCases();
+  const m = h.match(/^([a-z]{2})(?:-([a-z0-9]+))?(?:-(plain|oecd|mli|cases|ksa|other))?$/);
   if (m) {
     const iso = m[1].toUpperCase(), t = IDX.treaties.find(x => x.iso2 === iso);
     if (t) {
       let n = null;
       if (m[2]) n = m[2] === 'pre' ? 'pre' : m[2] === 'prot' ? 'prot' : (t.articles.find(a => slug(a.n) === m[2]) || {}).n ?? null;
-      return openTreaty(iso, n, m[3] === 'oecd' || m[3] === 'mli' ? m[3] : 'plain');
+      return openTreaty(iso, n, ['oecd', 'mli', 'cases'].includes(m[3]) ? m[3] : 'plain');
     }
   }
   openTreaty('GB', '12', 'plain');
@@ -682,9 +778,12 @@ document.addEventListener('click', e => {
   const b = e.target.closest('button'); if (!b) return;
   if (b.dataset.iso) openTreaty(b.dataset.iso, null);
   else if (b.dataset.ov) { const t = tOf(cur.iso); if (t && PL) { cur.n = null; renderArts(); overview(t); view('read'); setHash(cur.iso.toLowerCase()); } }
+  else if (b.dataset.goto) { const [iso, n] = b.dataset.goto.split('|'); if (n) { col3 = 'cases'; col4 = 'cases'; } openTreaty(iso, n || null, 'cases'); }
+  else if (b.dataset.cases) allCases();
   else if (b.dataset.n && treaty) openArt(b.dataset.n);
   else if (b.dataset.tab) showTab(b.dataset.tab);
-  else if (b.dataset.c3) { col3 = b.dataset.c3; const R = $('#read'); R.classList.toggle('c3-oecd', col3 === 'oecd'); R.classList.toggle('c3-mli', col3 === 'mli'); document.querySelectorAll('.tabs2 button').forEach(x => x.setAttribute('aria-selected', x.dataset.c3 === col3)); }
+  else if (b.dataset.c3) { col3 = b.dataset.c3; const R = $('#read'); ['oecd', 'mli', 'cases'].forEach(x => R.classList.toggle('c3-' + x, col3 === x)); document.querySelectorAll('.tabs2 button').forEach(x => x.setAttribute('aria-selected', x.dataset.c3 === col3)); }
+  else if (b.dataset.c4) { col4 = b.dataset.c4; const R = $('#read'); ['mli', 'cases'].forEach(x => R.classList.toggle('c4-' + x, col4 === x)); document.querySelectorAll('.tabs4 button').forEach(x => x.setAttribute('aria-selected', x.dataset.c4 === col4)); }
   else if (b.dataset.lang) { lang = b.dataset.lang; const a = articleObj(cur.n); if (a) renderText(a); }
   else if (b.dataset.go) view(b.dataset.go === 'list' ? 'list' : 'arts');
 });

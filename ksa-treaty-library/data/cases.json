@@ -1,0 +1,1261 @@
+{
+ "asAt": "24 November 2026",
+ "note": "Summaries are in our own words. Committee decisions are published without names and are final for that dispute; they show how the committees have applied the treaties, not binding rules. The Arabic text prevails over the English translations, which contain errors.",
+ "sources": {
+  "sa": "https://gstc.gov.sa/en/DocumentsLb/DecisionsRules/Pages/default.aspx"
+ },
+ "cases": [
+  {
+   "id": "IR-2025-239076",
+   "title": "Dubai distributor not the beneficial owner of film royalties",
+   "summary": "A Saudi company paid royalties to a Dubai distributor at the 10% UAE treaty rate. On ZATCA’s appeal the committee found the distributor could not sub-license or modify the content without the foreign licensor’s approval and passed half the profit to it, so it was not the beneficial owner. The 15% domestic rate applied. The volume records two principles: residence and invoices alone do not prove beneficial ownership, and the real contractual restrictions decide.",
+   "habit": "Before applying a reduced royalty rate, read the distributor’s contract with the licensor: approvals and profit-sharing can defeat beneficial ownership.",
+   "topic": "Royalties – beneficial owner",
+   "outcome": "zatca",
+   "status": "final",
+   "date": "2025-01-21",
+   "group": "12",
+   "forum": "sa",
+   "court": "Appeal committee, Riyadh",
+   "year": 2025,
+   "tr": [
+    {
+     "iso": "AE",
+     "arts": [
+      "12"
+     ],
+     "name": "United Arab Emirates"
+    }
+   ],
+   "keys": [
+    "12"
+   ],
+   "src": [
+    {
+     "t": "Principles of the Tax Appeal Committees 2025",
+     "u": "https://gstc.gov.sa/en/DocumentsLb/DecisionsRules/Documents/PrinciplesTaxAppealCommittees2025.pdf#page=106",
+     "p": 106,
+     "ar": false
+    }
+   ],
+   "level": "appeal"
+  },
+  {
+   "id": "IR-2024-171744",
+   "title": "Software reseller’s payments to an Irish licensor are royalties",
+   "summary": "A Saudi channel partner treated payments to an Irish software company as purchases for resale. The appeal committee looked at the agreements, which let the licensor stop the use of licences if payments were missed, and held the payments were royalties under the law and the royalties article of the Ireland treaty. It excluded one amount that had been paid and returned, and reinstated the late-payment fine.",
+   "habit": "For software resale, keep the agreement for each period; licensor control over the licences points to royalties.",
+   "topic": "Royalties – software reseller",
+   "outcome": "zatca",
+   "status": "final",
+   "date": "2024",
+   "group": "12",
+   "forum": "sa",
+   "court": "Appeal committee, Riyadh",
+   "year": 2024,
+   "tr": [
+    {
+     "iso": "IE",
+     "arts": [
+      "12"
+     ],
+     "name": "Ireland"
+    }
+   ],
+   "keys": [
+    "12"
+   ],
+   "src": [
+    {
+     "t": "Compendium of Decisions 2024 – Income Tax",
+     "u": "https://gstc.gov.sa/en/DocumentsLb/DecisionsRules/Documents/Compendium%20of%20Decisions%20Issued%20by%20the%20Tax%20Committees%20for%20the%20Year%202024%20%28Income%20Tax%29.pdf#page=144",
+     "p": 144,
+     "ar": false
+    }
+   ],
+   "level": "appeal"
+  },
+  {
+   "id": "IR-2024-191783",
+   "title": "US airline and shipping exemption lost for want of Forms Q7B and Q7C",
+   "summary": "Withholding tax was applied to airline ticket and sea freight payments. The first-instance committee cancelled it, but on ZATCA’s appeal the appeal committee reinstated the tax because the forms needed to claim the exemption under the Saudi–US agreement on income from international shipping and air transport were not filed during the examination and objection stages.",
+   "habit": "The exemption for foreign airlines and shipping lines still needs Forms Q7B and Q7C filed in time.",
+   "topic": "Shipping and air transport – forms",
+   "outcome": "zatca",
+   "status": "final",
+   "date": "2024",
+   "group": "8",
+   "forum": "sa",
+   "court": "Appeal committee, Riyadh",
+   "year": 2024,
+   "tr": [
+    {
+     "iso": "US-SHIP",
+     "arts": [
+      "3"
+     ],
+     "name": "the United States (shipping and air transport agreement)"
+    }
+   ],
+   "keys": [
+    "8"
+   ],
+   "src": [
+    {
+     "t": "Compendium of Decisions 2024 – Income Tax",
+     "u": "https://gstc.gov.sa/en/DocumentsLb/DecisionsRules/Documents/Compendium%20of%20Decisions%20Issued%20by%20the%20Tax%20Committees%20for%20the%20Year%202024%20%28Income%20Tax%29.pdf#page=160",
+     "p": 160,
+     "ar": false
+    }
+   ],
+   "level": "appeal"
+  },
+  {
+   "id": "IR-2024-191914",
+   "title": "No UK service PE: work could be done abroad and visits stayed under 183 days",
+   "summary": "A refund of withholding tax for 2012 on engineering and project management services for a Ras Tanura facility was refused at first instance. On appeal the committee read the translated contract, found the services could be performed from outside Saudi Arabia, that staff visits did not exceed 183 days, and that ZATCA had offered nothing to the contrary. It allowed the appeal under the UK treaty’s PE article.",
+   "habit": "Track visit days per project against the treaty’s service-PE test and keep the contract translated.",
+   "topic": "Permanent establishment – services",
+   "outcome": "taxpayer",
+   "status": "final",
+   "date": "2024",
+   "group": "5",
+   "forum": "sa",
+   "court": "Appeal committee, Riyadh",
+   "year": 2024,
+   "tr": [
+    {
+     "iso": "GB",
+     "arts": [
+      "5"
+     ],
+     "name": "United Kingdom"
+    }
+   ],
+   "keys": [
+    "5"
+   ],
+   "src": [
+    {
+     "t": "Compendium of Decisions 2024 – Income Tax",
+     "u": "https://gstc.gov.sa/en/DocumentsLb/DecisionsRules/Documents/Compendium%20of%20Decisions%20Issued%20by%20the%20Tax%20Committees%20for%20the%20Year%202024%20%28Income%20Tax%29.pdf#page=201",
+     "p": 201,
+     "ar": false
+    }
+   ],
+   "level": "appeal"
+  },
+  {
+   "id": "IFR-2022-127746",
+   "title": "UK royalty rate refused: treaty forms and evidence missing",
+   "summary": "The taxpayer said the UK franchisor was a UK resident and the treaty cap of 8% applied. ZATCA kept 15% because the claim was not supported by the certified forms and evidence its rules require. The committee dismissed the objection for lack of supporting documents and kept the late-payment fine.",
+   "habit": "Treat the certified treaty forms as part of the payment file, not something to collect after an assessment.",
+   "topic": "Royalties – treaty forms",
+   "outcome": "zatca",
+   "status": "open",
+   "date": "1444 AH (2023)",
+   "group": "12",
+   "forum": "sa",
+   "court": "First-instance committee, Riyadh",
+   "year": 2023,
+   "tr": [
+    {
+     "iso": "GB",
+     "arts": [
+      "12",
+      "4"
+     ],
+     "name": "United Kingdom"
+    }
+   ],
+   "keys": [
+    "4",
+    "12"
+   ],
+   "src": [
+    {
+     "t": "Tax Committees Decisions for 2023 – Withholding Tax",
+     "u": "https://gstc.gov.sa/en/DocumentsLb/DecisionsRules/Documents/Tax%20Committees%20Decisions%20for%202023%20-%20Withholding%20Tax%20V1.0_EN.pdf#page=211",
+     "p": 211,
+     "ar": false
+    }
+   ],
+   "level": "first"
+  },
+  {
+   "id": "IFR-2023-133757",
+   "title": "Treaty argument raised for the first time before the committee is not heard",
+   "summary": "For payments to a UK company, the taxpayer relied on the UK treaty only after filing its claim with the committee, not at the objection stage with ZATCA. The committee dismissed the item, noting that the mutual agreement article gives a separate route that the taxpayer may choose to use.",
+   "habit": "Put every treaty argument in the objection to ZATCA; a new plea at committee stage may not be heard.",
+   "topic": "Raising a treaty claim late",
+   "outcome": "zatca",
+   "status": "open",
+   "date": "1444 AH (2023)",
+   "group": "25",
+   "forum": "sa",
+   "court": "First-instance committee, Riyadh",
+   "year": 2023,
+   "tr": [
+    {
+     "iso": "GB",
+     "arts": [
+      "25"
+     ],
+     "name": "United Kingdom"
+    }
+   ],
+   "keys": [
+    "25"
+   ],
+   "src": [
+    {
+     "t": "Tax Committees Decisions for 2023 – Withholding Tax",
+     "u": "https://gstc.gov.sa/en/DocumentsLb/DecisionsRules/Documents/Tax%20Committees%20Decisions%20for%202023%20-%20Withholding%20Tax%20V1.0_EN.pdf#page=215",
+     "p": 215,
+     "ar": false
+    }
+   ],
+   "part": "UK item",
+   "level": "first"
+  },
+  {
+   "id": "IFR-2023-133757",
+   "title": "Escrow fees to a Korean company: residency certificate wins the item",
+   "summary": "ZATCA had applied withholding tax to escrow fees paid to a Korean company. The taxpayer produced the company’s tax residency certificate, and the committee held that under the business-profits article of the Korea treaty the fees are taxable only in Korea absent a Saudi permanent establishment.",
+   "habit": "For service fees to treaty residents with no Saudi PE, the residency certificate is the first document a committee looks for.",
+   "topic": "Business profits – no PE",
+   "outcome": "taxpayer",
+   "status": "open",
+   "date": "1444 AH (2023)",
+   "group": "7",
+   "forum": "sa",
+   "court": "First-instance committee, Riyadh",
+   "year": 2023,
+   "tr": [
+    {
+     "iso": "KR",
+     "arts": [
+      "7"
+     ],
+     "name": "South Korea (Republic of Korea)"
+    }
+   ],
+   "keys": [
+    "7"
+   ],
+   "src": [
+    {
+     "t": "Tax Committees Decisions for 2023 – Withholding Tax",
+     "u": "https://gstc.gov.sa/en/DocumentsLb/DecisionsRules/Documents/Tax%20Committees%20Decisions%20for%202023%20-%20Withholding%20Tax%20V1.0_EN.pdf#page=215",
+     "p": 215,
+     "ar": false
+    }
+   ],
+   "part": "Korea item",
+   "level": "first"
+  },
+  {
+   "id": "IZD-2023-98233",
+   "title": "UAE free-zone company is a UAE resident for the treaty",
+   "summary": "ZATCA refused a withholding tax refund because the UAE payee was in a free zone and, in its view, not subject to tax in the UAE, so not a treaty resident. The committee held the company was a UAE resident under the residence article of the UAE treaty, noted that a treaty prevails over the Income Tax Law where they conflict, and overturned ZATCA’s decision.",
+   "habit": "For UAE payees, check the residence article’s own wording rather than assuming free-zone status rules the company out.",
+   "topic": "Residence – UAE free zone",
+   "outcome": "taxpayer",
+   "status": "final",
+   "date": "2023-01-31",
+   "group": "4",
+   "forum": "sa",
+   "court": "First-instance committee, Dammam",
+   "year": 2023,
+   "tr": [
+    {
+     "iso": "AE",
+     "arts": [
+      "4"
+     ],
+     "name": "United Arab Emirates"
+    }
+   ],
+   "keys": [
+    "4"
+   ],
+   "src": [
+    {
+     "t": "Tax Committees Decisions for 2023 – Withholding Tax",
+     "u": "https://gstc.gov.sa/en/DocumentsLb/DecisionsRules/Documents/Tax%20Committees%20Decisions%20for%202023%20-%20Withholding%20Tax%20V1.0_EN.pdf#page=344",
+     "p": 344,
+     "ar": false
+    }
+   ],
+   "level": "first"
+  },
+  {
+   "id": "IZJ-2023-204637",
+   "title": "Head-office charges disallowed: no basis for the allocation",
+   "summary": "A branch of a Dutch company claimed head-office charges as deductible, relying on the rule in the Netherlands treaty that a PE may deduct expenses incurred for its business. The committee rejected the claim because the branch did not show how the charges were calculated.",
+   "habit": "Keep the head-office allocation key and supporting workings; the treaty deduction rule does not replace evidence.",
+   "topic": "Business profits – head-office charges",
+   "outcome": "zatca",
+   "status": "final",
+   "date": "2023",
+   "group": "7",
+   "forum": "sa",
+   "court": "First-instance committee, Jeddah",
+   "year": 2023,
+   "tr": [
+    {
+     "iso": "NL",
+     "arts": [
+      "7"
+     ],
+     "name": "Netherlands"
+    }
+   ],
+   "keys": [
+    "7"
+   ],
+   "src": [
+    {
+     "t": "Compendium of Decisions 2024 – Income Tax",
+     "u": "https://gstc.gov.sa/en/DocumentsLb/DecisionsRules/Documents/Compendium%20of%20Decisions%20Issued%20by%20the%20Tax%20Committees%20for%20the%20Year%202024%20%28Income%20Tax%29.pdf#page=372",
+     "p": 372,
+     "ar": false
+    }
+   ],
+   "level": "first"
+  },
+  {
+   "id": "IFR-2022-1630",
+   "title": "Italy treaty claim fails without the supporting papers",
+   "summary": "The taxpayer argued that withholding tax on payments to an Italian company should not apply because the treaty provides for refunds. ZATCA had applied 15% on the basis that the payee was a related party, and said no documents were filed to support a treaty claim. The committee dismissed the objection.",
+   "habit": "A refund under the treaty’s refund article still needs the claim papers (residency certificate and certified forms) on file before the dispute starts.",
+   "topic": "Refund claims – documents",
+   "outcome": "zatca",
+   "status": "final",
+   "date": "1444 AH (2022)",
+   "group": "proc",
+   "forum": "sa",
+   "court": "First-instance committee, Riyadh",
+   "year": 2022,
+   "tr": [
+    {
+     "iso": "IT",
+     "arts": [
+      "28"
+     ],
+     "name": "Italy"
+    }
+   ],
+   "keys": [],
+   "src": [
+    {
+     "t": "Tax Committees Decisions for 2023 – Withholding Tax",
+     "u": "https://gstc.gov.sa/en/DocumentsLb/DecisionsRules/Documents/Tax%20Committees%20Decisions%20for%202023%20-%20Withholding%20Tax%20V1.0_EN.pdf#page=45",
+     "p": 45,
+     "ar": false
+    }
+   ],
+   "level": "first"
+  },
+  {
+   "id": "IFR-2022-1668",
+   "title": "India shipping refund refused: the contract was never produced",
+   "summary": "A refund of withholding tax was sought on behalf of an Indian company under the shipping and air transport article of the India treaty. ZATCA said the contract ran beyond 182 days and created a permanent establishment, and that the burden of proof was on the claimant. The taxpayer did not produce the contract or other support, and the claim was dismissed; the appeal committee agreed.",
+   "habit": "File the underlying contract with any treaty refund claim; the committees treat missing papers as fatal.",
+   "topic": "Shipping and air transport – refund",
+   "outcome": "zatca",
+   "status": "upheld",
+   "date": "1444 AH (2022)",
+   "group": "8",
+   "forum": "sa",
+   "court": "First-instance committee, Riyadh",
+   "year": 2022,
+   "tr": [
+    {
+     "iso": "IN",
+     "arts": [
+      "8"
+     ],
+     "name": "India"
+    }
+   ],
+   "keys": [
+    "8"
+   ],
+   "src": [
+    {
+     "t": "Tax Committees Decisions for 2023 – Withholding Tax",
+     "u": "https://gstc.gov.sa/en/DocumentsLb/DecisionsRules/Documents/Tax%20Committees%20Decisions%20for%202023%20-%20Withholding%20Tax%20V1.0_EN.pdf#page=166",
+     "p": 166,
+     "ar": false
+    }
+   ],
+   "level": "first"
+  },
+  {
+   "id": "IFR-2022-5004",
+   "title": "French branch’s deemed profit remittance: treaty relief not claimed properly",
+   "summary": "ZATCA charged 5% withholding tax on profits held in the head-office account of a French company’s Saudi branch, treating them as remitted. The committee dismissed the branch’s objection because it had not followed the procedure for claiming treaty benefits. A separate item where tax had been charged twice was cancelled.",
+   "habit": "Even where a treaty article helps, follow ZATCA’s claim procedure for each remittance.",
+   "topic": "Branch profits – claim procedure",
+   "outcome": "zatca",
+   "status": "open",
+   "date": "2022",
+   "group": "10",
+   "forum": "sa",
+   "court": "First-instance committee, Riyadh",
+   "year": 2022,
+   "tr": [
+    {
+     "iso": "FR",
+     "arts": [
+      "6"
+     ],
+     "name": "France"
+    }
+   ],
+   "keys": [
+    "10"
+   ],
+   "src": [
+    {
+     "t": "Main Defenses Raised before Tax Committees 2022",
+     "u": "https://gstc.gov.sa/en/DocumentsLb/DecisionsRules/Documents/Main%20Defenses%20Raised%20before%20Tax%20Committees%20for%202022.pdf#page=488",
+     "p": 488,
+     "ar": false
+    }
+   ],
+   "level": "first"
+  },
+  {
+   "id": "IFR-2022-6655",
+   "title": "Dutch company’s project revenue stays taxable at its Saudi PE",
+   "summary": "A Dutch company’s Saudi permanent establishment argued that part of an invoice belonged to the head office and should be taxed only in the Netherlands. The committee accepted that Saudi Arabia may tax only profits attributable to the PE, but the taxpayer did not show the revenue was outside the PE’s share, so the adjustment stood.",
+   "habit": "Where a contract is split between head office and PE, document the split at contract stage, not at audit.",
+   "topic": "Business profits – attribution to the PE",
+   "outcome": "zatca",
+   "status": "final",
+   "date": "2022-09-25",
+   "group": "7",
+   "forum": "sa",
+   "court": "First-instance committee, Riyadh",
+   "year": 2022,
+   "tr": [
+    {
+     "iso": "NL",
+     "arts": [
+      "7"
+     ],
+     "name": "Netherlands"
+    }
+   ],
+   "keys": [
+    "7"
+   ],
+   "src": [
+    {
+     "t": "Tax Committees Decisions for 2023 – Income Tax",
+     "u": "https://gstc.gov.sa/en/DocumentsLb/DecisionsRules/Documents/Tax%20Committees%20Decisions%20for%202023%20-%20Income%20Tax%20%28V1.0%29.pdf#page=257",
+     "p": 257,
+     "ar": false
+    }
+   ],
+   "level": "first"
+  },
+  {
+   "id": "IR-2022-187",
+   "title": "Treaties that list zakat helped exempt an Arab institution from zakat",
+   "summary": "A regional institution set up by an Arab League agreement, exempt from all direct taxes, was assessed to zakat. The appeal committee noted that Saudi tax treaties list zakat among the taxes they cover, next to income tax, and took this as showing zakat is a direct tax. It held the institution was not subject to zakat or tax.",
+   "habit": "Article 2 of the treaties can matter beyond treaty claims: it shows how Saudi Arabia classifies zakat.",
+   "topic": "Taxes covered – zakat",
+   "outcome": "taxpayer",
+   "status": "final",
+   "date": "2022",
+   "group": "2",
+   "forum": "sa",
+   "court": "Appeal committee, Riyadh",
+   "year": 2022,
+   "tr": [],
+   "keys": [
+    "2"
+   ],
+   "src": [
+    {
+     "t": "Main Defenses Raised before Tax Committees 2022",
+     "u": "https://gstc.gov.sa/en/DocumentsLb/DecisionsRules/Documents/Main%20Defenses%20Raised%20before%20Tax%20Committees%20for%202022.pdf#page=194",
+     "p": 194,
+     "ar": false
+    }
+   ],
+   "level": "appeal"
+  },
+  {
+   "id": "IR-2022-23",
+   "title": "Swedish licensor’s Saudi branch: ZATCA cannot have it both ways",
+   "summary": "A Saudi company sought a refund of withholding tax on royalties paid to a Swedish company for 2017. ZATCA refused, treating the Swedish company’s Saudi branch as a PE. The appeal committee said that if there is a PE, the PE pays income tax on its profits and the payer had no duty to withhold, so refusing the refund had no legal basis. The refund was allowed under the Sweden treaty.",
+   "habit": "If ZATCA argues a PE, test the argument against the withholding it has already collected.",
+   "topic": "Royalties – refund where payee has a Saudi branch",
+   "outcome": "taxpayer",
+   "status": "final",
+   "date": "2022",
+   "group": "12",
+   "forum": "sa",
+   "court": "Appeal committee, Riyadh",
+   "year": 2022,
+   "tr": [
+    {
+     "iso": "SE",
+     "arts": [
+      "12",
+      "5",
+      "7"
+     ],
+     "name": "Sweden"
+    }
+   ],
+   "keys": [
+    "5",
+    "7",
+    "12"
+   ],
+   "src": [
+    {
+     "t": "مدونة القرارات الصادرة عن اللجان الضريبية (ضريبة الدخل وضريبة الاستقطاع) 2022م",
+     "u": "https://gstc.gov.sa/ar/DocumentsLb/DecisionsRules/Documents/14.pdf#page=168",
+     "p": 168,
+     "ar": true
+    }
+   ],
+   "level": "appeal"
+  },
+  {
+   "id": "IR-2022-2307",
+   "title": "Residency certificate and UK forms not enough without invoices",
+   "summary": "ZATCA applied 15% to support services charged by a related UK company. On appeal the taxpayer produced the residency certificate, forms certified by HMRC, the services agreement and a schedule of amounts. The appeal committee still dismissed the item: the agreement let the UK company use other group companies or third parties, and no invoices showed what was done, how or by whom.",
+   "habit": "For intra-group service charges, keep invoices and service evidence that show who performed the work, alongside the treaty forms.",
+   "topic": "Business profits – support services",
+   "outcome": "zatca",
+   "status": "final",
+   "date": "2022-12-11",
+   "group": "7",
+   "forum": "sa",
+   "court": "Appeal committee, Riyadh",
+   "year": 2022,
+   "tr": [
+    {
+     "iso": "GB",
+     "arts": [
+      "7"
+     ],
+     "name": "United Kingdom"
+    }
+   ],
+   "keys": [
+    "7"
+   ],
+   "src": [
+    {
+     "t": "Tax Committees Decisions for 2023 – Withholding Tax",
+     "u": "https://gstc.gov.sa/en/DocumentsLb/DecisionsRules/Documents/Tax%20Committees%20Decisions%20for%202023%20-%20Withholding%20Tax%20V1.0_EN.pdf#page=448",
+     "p": 448,
+     "ar": false
+    }
+   ],
+   "level": "appeal"
+  },
+  {
+   "id": "IR-2022-5",
+   "title": "Independent Saudi company is not a UK firm’s dependent agent",
+   "summary": "ZATCA treated a Saudi company as a PE of a UK company under a framework agreement. The appeal committee found the Saudi company acted independently: each service was ordered by a separate request, and nothing in the agreement made it contract in the UK company’s name or for its account. Under the UK treaty there was no PE, so the appeal was allowed.",
+   "habit": "Keep framework agreements order-based and make sure the local party does not contract in the foreign party’s name.",
+   "topic": "Permanent establishment – dependent agent",
+   "outcome": "taxpayer",
+   "status": "final",
+   "date": "2022",
+   "group": "5",
+   "forum": "sa",
+   "court": "Appeal committee, Riyadh",
+   "year": 2022,
+   "tr": [
+    {
+     "iso": "GB",
+     "arts": [
+      "5"
+     ],
+     "name": "United Kingdom"
+    }
+   ],
+   "keys": [
+    "5"
+   ],
+   "src": [
+    {
+     "t": "Body of Principles, Vol. 3",
+     "u": "https://gstc.gov.sa/en/DocumentsLb/DecisionsRules/Documents/Body%20of%20Principles%20Derived%20from%20Decisions%20of%20Zakat%20and%20Tax%20Appeal%20Committees_EN%20%28Volume%203%29.pdf#page=208",
+     "p": 208,
+     "ar": false
+    },
+    {
+     "t": "Main Defenses Raised before Tax Committees 2022",
+     "u": "https://gstc.gov.sa/en/DocumentsLb/DecisionsRules/Documents/Main%20Defenses%20Raised%20before%20Tax%20Committees%20for%202022.pdf#page=601",
+     "p": 601,
+     "ar": false
+    }
+   ],
+   "level": "appeal"
+  },
+  {
+   "id": "IR-2022-51",
+   "title": "UK treaty defence ignored at first instance: item sent back",
+   "summary": "For withholding tax on 2011 payments to a UK company, the first committee did not deal with the taxpayer’s reliance on the UK treaty. The appeal committee held a decision must answer each material defence, cancelled that part, and returned it so the treaty point gets a full hearing at both levels. It had first asked for the treaty documents in certified translation.",
+   "habit": "File treaty documents with certified Arabic translations; committees ask for them.",
+   "topic": "Procedure – treaty claim not addressed",
+   "outcome": "remanded",
+   "status": "final",
+   "date": "2022",
+   "group": "proc",
+   "forum": "sa",
+   "court": "Appeal committee, Riyadh",
+   "year": 2022,
+   "tr": [
+    {
+     "iso": "GB",
+     "arts": [],
+     "name": "United Kingdom"
+    }
+   ],
+   "keys": [],
+   "src": [
+    {
+     "t": "مدونة القرارات الصادرة عن اللجان الضريبية (ضريبة الدخل وضريبة الاستقطاع) 2022م",
+     "u": "https://gstc.gov.sa/ar/DocumentsLb/DecisionsRules/Documents/14.pdf#page=158",
+     "p": 158,
+     "ar": true
+    },
+    {
+     "t": "Main Defenses Raised before Tax Committees 2022",
+     "u": "https://gstc.gov.sa/en/DocumentsLb/DecisionsRules/Documents/Main%20Defenses%20Raised%20before%20Tax%20Committees%20for%202022.pdf#page=595",
+     "p": 595,
+     "ar": false
+    }
+   ],
+   "level": "appeal"
+  },
+  {
+   "id": "ISR-2022-1781",
+   "title": "Chinese shipping line’s withholding tax refunded once documents were filed",
+   "summary": "A shipping agent sought a refund of withholding tax for 2014–2018 on freight collected for a Chinese shipping company. ZATCA had refused because supporting documents were missing at the objection stage. The committee found the documents were now on file and ZATCA had not challenged them, so the refund was allowed under the China treaty’s shipping article.",
+   "habit": "Agents collecting freight for foreign lines should keep the line’s residency certificate and the agency agreement ready for each period.",
+   "topic": "Shipping and air transport – refund",
+   "outcome": "taxpayer",
+   "status": "final",
+   "date": "2022-09-28",
+   "group": "8",
+   "forum": "sa",
+   "court": "First-instance committee, Riyadh",
+   "year": 2022,
+   "tr": [
+    {
+     "iso": "CN",
+     "arts": [
+      "8"
+     ],
+     "name": "China, People’s Republic of"
+    }
+   ],
+   "keys": [
+    "8"
+   ],
+   "src": [
+    {
+     "t": "Tax Committees Decisions for 2023 – Withholding Tax",
+     "u": "https://gstc.gov.sa/en/DocumentsLb/DecisionsRules/Documents/Tax%20Committees%20Decisions%20for%202023%20-%20Withholding%20Tax%20V1.0_EN.pdf#page=172",
+     "p": 172,
+     "ar": false
+    }
+   ],
+   "level": "first"
+  },
+  {
+   "id": "ISR-2023-1895",
+   "title": "Malaysia treaty not applied to technical services, but 5% rate restored",
+   "summary": "ZATCA applied 15% to support services from a Malaysian company as related-party payments. The committee found the companies were not related and cut the rate to 5%. It declined to apply the Malaysia treaty articles the taxpayer cited, holding they dealt with royalties and PE profits while these were independent technical services; the claim form also named the wrong country in one language.",
+   "habit": "Cite the right treaty article for the income type and make sure the Arabic and English forms say the same thing.",
+   "topic": "Services – choosing the article",
+   "outcome": "split",
+   "status": "open",
+   "date": "2022-11-08",
+   "group": "7",
+   "forum": "sa",
+   "court": "First-instance committee, Riyadh",
+   "year": 2022,
+   "tr": [
+    {
+     "iso": "MY",
+     "arts": [
+      "7",
+      "12",
+      "3"
+     ],
+     "name": "Malaysia"
+    }
+   ],
+   "keys": [
+    "3",
+    "7",
+    "12"
+   ],
+   "src": [
+    {
+     "t": "Tax Committees Decisions for 2023 – Withholding Tax",
+     "u": "https://gstc.gov.sa/en/DocumentsLb/DecisionsRules/Documents/Tax%20Committees%20Decisions%20for%202023%20-%20Withholding%20Tax%20V1.0_EN.pdf#page=244",
+     "p": 244,
+     "ar": false
+    }
+   ],
+   "level": "first"
+  },
+  {
+   "id": "IZD-2022-1395",
+   "title": "UK franchisor keeps the 8% treaty rate after showing it earned the royalties",
+   "summary": "A Saudi franchisee withheld 8% on royalties paid to a UK group company. ZATCA charged 15%, arguing the real owner of the brand was the US parent and the UK and Singapore companies were only conduits, with no Saudi–US treaty to fall back on. The committee read the franchise agreements and the UK company’s accounts, which showed Middle East franchise income booked in the UK company, and accepted it as the beneficial owner. The late-payment fine fell with the tax.",
+   "habit": "For royalties to a group licensor, keep the licensor’s accounts showing the income in its own books, not just the licence agreement.",
+   "topic": "Royalties – beneficial owner",
+   "outcome": "taxpayer",
+   "status": "upheld",
+   "date": "2022-06-15",
+   "group": "12",
+   "forum": "sa",
+   "court": "First-instance committee, Dammam",
+   "year": 2022,
+   "tr": [
+    {
+     "iso": "GB",
+     "arts": [
+      "12"
+     ],
+     "name": "United Kingdom"
+    }
+   ],
+   "keys": [
+    "12"
+   ],
+   "src": [
+    {
+     "t": "Tax Committees Decisions for 2023 – Withholding Tax",
+     "u": "https://gstc.gov.sa/en/DocumentsLb/DecisionsRules/Documents/Tax%20Committees%20Decisions%20for%202023%20-%20Withholding%20Tax%20V1.0_EN.pdf#page=40",
+     "p": 40,
+     "ar": false
+    }
+   ],
+   "level": "first"
+  },
+  {
+   "id": "IZD-2022-1400",
+   "title": "Singapore and UK franchisors accepted as beneficial owners",
+   "summary": "This is the earlier period (2014–2015) of the franchise dispute in IZD-2022-1395. ZATCA said the US parent was the true owner of the franchise income. The committee found the agreements gave the Singapore company (to 2016) and then the UK company the right to grant Middle East franchises, and their accounts showed the income, so the treaty rate applied. It rejected the taxpayer’s argument that ZATCA was out of time.",
+   "habit": "When a regional licensor changes, keep each licensor’s agreement and accounts for the years it held the rights.",
+   "topic": "Royalties – beneficial owner",
+   "outcome": "taxpayer",
+   "status": "open",
+   "date": "2022",
+   "group": "12",
+   "forum": "sa",
+   "court": "First-instance committee, Dammam",
+   "year": 2022,
+   "tr": [
+    {
+     "iso": "SG",
+     "arts": [
+      "12"
+     ],
+     "name": "Singapore"
+    },
+    {
+     "iso": "GB",
+     "arts": [
+      "12"
+     ],
+     "name": "United Kingdom"
+    }
+   ],
+   "keys": [
+    "12"
+   ],
+   "src": [
+    {
+     "t": "Main Defenses Raised before Tax Committees 2022",
+     "u": "https://gstc.gov.sa/en/DocumentsLb/DecisionsRules/Documents/Main%20Defenses%20Raised%20before%20Tax%20Committees%20for%202022.pdf#page=540",
+     "p": 540,
+     "ar": false
+    }
+   ],
+   "level": "first"
+  },
+  {
+   "id": "IZD-2022-1870",
+   "title": "Software bought through a UAE distributor: 15%, not the 10% treaty rate",
+   "summary": "A Saudi company paid a UAE company for software and claimed the UAE treaty’s 10% cap on royalties. The committee held the UAE company was a distributor of the programs, not their beneficial owner, so the cap did not apply and 15% stood. It also rejected a time-bar argument.",
+   "habit": "For software routed through a regional distributor, check who owns the rights before applying a treaty cap.",
+   "topic": "Royalties – distributor not beneficial owner",
+   "outcome": "zatca",
+   "status": "open",
+   "date": "2022",
+   "group": "12",
+   "forum": "sa",
+   "court": "First-instance committee, Dammam",
+   "year": 2022,
+   "tr": [
+    {
+     "iso": "AE",
+     "arts": [
+      "12"
+     ],
+     "name": "United Arab Emirates"
+    }
+   ],
+   "keys": [
+    "12"
+   ],
+   "src": [
+    {
+     "t": "Main Defenses Raised before Tax Committees 2022",
+     "u": "https://gstc.gov.sa/en/DocumentsLb/DecisionsRules/Documents/Main%20Defenses%20Raised%20before%20Tax%20Committees%20for%202022.pdf#page=545",
+     "p": 545,
+     "ar": false
+    }
+   ],
+   "level": "first"
+  },
+  {
+   "id": "IZJ-2022-2081",
+   "title": "French technical support taxed: no proof of what was done or where",
+   "summary": "A contractor said technical support from France for 2006–2012 was performed wholly in France for French entities. ZATCA found the costs covered support both inside and outside Saudi Arabia and applied withholding tax, relying on the business-profits article of the France treaty. The committee rejected the objection because the taxpayer never showed the nature of the services, where they were performed, or why the treaty applied.",
+   "habit": "For services claimed as performed abroad, keep timesheets, deliverables and travel records that show where the work was done.",
+   "topic": "Services – where performed",
+   "outcome": "zatca",
+   "status": "final",
+   "date": "1443–1444 AH (2022)",
+   "group": "7",
+   "forum": "sa",
+   "court": "First-instance committee, Jeddah",
+   "year": 2022,
+   "tr": [
+    {
+     "iso": "FR",
+     "arts": [
+      "14"
+     ],
+     "name": "France"
+    }
+   ],
+   "keys": [
+    "7"
+   ],
+   "src": [
+    {
+     "t": "Tax Committees Decisions for 2023 – Withholding Tax",
+     "u": "https://gstc.gov.sa/en/DocumentsLb/DecisionsRules/Documents/Tax%20Committees%20Decisions%20for%202023%20-%20Withholding%20Tax%20V1.0_EN.pdf#page=79",
+     "p": 79,
+     "ar": false
+    }
+   ],
+   "level": "first"
+  },
+  {
+   "id": "IR-2021-190",
+   "title": "French company’s licensed office was preparatory work, not a PE",
+   "summary": "The French company’s investment licence barred it from carrying on business in Saudi Arabia. The first committee relied on the licence and on the France treaty, which treats preparatory or auxiliary activities as not creating a PE, and ruled for the taxpayer. The appeal committee agreed and dismissed ZATCA’s appeal.",
+   "habit": "Where an office is meant to be preparatory only, keep the licence terms and the day-to-day activity consistent with that.",
+   "topic": "Permanent establishment – preparatory or auxiliary",
+   "outcome": "taxpayer",
+   "status": "final",
+   "date": "09/02/1443 AH (2021)",
+   "group": "7",
+   "forum": "sa",
+   "court": "Appeal committee, Riyadh",
+   "year": 2021,
+   "tr": [
+    {
+     "iso": "FR",
+     "arts": [
+      "14"
+     ],
+     "name": "France"
+    }
+   ],
+   "keys": [
+    "7"
+   ],
+   "src": [
+    {
+     "t": "Body of Principles 2020–2021, Vol. 1",
+     "u": "https://gstc.gov.sa/en/DocumentsLb/DecisionsRules/Documents/Body%20of%20Principles%20Derived%20from%20Decisions%20of%20Zakat%20and%20Tax%20Appeal%20Committees%20for%20the%20years%20of%202020-2021%20Volume%20.pdf#page=57",
+     "p": 57,
+     "ar": false
+    }
+   ],
+   "level": "appeal",
+   "artnote": true
+  },
+  {
+   "id": "IR-2021-244",
+   "title": "“The payees are in treaty countries” is not evidence",
+   "summary": "A branch objected to withholding tax on payments it said were exempt because the payees were in countries with Saudi treaties. It gave no evidence for any payee. The appeal committee dismissed the item as unsupported.",
+   "habit": "Claim treaty relief payee by payee, with the residency certificate and the article relied on for each.",
+   "topic": "Blanket treaty claims",
+   "outcome": "zatca",
+   "status": "final",
+   "date": "1442–1443 AH (2021)",
+   "group": "7",
+   "forum": "sa",
+   "court": "Appeal committee, Riyadh",
+   "year": 2021,
+   "tr": [],
+   "keys": [
+    "7",
+    "12"
+   ],
+   "src": [
+    {
+     "t": "Body of Principles 2020–2021, Vol. 1",
+     "u": "https://gstc.gov.sa/en/DocumentsLb/DecisionsRules/Documents/Body%20of%20Principles%20Derived%20from%20Decisions%20of%20Zakat%20and%20Tax%20Appeal%20Committees%20for%20the%20years%20of%202020-2021%20Volume%20.pdf#page=206",
+     "p": 206,
+     "ar": false
+    }
+   ],
+   "level": "appeal"
+  },
+  {
+   "id": "IR-2021-7",
+   "title": "Interest paid to a French bank’s Bahrain branch: treaty point sent back",
+   "summary": "A Saudi borrower paid interest to the Bahrain branch of a French bank and argued the France treaty applied because the bank is resident in France. ZATCA said the payee was the Bahrain branch, not the bank in France. The first committee had not dealt with the treaty point raised in a supplementary memo, so the appeal committee returned the item for a decision on it.",
+   "habit": "Where the payee is a branch in a third country, set out why the head-office state’s treaty applies and document it early.",
+   "topic": "Interest – payee’s branch in a third country",
+   "outcome": "remanded",
+   "status": "final",
+   "date": "06/06/1442 AH (2021)",
+   "group": "11",
+   "forum": "sa",
+   "court": "Appeal committee, Riyadh",
+   "year": 2021,
+   "tr": [
+    {
+     "iso": "FR",
+     "arts": [
+      "7"
+     ],
+     "name": "France"
+    }
+   ],
+   "keys": [
+    "11"
+   ],
+   "src": [
+    {
+     "t": "Body of Principles 2020–2021, Vol. 1",
+     "u": "https://gstc.gov.sa/en/DocumentsLb/DecisionsRules/Documents/Body%20of%20Principles%20Derived%20from%20Decisions%20of%20Zakat%20and%20Tax%20Appeal%20Committees%20for%20the%20years%20of%202020-2021%20Volume%20.pdf#page=196",
+     "p": 196,
+     "ar": false
+    }
+   ],
+   "level": "appeal"
+  },
+  {
+   "id": "IR-2020-42",
+   "title": "Refund claim under the France treaty sent back: the committee had not dealt with it",
+   "summary": "A French company’s Saudi branch sought a refund of withholding tax on head-office charges for services performed outside Saudi Arabia, relying on the France treaty. The first committee had not decided that actual request. The appeal committee cancelled its decision and returned the case for a fresh hearing limited to the refund claim under the law and the treaty.",
+   "habit": "State the treaty relief you want as a separate, specific request so the committee must rule on it.",
+   "topic": "Procedure – treaty claim not addressed",
+   "outcome": "remanded",
+   "status": "final",
+   "date": "22/12/1441 AH (2020)",
+   "group": "7",
+   "forum": "sa",
+   "court": "Appeal committee, Riyadh",
+   "year": 2020,
+   "tr": [
+    {
+     "iso": "FR",
+     "arts": [
+      "14"
+     ],
+     "name": "France"
+    }
+   ],
+   "keys": [
+    "7"
+   ],
+   "src": [
+    {
+     "t": "Body of Principles 2020–2021, Vol. 1",
+     "u": "https://gstc.gov.sa/en/DocumentsLb/DecisionsRules/Documents/Body%20of%20Principles%20Derived%20from%20Decisions%20of%20Zakat%20and%20Tax%20Appeal%20Committees%20for%20the%20years%20of%202020-2021%20Volume%20.pdf#page=121",
+     "p": 121,
+     "ar": false
+    }
+   ],
+   "level": "appeal",
+   "artnote": true
+  },
+  {
+   "id": "IR-2020-47",
+   "title": "Believing a treaty applied is no excuse for paying late",
+   "summary": "The taxpayer delayed paying tax on a contract because it believed a tax treaty exempted it. The appeal committee held that ignorance or a mistaken reading of the law is not an excuse, so the late-payment fine on that contract stood.",
+   "habit": "If a treaty position is uncertain, pay and claim a refund rather than delaying payment.",
+   "topic": "Late-payment fines",
+   "outcome": "zatca",
+   "status": "final",
+   "date": "26/12/1441 AH (2020)",
+   "group": "7",
+   "forum": "sa",
+   "court": "Appeal committee, Riyadh",
+   "year": 2020,
+   "tr": [],
+   "keys": [
+    "7"
+   ],
+   "src": [
+    {
+     "t": "Body of Principles 2020–2021, Vol. 1",
+     "u": "https://gstc.gov.sa/en/DocumentsLb/DecisionsRules/Documents/Body%20of%20Principles%20Derived%20from%20Decisions%20of%20Zakat%20and%20Tax%20Appeal%20Committees%20for%20the%20years%20of%202020-2021%20Volume%20.pdf#page=113",
+     "p": 113,
+     "ar": false
+    }
+   ],
+   "level": "appeal"
+  },
+  {
+   "id": "IR-2020-58",
+   "title": "UK no-PE refund claim (183 days) returned for a hearing on the treaty",
+   "summary": "The taxpayer sought a refund of withholding tax for 2011–2013 on payments to a UK company, arguing that the UK staff never reached the 183-day threshold in the UK treaty, so there was no PE. ZATCA said the company had a physical presence. Because the first committee had not decided the claim as framed, the appeal committee sent it back to be heard under the law and the specific treaty relied on.",
+   "habit": "Build the PE file before the claim: visit days per person and per project, against the treaty’s own test.",
+   "topic": "Procedure – treaty claim not addressed",
+   "outcome": "remanded",
+   "status": "final",
+   "date": "07/01/1442 AH (2020)",
+   "group": "5",
+   "forum": "sa",
+   "court": "Appeal committee, Riyadh",
+   "year": 2020,
+   "tr": [
+    {
+     "iso": "GB",
+     "arts": [
+      "5"
+     ],
+     "name": "United Kingdom"
+    }
+   ],
+   "keys": [
+    "5"
+   ],
+   "src": [
+    {
+     "t": "Body of Principles 2020–2021, Vol. 1",
+     "u": "https://gstc.gov.sa/en/DocumentsLb/DecisionsRules/Documents/Body%20of%20Principles%20Derived%20from%20Decisions%20of%20Zakat%20and%20Tax%20Appeal%20Committees%20for%20the%20years%20of%202020-2021%20Volume%20.pdf#page=139",
+     "p": 139,
+     "ar": false
+    }
+   ],
+   "level": "appeal"
+  },
+  {
+   "id": "IR-2020-72",
+   "title": "Branch payments to an Italian head office still attract withholding tax",
+   "summary": "An Italian company’s Saudi branch argued that the Italy treaty treats head office and branch as one entity, so its payments to head office for services could not bear withholding tax. The appeal committee found nothing in the treaty that bars withholding tax: the articles relied on concern taxing profits and relieving double tax, while withholding tax is triggered by the payment itself. The same view was taken in IR-2020-46.",
+   "habit": "Do not assume the business-profits article stops withholding on branch-to-head-office charges; plan for the tax.",
+   "topic": "Branch payments to head office",
+   "outcome": "zatca",
+   "status": "final",
+   "date": "1441–1442 AH (2020)",
+   "group": "7",
+   "forum": "sa",
+   "court": "Appeal committee, Riyadh",
+   "year": 2020,
+   "tr": [
+    {
+     "iso": "IT",
+     "arts": [
+      "7"
+     ],
+     "name": "Italy"
+    }
+   ],
+   "keys": [
+    "7"
+   ],
+   "src": [
+    {
+     "t": "Body of Principles 2020–2021, Vol. 2",
+     "u": "https://gstc.gov.sa/en/DocumentsLb/DecisionsRules/Documents/Body%20of%20Principles%20Derived%20from%20Decisions%20of%20Zakat%20and%20Tax%20Appeal%20Committees%20for%20the%20years%20of%202020-2021%20%28Volume%202%29%20.pdf#page=551",
+     "p": 551,
+     "ar": false
+    },
+    {
+     "t": "Body of Principles 2020–2021, Vol. 2",
+     "u": "https://gstc.gov.sa/en/DocumentsLb/DecisionsRules/Documents/Body%20of%20Principles%20Derived%20from%20Decisions%20of%20Zakat%20and%20Tax%20Appeal%20Committees%20for%20the%20years%20of%202020-2021%20%28Volume%202%29%20.pdf#page=510",
+     "p": 510,
+     "ar": false,
+     "d": "IR-2020-46"
+    }
+   ],
+   "also": [
+    "IR-2020-46"
+   ],
+   "level": "appeal"
+  },
+  {
+   "id": "IT(IT)A 2389 & 2399/Bang/2024",
+   "title": "India: interconnect and roaming payments to STC are not royalties",
+   "summary": "An Indian operator paid Saudi Telekom for international interconnection and roaming. The tax department treated the payments as royalties taxable in India. The tribunal followed the Karnataka High Court, whose ruling the Supreme Court declined to disturb, and held they are not royalties; with no Indian PE, the department’s appeals were dismissed.",
+   "habit": "For telecom settlements, the royalty question turns on whether any right to use equipment or process passes, not on the label.",
+   "topic": "Royalties – telecom interconnection",
+   "outcome": "taxpayer",
+   "status": "open",
+   "date": "13 Feb 2025",
+   "group": "12",
+   "forum": "in",
+   "court": "Income Tax Appellate Tribunal, Bangalore",
+   "year": 2025,
+   "tr": [
+    {
+     "iso": "IN",
+     "arts": [
+      "12"
+     ],
+     "name": "India"
+    }
+   ],
+   "keys": [
+    "12"
+   ],
+   "src": [
+    {
+     "t": "Copy of the order (BharatTax)",
+     "u": "https://bharattax.net/case/22513"
+    }
+   ],
+   "name": "DCIT (International Taxation) v. Saudi Telekom Company",
+   "ay": "2009-10",
+   "level": "tribunal"
+  },
+  {
+   "id": "ITA 1408/Mum/2025",
+   "title": "India: GOSI’s gains on rights entitlements taxable only in Saudi Arabia",
+   "summary": "GOSI, a Saudi resident, sold rights entitlements attached to shares in an Indian company. The tax department taxed the gains as gains on shares. The tribunal held rights entitlements are a separate asset from shares, so the share paragraphs of the capital gains article do not apply and the residual paragraph gives Saudi Arabia the sole right to tax.",
+   "habit": "Map each instrument to the right paragraph of the capital gains article; rights entitlements are not shares.",
+   "topic": "Capital gains – rights entitlements",
+   "outcome": "taxpayer",
+   "status": "open",
+   "date": "22 May 2025",
+   "group": "13",
+   "forum": "in",
+   "court": "Income Tax Appellate Tribunal, Mumbai",
+   "year": 2025,
+   "tr": [
+    {
+     "iso": "IN",
+     "arts": [
+      "13"
+     ],
+     "name": "India"
+    }
+   ],
+   "keys": [
+    "13"
+   ],
+   "src": [
+    {
+     "t": "Copy of the order (BharatTax)",
+     "u": "https://bharattax.net/case/17597"
+    },
+    {
+     "t": "Case note (TaxTMI)",
+     "u": "https://www.taxmanagementindia.com/visitor/Detail_Case_Laws.asp?ID=771394"
+    }
+   ],
+   "name": "General Organization for Social Insurance v. ACIT (International Taxation)",
+   "ay": "2022-23",
+   "level": "tribunal"
+  },
+  {
+   "id": "AAR No. 25 of 2016",
+   "title": "India: Aramco’s Indian support subsidiary is not its PE",
+   "summary": "Saudi Aramco asked whether its Indian subsidiary, set up to provide procurement and marketing support, would create a PE in India under the India treaty. The Authority ruled it would not: Aramco’s core business is carried on from Saudi Arabia, the subsidiary carries on its own support business, and it is paid at arm’s length.",
+   "habit": "For Saudi groups setting up support subsidiaries abroad, keep the subsidiary’s role, contracts and arm’s-length pay consistent with a support function.",
+   "topic": "PE – subsidiary providing support services",
+   "outcome": "taxpayer",
+   "status": "ruling",
+   "date": "31 May 2018",
+   "group": "5",
+   "forum": "in",
+   "court": "Authority for Advance Rulings, New Delhi",
+   "year": 2018,
+   "tr": [
+    {
+     "iso": "IN",
+     "arts": [
+      "5"
+     ],
+     "name": "India"
+    }
+   ],
+   "keys": [
+    "5"
+   ],
+   "src": [
+    {
+     "t": "Ruling text (TaxTMI)",
+     "u": "https://www.taxmanagementindia.com/visitor/detail_case_laws.asp?ID=361729"
+    },
+    {
+     "t": "BCAJ summary",
+     "u": "https://bcajonline.org/journal/19-ts-302-aar-2018-saudi-arabian-oil-company-v-dcit-aar-no-25-of-2016-dated-31st-may-2018/"
+    }
+   ],
+   "name": "Saudi Arabian Oil Company, In re",
+   "level": "ruling"
+  },
+  {
+   "id": "ITA 1104/Bang/2013",
+   "title": "India: count calendar days, not man-days; no FTS article means Saudi-only taxation",
+   "summary": "A Saudi company sent four engineers to India for 90 days. The tribunal counted calendar days, not the sum of each engineer’s days, so the 182-day service-PE test in the India treaty was not met. Because the treaty has no article on fees for technical services, such fees fall under the other-income article and are taxable only in Saudi Arabia. Whether the payment was a royalty or a service fee was sent back to the assessing officer for the facts.",
+   "habit": "For Saudi service providers working in India, keep a day count per calendar day across the team, and describe the work clearly in the contract and invoices.",
+   "topic": "Service PE days; no FTS article",
+   "outcome": "taxpayer",
+   "status": "part-remanded",
+   "date": "28 Sep 2017",
+   "group": "5",
+   "forum": "in",
+   "court": "Income Tax Appellate Tribunal, Bangalore",
+   "year": 2017,
+   "tr": [
+    {
+     "iso": "IN",
+     "arts": [
+      "5",
+      "22"
+     ],
+     "name": "India"
+    }
+   ],
+   "keys": [
+    "5",
+    "21"
+   ],
+   "src": [
+    {
+     "t": "Copy of the order (BharatTax)",
+     "u": "https://bharattax.net/case/623132"
+    },
+    {
+     "t": "PwC India alert, 13 Oct 2017",
+     "u": "https://www.pwc.in/assets/pdfs/news-alert-tax/2017/pwc_news_alert_13_october_2017_solar_days_are_relevant_for_determination.pdf"
+    }
+   ],
+   "name": "Electrical Material Center Co. Ltd. v. DDIT (International Taxation)",
+   "ay": "2010-11",
+   "level": "tribunal"
+  }
+ ]
+}
