@@ -298,4 +298,18 @@ describe('KSA DMT Study page', () => {
       for (const c of m.cards) assert.ok(arabic.test(c.f[1]) && arabic.test(c.b[1]), c.f[0]);
     }
   });
+
+  test('every key point has a plain line and every case a bottom line and a diagram, in both languages', () => {
+    const { modules } = embedded('course-data');
+    for (const m of modules) {
+      assert.ok(m.terms.length >= 5, `module ${m.id} words`);
+      for (const t of m.terms) assert.ok(t.t[0] && arabic.test(t.t[1]) && t.d[0] && arabic.test(t.d[1]), t.t[0]);
+      for (const p of m.points) assert.ok(p.p && p.p[0] && arabic.test(p.p[1]), `module ${m.id}: ${p.h[0]}`);
+      assert.ok(m.diagrams.some((d) => d.quick || d.pos === 'picture'), `module ${m.id} has a diagram in Quick view`);
+      for (const c of m.cases) {
+        assert.ok(c.p && c.p[0] && arabic.test(c.p[1]), `module ${m.id}: ${c.t[0]}`);
+        assert.ok(c.diagrams.length >= 1, `module ${m.id}: ${c.t[0]} diagram`);
+      }
+    }
+  });
 });

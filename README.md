@@ -9,7 +9,7 @@ Four static pages, with no build step and no cookies or tracking:
 - `index.html`: services, how client books are kept safe, free tools, and how to get in touch. No JavaScript.
 - `saudi-wht-checker/index.html`: the **Saudi WHT Checker** at https://shamoilp.github.io/saudi-wht-checker/. It runs its rules in the visitor's browser and sends nothing anywhere.
 - `ksa-treaty-library/`: the **KSA Treaty Library** at https://shamoilp.github.io/ksa-treaty-library/. Saudi Arabia's treaties article by article: the text, a plain-words guide with diagrams, the OECD Commentary digest and the BEPS MLI changes. The UAE treaty also has an unofficial English translation. The page reads its own JSON files in `ksa-treaty-library/data/` and loads nothing from other sites.
-- `ksa-dmt-study/index.html`: the **KSA DMT Study** at https://shamoilp.github.io/ksa-dmt-study/. A study course on Saudi Arabia's draft Domestic Minimum Tax (Pillar Two) Law in English and Arabic: 15 modules, 45 case studies, 180 quiz questions and spaced-repetition flashcards, with the draft's 106 articles in a side-by-side reader. One self-contained file that also works offline. It keeps the visitor's study progress in their own browser (one `localStorage` key, `ksaDmtStudy.v1`) and sends nothing anywhere.
+- `ksa-dmt-study/index.html`: the **KSA DMT Study** at https://shamoilp.github.io/ksa-dmt-study/. A study course on Saudi Arabia's draft Domestic Minimum Tax (Pillar Two) Law in English and Arabic: 15 modules, 45 case studies with diagrams, 180 quiz questions and spaced-repetition flashcards, with the draft's 106 articles in a side-by-side reader. Every key point leads with a one-line plain version, and a Quick view shows just the essentials. One self-contained file that also works offline. It keeps the visitor's study progress in their own browser (one `localStorage` key, `ksaDmtStudy.v1`) and sends nothing anywhere.
 
 ## Edit and preview
 
@@ -43,7 +43,7 @@ When a source changes, edit the entry, update `asAt` in `index.json`, and keep t
 
 ## Updating the KSA DMT Study
 
-The page is built from source files kept outside this repo: the page template, one JSON file per module (picture, anchors, diagrams, key points, OECD notes, reflection, three case studies, twelve quiz questions, twelve flashcards) and the article text extracted from the bilingual draft. A build step checks every English/Arabic pair, every article reference, every quiz answer and every case-study calculation, then writes one `index.html` with the course and the law embedded in it. Publish by replacing `ksa-dmt-study/index.html` with the new build.
+The page is built from source files kept outside this repo: the page template, one JSON file per module (picture, anchors, words to know, diagrams, key points with plain lines, OECD notes, reflection, three case studies with diagrams and bottom lines, twelve quiz questions, twelve flashcards) and the article text extracted from the bilingual draft. A build step checks every English/Arabic pair, every article reference, every quiz answer and every case-study calculation, then writes one `index.html` with the course and the law embedded in it. Publish by replacing `ksa-dmt-study/index.html` with the new build.
 
 When the final law or the Regulations are issued, re-extract the articles, re-check every module against the new numbering, and update the dates under "Sources and dates" on the page's About screen. `ksa-dmt-study/og.jpg` is the image shown when the link is shared.
 
