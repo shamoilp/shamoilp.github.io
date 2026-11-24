@@ -329,6 +329,27 @@ describe('KSA DMT Study page', () => {
     }
   });
 
+  test('quiz answers are not given away by length or position, and options are shuffled on screen', () => {
+    const { modules } = embedded('course-data');
+    let longest = 0, total = 0;
+    for (const m of modules) {
+      const pos = [0, 0, 0, 0];
+      let modLongest = 0;
+      for (const q of m.quiz) {
+        total++; pos[q.a]++;
+        const len = q.o.map((o) => o[0].length);
+        const others = len.filter((_, j) => j !== q.a);
+        if (len[q.a] > Math.max(...others)) { longest++; modLongest++; }
+        if (len[q.a] >= 25) assert.ok(len[q.a] <= 1.2 * Math.max(...others), `module ${m.id}: ${q.q[0]}`);
+      }
+      assert.ok(modLongest <= 4, `module ${m.id}: correct option is the longest in ${modLongest} questions`);
+      for (const p of pos) assert.ok(p >= 2 && p <= 4, `module ${m.id} answer positions ${pos}`);
+    }
+    assert.ok(longest / total <= 0.3, `picking the longest option scores ${longest}/${total}`);
+    assert.match(studyHtml, /order\(x\.o\.length, q\.seed, qi\)/);
+    assert.match(studyHtml, /if \(s\.qv !== QV\) \{ s\.quiz = \{\}; s\.qv = QV; \}/);
+  });
+
   test('every key point has a plain line and every case a bottom line and a diagram, in both languages', () => {
     const { modules } = embedded('course-data');
     for (const m of modules) {
