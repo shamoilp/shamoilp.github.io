@@ -189,6 +189,26 @@ main.tool #arts{display:none}
 @media(max-width:1100px){main{grid-template-columns:250px minmax(0,1fr)}main.tool{grid-template-columns:250px minmax(0,1fr)}.trail{display:flex}.tabs button{padding:10px 12px;font-size:14px}}
 @media(min-width:701px) and (max-width:1100px){main.showarts #side{display:none}main.showarts #arts{display:block}main:not(.showarts) #arts{display:none}}
 @media(max-width:700px){header p{display:none}header .as{margin-inline-start:0}main,main.tool{grid-template-columns:minmax(0,1fr)}#side,#arts,#read{display:none}main.v-list #side{display:block}main.v-arts #arts{display:block}main.v-read #read{display:block}main.tool.v-read #arts{display:none}}
+.c-plain{display:none}
+@media(min-width:2300px){
+  body{font-size:17px}
+  main{grid-template-columns:280px 300px minmax(0,1fr)}
+  main.tool{grid-template-columns:280px minmax(0,1fr)}
+  #read.art{display:flex;flex-direction:column;overflow:hidden}
+  #read.art .rhead{padding-inline:var(--gut)}
+  #read.art .cols{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr)}
+  #read.art .c-text,#read.art .c-side,#read.art .c-plain{overflow-y:auto;min-height:0}
+  #read.art .c-text{border-inline-end:1px solid var(--line)}
+  #read.art .tabs{border-top:0}
+  #read.art .bi .col>*{max-width:82ch;margin-inline:auto}
+  main.tool #read{--mw:1680px}
+}
+@media(min-width:3000px){
+  #read.art .cols{grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr)}
+  #read.art .c-plain{display:block;padding:16px var(--gut) 48px;border-inline-end:1px solid var(--line)}
+  #read.art .c-plain .ph{display:block;margin-top:6px}
+  main.tool #read{--mw:2400px}
+}
 @media print{header,.trail,#side,#arts,.tabs,.lang{display:none!important}main{display:block}#read{overflow:visible}.panel{display:block!important}}
 </style>
 </head>
@@ -223,6 +243,7 @@ const get = p => cache[p] || (cache[p] = OFF && OFF[p] ? Promise.resolve(OFF[p])
 const setHash = h => { try { if (location.hash.slice(1) !== h) history.replaceState(null, '', '#' + h); } catch (e) {} };
 const main = $('#main'), side = $('#side'), arts = $('#arts'), read = $('#read');
 const TOOLS = [['year','Which rules apply to my year?'],['calc','Zakat base walkthrough (1445H)'],['map','Old to new Zakat map'],['issues','How the old rulings apply now'],['cases','Committee principles'],['guides','ZATCA guidelines and FAQs'],['numbers','Key numbers and deadlines'],['glossary','Glossary'],['drafts','Draft laws 2023']];
+const ULTRA = matchMedia('(min-width:3000px)');
 let IDX = null, EX = null, cur = {i:null, n:null, tab:'plain', tool:null}, lang = matchMedia('(min-width:1500px)').matches ? 'both' : 'en';
 const inst = id => IDX.inst.find(x => x.id === id);
 const artLabel = (id, n) => (id === 'deemed' ? 'Rule ' : 'Article ') + String(n).replace('bis', ' bis');
@@ -277,21 +298,25 @@ async function openArt(id, n, tab) {
   const tabs = [['plain','In plain words'],['guides','Guidelines (' + myGuides.length + ')'],['cases','Committee principles (' + myCases.length + ')'],['map', id === 'itl' || id === 'itr' ? 'Law and Bylaws' : 'Old and new']];
   if (dr.length) tabs.push(['draft','Draft law (' + dr.length + ')']);
   if (!tabs.some(t => t[0] === cur.tab)) cur.tab = 'plain';
+  const ultra = ULTRA.matches, sideTabs = ultra ? tabs.filter(t => t[0] !== 'plain') : tabs;
+  const firstTab = ultra && cur.tab === 'plain' ? (myCases.length ? 'cases' : 'guides') : cur.tab;
   let h = '<div class="rhead"><p class="who">' + esc(m.name) + '</p><h2>' + esc(artLabel(id, cur.n)) + (a.t ? ' · ' + esc(a.t) : '') + '</h2>' +
     '<p class="who"><span class="st ' + a.st + '">' + ST[a.st] + '</span>' + esc(m.ref) + '</p><div class="links">' +
     (m.enurl ? '<a href="' + esc(m.enurl) + '" target="_blank" rel="noopener">English source</a>' : '') + (m.arurl ? '<a href="' + esc(m.arurl) + '" target="_blank" rel="noopener">Arabic source (official)</a>' : '') + '</div></div>';
+  h += '<div class="cols"><div class="c-text">';
   h += '<div class="tbar"><div class="lang" role="group" aria-label="Language"><button data-lang="en" aria-pressed="' + (lang === 'en') + '">English</button><button data-lang="ar" lang="ar" aria-pressed="' + (lang === 'ar') + '">العربية</button><button data-lang="both" aria-pressed="' + (lang === 'both') + '">Both</button></div>' + (a.stn ? '<p class="warn"><b>' + ST[a.st] + ':</b> ' + esc(a.stn) + '</p>' : '') + '</div>';
   h += '<div class="bi ' + (lang === 'both' ? 'both' : 'only-' + lang) + '" id="bi"><div class="col" dir="ltr"><h4>' + esc(m.enlab) + '</h4>' + (a.enw ? '<p class="warn">' + esc(a.enw) + '</p>' : '') + (a.en ? paras(a.en) : '<p class="empty">' + (a.st === 'deleted' || a.st === 'repealed' ? 'No current text.' : 'No English text.') + '</p>') + '</div>' +
     '<div class="col" dir="rtl" lang="ar"><h4>النص العربي الرسمي' + (a.ta ? ' · ' + esc(a.ta) : '') + '</h4>' + (a.ar ? paras(a.ar) : '<p class="empty" dir="ltr" lang="en">' + esc(a.arnote || 'No Arabic text.') + '</p>') + '</div></div>';
   if (a.fn && a.fn.length) h += '<div class="text"><details><summary>Amendment notes from the official Arabic (' + a.fn.length + ')</summary><p class="hint">Printed as footnotes in the consolidated Arabic text. A footnote can sit beside a neighbouring article on the same page. English renderings are ours.</p><ul class="fnl">' + a.fn.map(f => '<li>' + esc(f.en) + '<span lang="ar" dir="rtl">' + esc(f.ar) + '</span></li>').join('') + '</ul></details></div>';
-  h += '<div class="tabs" role="tablist" aria-label="Notes on this article">' + tabs.map(([k, nm]) => '<button role="tab" data-tab="' + k + '" aria-selected="' + (cur.tab === k) + '">' + esc(nm) + '</button>').join('') + '</div>';
-  h += '<div class="panel" id="pnl" style="display:block"></div>';
-  read.classList.remove('ovmode'); read.innerHTML = h;
+  h += '</div><div class="c-plain"><p class="ph">In plain words</p>' + (ultra ? plainHTML(id, cur.n, a) : '') + '</div><div class="c-side">';
+  h += '<div class="tabs" role="tablist" aria-label="Notes on this article">' + sideTabs.map(([k, nm]) => '<button role="tab" data-tab="' + k + '" aria-selected="' + (cur.tab === k) + '">' + esc(nm) + '</button>').join('') + '</div>';
+  h += '<div class="panel" id="pnl" style="display:block"></div></div></div>';
+  read.classList.add('art'); read.innerHTML = h;
   const panes = {plain: () => plainHTML(id, cur.n, a), guides: () => guidesHTML(myGuides, id, cur.n), cases: () => casesHTML(myCases), map: () => oldNewHTML(id, cur.n, a), draft: () => draftHTML(dr)};
   const show = k => { cur.tab = k; for (const b of read.querySelectorAll('[data-tab]')) b.setAttribute('aria-selected', b.dataset.tab === k); $('#pnl').innerHTML = panes[k](); bindMore(); setHash(id + '/' + cur.n + (k !== 'plain' ? '/' + k : '')); };
   read.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => show(b.dataset.tab)));
   read.querySelectorAll('[data-lang]').forEach(b => b.addEventListener('click', () => { lang = b.dataset.lang; $('#bi').className = 'bi ' + (lang === 'both' ? 'both' : 'only-' + lang); read.querySelectorAll('[data-lang]').forEach(x => x.setAttribute('aria-pressed', x.dataset.lang === lang)); }));
-  show(cur.tab); read.scrollTop = 0; view('read');
+  show(firstTab); read.scrollTop = 0; view('read');
 }
 function plainHTML(id, n, a) {
   const x = a.n || {}; let h = '';
@@ -324,7 +349,7 @@ function casesHTML(list) {
   return '<p class="hint">Principles quoted in the official English of the GSTC volumes. Links to articles are made by keyword - read the decision before relying on it.</p>' + pageList(list, caseCard, 12);
 }
 let MORE = null;
-function pageList(list, fn, size) { MORE = {list, fn, size, shown: size}; return '<div id="plist">' + list.slice(0, size).map(fn).join('') + '</div>' + (list.length > size ? '<div class="more"><button id="morebtn">Show more (' + (list.length - size) + ' left)</button></div>' : ''); }
+function pageList(list, fn, size) { MORE = {list, fn, size, shown: size}; return '<div id="plist" class="cgrid">' + list.slice(0, size).map(fn).join('') + '</div>' + (list.length > size ? '<div class="more"><button id="morebtn">Show more (' + (list.length - size) + ' left)</button></div>' : ''); }
 function bindMore() { const b = $('#morebtn'); if (!b || !MORE) return; b.addEventListener('click', () => { const s = MORE.shown; MORE.shown += MORE.size; $('#plist').insertAdjacentHTML('beforeend', MORE.list.slice(s, MORE.shown).map(MORE.fn).join('')); const left = MORE.list.length - MORE.shown; if (left > 0) b.textContent = 'Show more (' + left + ' left)'; else b.parentNode.remove(); }); }
 function oldNewHTML(id, n, a) {
   let h = '';
@@ -359,6 +384,7 @@ function go(path) { const [i, n, t] = path.split('/'); setHash(path); openArt(i,
 
 // ---------- tools ----------
 function toolShell(k, title, intro, body) {
+  read.classList.remove('art');
   read.innerHTML = '<div class="rhead"><p class="who">Tools and references</p><h2>' + esc(title) + '</h2>' + (intro ? '<p class="who">' + intro + '</p>' : '') + '</div><div class="text">' + body + '</div>';
   bindGo(read); bindMore(); read.scrollTop = 0;
 }
@@ -432,7 +458,7 @@ async function toolMap() {
 }
 async function toolIssues() {
   const cases = await get('data/cases.json'); const byId = Object.fromEntries(cases.map(c => [c.id, c]));
-  const body = '<p class="hint">Recurring questions, how the committees decided them under the earlier rules, and where the answer now sits. The summaries are ours; open each principle to read the committee\'s words.</p>' + EX.issues.map(s => '<div class="issue" id="is-' + s.id + '"><h3>' + esc(s.t) + '</h3><p class="qq">' + esc(s.q) + '</p><dl><dt>Before 2024</dt><dd>' + esc(s.old) + '</dd><dt>Committees</dt><dd>' + s.cases.filter(id => byId[id]).map(id => { const c = byId[id]; return '<details><summary class="q">' + esc(c.p.slice(0, 110)) + (c.p.length > 110 ? '…' : '') + '</summary>' + caseCard(c) + '</details>'; }).join('') + '</dd><dt>Now</dt><dd>' + esc(s.take) + ' ' + arefs(['loans','anp','retained','invest','provisions','statute'].includes(s.id) ? 'z45' : 'itl', s.now) + '</dd></dl><div class="habit"><b>Habit</b>' + esc(s.h) + '</div></div>').join('');
+  const body = '<p class="hint">Recurring questions, how the committees decided them under the earlier rules, and where the answer now sits. The summaries are ours; open each principle to read the committee\'s words.</p><div class="cgrid">' + EX.issues.map(s => '<div class="issue" id="is-' + s.id + '"><h3>' + esc(s.t) + '</h3><p class="qq">' + esc(s.q) + '</p><dl><dt>Before 2024</dt><dd>' + esc(s.old) + '</dd><dt>Committees</dt><dd>' + s.cases.filter(id => byId[id]).map(id => { const c = byId[id]; return '<details><summary class="q">' + esc(c.p.slice(0, 110)) + (c.p.length > 110 ? '…' : '') + '</summary>' + caseCard(c) + '</details>'; }).join('') + '</dd><dt>Now</dt><dd>' + esc(s.take) + ' ' + arefs(['loans','anp','retained','invest','provisions','statute'].includes(s.id) ? 'z45' : 'itl', s.now) + '</dd></dl><div class="habit"><b>Habit</b>' + esc(s.h) + '</div></div>').join('') + '</div>';
   toolShell('issues', 'How the old rulings apply now', '', body);
 }
 async function toolCases(q) {
@@ -444,7 +470,7 @@ async function toolCases(q) {
   ['#cq', '#ck', '#cv'].forEach(s => $(s).addEventListener('input', run)); run();
 }
 function toolGuides() {
-  const body = '<p class="hint">ZATCA guidelines, FAQs and circulars used in this library, with the articles they cite. ZATCA is bound by a guideline for periods after it is issued (1440H Art 30 bis).</p>' + EX.guides.map(g => '<div class="pc"><p class="cm"><b><a href="' + esc(g.u) + '" target="_blank" rel="noopener">' + esc(g.t) + '</a></b>' + (g.d ? ' · ' + esc(g.d) : '') + (g.pages ? ' · ' + g.pages + ' pages' : '') + (g.lang === 'ar' ? ' · Arabic' : '') + '</p>' + (g.refs.length ? '<p class="cm">Cites: ' + g.refs.slice(0, 16).map(r => aref(r[0], r[1])).join(', ') + (g.refs.length > 16 ? ' and ' + (g.refs.length - 16) + ' more' : '') + '</p>' : '') + '</div>').join('');
+  const body = '<p class="hint">ZATCA guidelines, FAQs and circulars used in this library, with the articles they cite. ZATCA is bound by a guideline for periods after it is issued (1440H Art 30 bis).</p><div class="cgrid">' + EX.guides.map(g => '<div class="pc"><p class="cm"><b><a href="' + esc(g.u) + '" target="_blank" rel="noopener">' + esc(g.t) + '</a></b>' + (g.d ? ' · ' + esc(g.d) : '') + (g.pages ? ' · ' + g.pages + ' pages' : '') + (g.lang === 'ar' ? ' · Arabic' : '') + '</p>' + (g.refs.length ? '<p class="cm">Cites: ' + g.refs.slice(0, 16).map(r => aref(r[0], r[1])).join(', ') + (g.refs.length > 16 ? ' and ' + (g.refs.length - 16) + ' more' : '') + '</p>' : '') + '</div>').join('') + '</div>';
   toolShell('guides', 'ZATCA guidelines and FAQs', '', body);
 }
 function toolNumbers() {
@@ -486,6 +512,7 @@ function route() {
   if (i && inst(i)) { if (n) { openArt(i, n, t || 'plain').then(() => bindGo(read)); } else { cur.i = i; renderSide(); renderArts(); view('arts'); } return; }
   openTool('year'); view(matchMedia('(max-width:700px)').matches ? 'list' : 'read');
 }
+if (ULTRA.addEventListener) ULTRA.addEventListener('change', () => { if (cur.i && cur.n && !cur.tool) openArt(cur.i, cur.n).then(() => bindGo(read)); });
 Promise.all([get('data/index.json'), get('data/extra.json')]).then(([i, x]) => {
   IDX = i; EX = x;
   $('#asat').textContent = 'As at ' + new Date(IDX.asOf + 'T00:00:00Z').toLocaleDateString('en-GB', {day:'numeric', month:'long', year:'numeric', timeZone:'UTC'});

@@ -457,6 +457,12 @@ describe('KSA Tax & Zakat Library page', () => {
     for (const r of extra.drafts.ztpl) { assert.ok(r.src, r.topic); for (const n of r.nowITL) assert.ok(exists('itl', n), r.topic); for (const n of r.nowZ) assert.ok(exists('z45', n), r.topic); }
   });
 
+  test('has layouts for ultra-wide screens: text beside notes from 2300px, four columns from 3000px', () => {
+    assert.match(pageHtml, /@media\(min-width:2300px\)\{[^@]*#read\.art \.cols\{[^}]*grid-template-columns:minmax\(0,2fr\) minmax\(0,1fr\)\}/);
+    assert.match(pageHtml, /@media\(min-width:3000px\)\{[^@]*#read\.art \.c-plain\{display:block/);
+    assert.match(pageHtml, /\.bi \.col>\*\{max-width:82ch/);
+  });
+
   test('the earlier 1440H Regulations include Articles 30 bis to 33', () => {
     for (const n of ['30bis', '31', '32', '33']) assert.ok(exists('z40', n), n);
   });
