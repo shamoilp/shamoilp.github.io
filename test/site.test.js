@@ -70,6 +70,7 @@ describe('links', () => {
       'https://shamoilp.github.io/saudi-wht-checker/',
       'https://shamoilp.github.io/ksa-treaty-library/',
       'https://shamoilp.github.io/ksa-dmt-study/',
+      'https://shamoilp.github.io/ksa-tax-zakat-library/',
       'https://github.com/shamoilp/trade-chokepoint',
       'https://github.com/shamoilp/property-game-series',
       'https://github.com/shamoilp/edge-ledger',
@@ -364,3 +365,100 @@ describe('KSA DMT Study page', () => {
     }
   });
 });
+
+describe('KSA Tax & Zakat Library page', () => {
+  const pageHtml = readFileSync(new URL('ksa-tax-zakat-library/index.html', root), 'utf8');
+  const page = new JSDOM(pageHtml).window.document;
+  const pageMeta = (key) => page.querySelector(`meta[property="${key}"], meta[name="${key}"]`)?.content ?? '';
+  const data = (path) => JSON.parse(readFileSync(new URL(`ksa-tax-zakat-library/data/${path}`, root), 'utf8'));
+  const idx = data('index.json');
+  const files = Object.fromEntries(idx.inst.map((m) => [m.id, data(`${m.id}.json`)]));
+  const cases = data('cases.json');
+  const extra = data('extra.json');
+  const exists = (id, n) => Boolean(files[id] && files[id][String(n)]);
+
+  test('has a title, description, canonical address and link preview', () => {
+    assert.match(page.title, /KSA Tax & Zakat Library/);
+    assert.match(pageMeta('description'), /Zakat/);
+    assert.equal(page.querySelector('link[rel="canonical"]')?.getAttribute('href'), 'https://shamoilp.github.io/ksa-tax-zakat-library/');
+    assert.match(pageMeta('og:image'), /^https:\/\/shamoilp\.github\.io\/ksa-tax-zakat-library\/.+\.(png|jpg)$/);
+    assert.notEqual(pageMeta('og:image:alt'), '');
+    assert.ok(existsSync(new URL(new URL(pageMeta('og:image')).pathname.slice(1), root)));
+  });
+
+  test('loads nothing from other sites and stores nothing in the browser', () => {
+    assert.equal(page.querySelectorAll('script[src]').length, 0);
+    assert.equal(page.querySelectorAll('link[rel="stylesheet"], link[rel="preconnect"]').length, 0);
+    assert.doesNotMatch(pageHtml, /XMLHttpRequest|sendBeacon|localStorage|sessionStorage|indexedDB|document\.cookie|googleapis|gstatic/);
+    for (const call of pageHtml.match(/get\('[^']*'/g) ?? []) assert.match(call, /^get\('data\//, call);
+  });
+
+  test('every instrument has its file, a source and an as-at date, and its article list matches the file', () => {
+    assert.match(idx.asOf, /^\d{4}-\d{2}-\d{2}$/);
+    for (const m of idx.inst) {
+      assert.ok(m.arurl.startsWith('https://zatca.gov.sa/'), m.id);
+      assert.ok(m.ref && m.enlab && m.arlab, m.id);
+      assert.deepEqual(m.arts.map((a) => a[0]).sort(), Object.keys(files[m.id]).sort(), m.id);
+    }
+  });
+
+  test('every article that applies has English, and the Arabic where an official text exists', () => {
+    for (const [id, arts] of Object.entries(files)) {
+      for (const [n, a] of Object.entries(arts)) {
+        if (a.st === 'live' || a.st === 'past') assert.ok(a.en.length > 20, `${id} ${n} English`);
+        if ((a.st === 'live' || a.st === 'past') && !['z38', 'deemed'].includes(id)) assert.ok(a.ar.length > 20, `${id} ${n} Arabic`);
+        if (a.st === 'deleted' || a.st === 'repealed') assert.ok(a.stn, `${id} ${n} says what removed it`);
+      }
+    }
+  });
+
+  test('every live article of the Law, the Bylaws and the 1445H Regulations has a plain-words note and a habit', () => {
+    for (const id of ['itl', 'itr', 'z45']) {
+      for (const [n, a] of Object.entries(files[id])) {
+        if (a.st !== 'live' || (id === 'itr' && n === '73')) continue;
+        assert.ok(a.n && a.n.p, `${id} ${n} plain`);
+        assert.ok(a.n.h, `${id} ${n} habit`);
+      }
+    }
+  });
+
+  test('every earlier Zakat article points to an existing 1445H article', () => {
+    for (const id of ['z40', 'z38', 'fin', 'deemed']) {
+      for (const [n, a] of Object.entries(files[id])) for (const k of a.now) assert.ok(exists('z45', k), `${id} ${n} -> ${k}`);
+    }
+    for (const [n, a] of Object.entries(files.itr)) for (const k of a.law) assert.ok(exists('itl', k), `itr ${n} -> itl ${k}`);
+  });
+
+  test('every committee principle has its text, a GSTC source and links to articles that exist', () => {
+    assert.ok(cases.length > 300);
+    for (const c of cases) {
+      assert.ok(c.p.length > 20, c.id);
+      assert.match(c.u, /^https:\/\/gstc\.gov\.sa\//, c.id);
+      assert.ok(Number.isInteger(c.pno), c.id);
+      for (const [id, n] of c.refs) assert.ok(exists(id, n), `${c.id} -> ${id} ${n}`);
+    }
+  });
+
+  test('every guideline, issue guide, key number, glossary term and draft line points to things that exist', () => {
+    const ids = new Set(cases.map((c) => c.id));
+    for (const g of extra.guides) {
+      assert.match(g.u, /^https:\/\/(www\.)?zatca\.gov\.sa\//, g.id);
+      for (const [id, n] of g.refs) assert.ok(exists(id, n), `${g.id} -> ${id} ${n}`);
+    }
+    for (const s of extra.issues) {
+      for (const id of s.cases) assert.ok(ids.has(id), `${s.id} -> ${id}`);
+      assert.ok(s.now.length && s.h, s.id);
+    }
+    for (const r of extra.numbers) assert.ok(exists(r[2], r[3]), r[0]);
+    for (const g of extra.glossary) for (const [id, n] of g[3]) assert.ok(exists(id, n), g[0]);
+    assert.match(extra.drafts.meta.status, /Drafts only/);
+    for (const s of extra.drafts.meta.sources) assert.match(s[2], /^https:\/\//);
+    for (const r of extra.drafts.itl) { assert.ok(r.src, r.topic); for (const n of r.now) assert.ok(exists('itl', n), r.topic); for (const n of r.by ?? []) assert.ok(exists('itr', n), r.topic); }
+    for (const r of extra.drafts.ztpl) { assert.ok(r.src, r.topic); for (const n of r.nowITL) assert.ok(exists('itl', n), r.topic); for (const n of r.nowZ) assert.ok(exists('z45', n), r.topic); }
+  });
+
+  test('the earlier 1440H Regulations include Articles 30 bis to 33', () => {
+    for (const n of ['30bis', '31', '32', '33']) assert.ok(exists('z40', n), n);
+  });
+});
+

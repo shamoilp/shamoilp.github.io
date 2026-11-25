@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KSA Tax &amp; Zakat Library · Shamoil Plumber</title>
+<meta name="description" content="Saudi Arabia's Income Tax Law, its Bylaws and the Zakat Regulations (1445H, with the earlier 1440H and 1438H rules), article by article in English beside the official Arabic, with plain-words notes, ZATCA guidelines, tax committee principles, an old-to-new map and the 2023 draft laws.">
+<meta name="theme-color" content="#00463c">
+<link rel="canonical" href="https://shamoilp.github.io/ksa-tax-zakat-library/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2300463c'/%3E%3Cpath d='M14 46h36M18 46V26M26 46V26M38 46V26M46 46V26M12 24l20-10 20 10z' stroke='%23e6f5c8' stroke-width='4' fill='none' stroke-linejoin='round'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Shamoil Plumber">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://shamoilp.github.io/ksa-tax-zakat-library/">
+<meta property="og:title" content="KSA Tax & Zakat Library: the Income Tax Law and Zakat rules in plain words">
+<meta property="og:description" content="The Income Tax Law, Bylaws and Zakat Regulations article by article, English beside the official Arabic, with plain-words notes, ZATCA guidelines, committee principles and the old-to-new Zakat map.">
+<meta property="og:image" content="https://shamoilp.github.io/ksa-tax-zakat-library/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="KSA Tax and Zakat Library: an article of the Zakat Regulations in English beside the official Arabic, with the list of laws and tools.">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+/* VOICE a practitioner's reference a non-specialist can follow
+   IDEA a loose-leaf law service: register of instruments, article index, the text in both languages beside the notes
+   COLOUR deep green band (as the Treaty Library), lime-white for "in force", coral for "deleted or replaced", cream for notes
+   TYPE system sans; installed Arabic fonts for the Arabic text
+   LAYOUT laptop: instruments, articles, reader; 1500px+: English and Arabic side by side; 720px: two panes; phone: one pane with a back trail */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0d1412);--ink:light-dark(#121816,#e8eeea);--muted:light-dark(#55615c,#9fb0a8);--line:light-dark(#dfe5e2,#26332e);--pane:light-dark(#f6f8f7,#111b18);--band:#00463c;--bandink:#ffffff;--sel:light-dark(#e6f5c8,#23402f);--selink:light-dark(#0f2a12,#e6f5c8);--accent:light-dark(#00634f,#7fd9b8);--coral:#ff8a75;--coralink:#2a0a04;--note:light-dark(#fff6e0,#2a2414);--gut:clamp(16px,3vw,40px);--mw:880px}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;overflow-x:clip;display:flex;flex-direction:column}
+a{color:var(--accent)}
+button{font:inherit;color:inherit}
+header{background:var(--band);color:var(--bandink);padding:14px max(16px,3vw) 12px;display:flex;flex-wrap:wrap;gap:6px 20px;align-items:baseline}
+header h1{font:700 clamp(22px,2.6vw,30px)/1.05 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;margin:0;letter-spacing:-.02em}
+header p{margin:0;color:#cfe6dc;font-size:14px}
+header p a{color:#fff}
+header .as{margin-inline-start:auto;font-size:13px;color:#cfe6dc;white-space:nowrap}
+.trail{display:none;gap:6px;align-items:center;padding:8px 16px;border-bottom:1px solid var(--line);background:var(--pane);font-size:14px;flex-wrap:wrap}
+.trail button{background:none;border:0;padding:6px 4px;min-height:36px;color:var(--accent);cursor:pointer}
+main{flex:1;display:grid;grid-template-columns:270px 270px minmax(0,1fr);min-height:0}
+.pane{overflow-y:auto;border-inline-end:1px solid var(--line);min-height:0}
+#treaties,#arts{background:var(--pane)}
+.find{position:sticky;top:0;background:var(--pane);padding:12px;border-bottom:1px solid var(--line);z-index:1}
+.find input{width:100%;font-size:16px;padding:9px 11px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
+.find small{display:block;color:var(--muted);font-size:13px;margin-top:6px}
+.list{list-style:none;margin:0;padding:4px 0}
+.list button{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 8px;width:100%;text-align:start;background:none;border:0;padding:9px 14px;min-height:44px;cursor:pointer;border-inline-start:3px solid transparent}
+.list button:hover{background:color-mix(in srgb,var(--sel) 55%,transparent)}
+.list button[aria-current=true]{background:var(--sel);color:var(--selink);border-inline-start-color:var(--band)}
+.list .nm{font-weight:600;font-size:15px}
+.list .sub{grid-column:1/-1;color:var(--muted);font-size:13px}
+.list button[aria-current=true] .sub{color:inherit;opacity:.8}
+.list .grp{padding:16px 14px 4px 17px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.list .grp:first-child{padding-top:6px}
+.lnk{background:none;border:0;padding:4px 0;min-height:32px;color:var(--accent);font-weight:600;cursor:pointer;text-decoration:underline}
+.tag{font-size:12px;border:1px solid var(--line);border-radius:4px;padding:0 5px;align-self:start;white-space:nowrap;color:var(--muted)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--accent);align-self:center;display:inline-block}
+.legend{margin:0 14px 4px;font-size:13px;color:var(--muted);display:flex;gap:8px;align-items:center}
+.pane h2{font:700 18px/1.2 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;margin:14px 14px 4px}
+.meta{margin:0 14px 10px;color:var(--muted);font-size:13px}
+.meta a{white-space:nowrap}
+#read{padding:0;background:var(--bg);border-inline-end:0}
+.rhead{padding:20px max(var(--gut),calc((100% - var(--mw))/2)) 12px;border-bottom:1px solid var(--line)}
+.rhead h2{font:700 clamp(26px,3vw,38px)/1.05 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;letter-spacing:-.02em;margin:0 0 6px;text-wrap:balance}
+.rhead .who{font-size:14px;color:var(--muted);margin:0 0 4px}
+.rhead .links{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:14px}
+.artitle{font:600 24px/1.4 "Noto Naskh Arabic","Traditional Arabic","Segoe UI","Geeza Pro",Arial,serif;margin:0 0 6px;text-align:left}
+.tbar{padding:14px max(var(--gut),calc((100% - var(--mw))/2)) 0}
+.tbar .lnote{margin:0 0 6px}
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;margin:0 0 10px}
+.lang button{border:0;background:var(--pane);padding:8px 14px;min-height:40px;cursor:pointer;font-weight:600;font-size:14px}
+.lang button[aria-pressed=true]{background:var(--band);color:#fff}
+.lang button[lang=ar]{font-family:"Noto Naskh Arabic","Traditional Arabic","Segoe UI","Geeza Pro",Arial,serif;font-size:16px}
+.text{padding:12px max(var(--gut),calc((100% - var(--mw))/2)) 28px}
+.text p{margin:0 0 10px}
+.text[dir=rtl]{font-family:"Noto Naskh Arabic","Traditional Arabic","Segoe UI","Geeza Pro",Arial,serif;font-size:18px;line-height:1.9}
+.lnote{font-size:13px;color:var(--muted);margin:0 0 12px}
+.tabs{position:sticky;top:0;z-index:2;display:flex;gap:4px;padding:10px max(var(--gut),calc((100% - var(--mw))/2)) 0;background:var(--bg);border-bottom:1px solid var(--line);border-top:1px solid var(--line);overflow-x:auto}
+.tabs button{border:1px solid var(--line);border-bottom:0;background:var(--pane);padding:10px 16px;min-height:44px;border-radius:8px 8px 0 0;cursor:pointer;font-weight:600;font-size:15px;white-space:nowrap}
+.tabs button[aria-selected=true]{background:var(--band);color:#fff;border-color:var(--band)}
+.panel{padding:16px max(var(--gut),calc((100% - var(--mw))/2)) 48px;display:none}
+#read.t-plain .panel-plain,#read.t-oecd .panel-oecd,#read.t-mli .panel-mli,#read.t-cases .panel-cases{display:block}
+.tabs2,.tabs4{display:none}
+.ctag{font-size:10.5px;font-weight:700;border-radius:4px;padding:0 5px;background:var(--sel);color:var(--selink);margin-inline-start:6px;vertical-align:2px;letter-spacing:.03em}
+.case{border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:0 0 12px;background:var(--bg)}
+.case h4{margin:0 0 4px;font:700 16px/1.3 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;text-wrap:balance}
+.case .cm{font-size:13px;color:var(--muted);margin:0 0 8px}
+.case p{margin:0 0 8px;font-size:15px}
+.case .hb{border-inline-start:3px solid var(--band);padding-inline-start:10px;font-size:14.5px}
+.case .hb b{font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);margin-inline-end:6px}
+.case .cs{font-size:13px;margin:0}.case .cs a{margin-inline-end:12px}
+.case .tchip{border:1px solid var(--line);background:var(--pane);border-radius:999px;padding:1px 9px;font-size:12.5px;font-weight:600;cursor:pointer;margin:0 6px 4px 0}
+.oc{display:inline-block;font-weight:700;font-size:12px;padding:1px 8px;border-radius:999px;margin-inline-end:6px;vertical-align:1px;white-space:nowrap}
+.oc.taxpayer{background:var(--sel);color:var(--selink)}.oc.zatca{background:var(--coral);color:var(--coralink)}.oc.split,.oc.remanded{background:var(--note);color:var(--ink);border:1px solid var(--line)}
+.clist{list-style:none;padding:0;margin:0 0 12px}.clist li{padding:6px 0;border-top:1px dashed var(--line);font-size:15px}.clist li:first-child{border-top:0}
+.clist .lnk{text-align:start}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,520px),1fr));gap:0 20px;align-items:start}
+.mpill{display:inline-block;font-weight:700;font-size:13px;letter-spacing:.03em;padding:3px 11px;border-radius:999px;margin:0 0 10px}
+.mpill.changed{background:var(--coral);color:var(--coralink)}
+.mpill.not{background:var(--sel);color:var(--selink)}
+.mpill.pending{background:var(--note);color:var(--ink);border:1px solid var(--line)}
+.mrow{border-top:1px dashed var(--line);padding:9px 0;display:grid;grid-template-columns:4.6em minmax(0,1fr);gap:4px 12px}
+.mrow .mref{font-weight:700;font-size:13px;color:var(--accent);white-space:nowrap}
+.mrow p{margin:0;font-size:15px}
+.mrow .st{font-weight:700}
+.mrow.off .mref,.mrow.off .st{color:var(--muted)}
+.dates{background:var(--pane);border-radius:8px;padding:10px 14px;margin:0 0 14px;font-size:14.5px}
+.dates b{display:block;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+.mtag{font-size:10.5px;font-weight:700;border-radius:4px;padding:0 5px;background:var(--coral);color:var(--coralink);margin-inline-start:6px;vertical-align:2px;letter-spacing:.03em}
+.ph{display:none;font:700 13px/1.2 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+.pq{font:700 21px/1.25 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;margin:0 0 8px;text-wrap:balance}
+.lead{font-size:17px;margin:0 0 14px}
+.inthis{border-inline-start:4px solid var(--band);background:var(--pane);border-radius:0 8px 8px 0;padding:10px 14px;margin:0 0 16px}
+.inthis b{display:block;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+.inthis ul{margin:0;padding-inline-start:18px}.inthis li{margin:3px 0}
+.pts{padding-inline-start:20px;margin:0 0 14px}.pts li{margin:6px 0}
+.ex,.tip{border-radius:8px;padding:10px 14px;margin:0 0 14px;font-size:15px}
+.ex{background:var(--note)}.tip{border:1px dashed var(--line)}
+.ex b,.tip b{display:block;margin-bottom:2px}
+.callout{background:var(--note);border-radius:8px;padding:12px 14px;margin:0 0 16px;font-size:15px}
+.callout b{display:block;margin-bottom:2px}
+.claim{border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:16px 0}
+.claim h4{margin:0 0 6px;font:700 16px/1.3 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+.claim ul{margin:0 0 6px;padding-inline-start:18px}.claim li{margin:4px 0;font-size:15px}
+details{border-top:1px solid var(--line);padding:4px 0}
+summary{cursor:pointer;font:600 16px/1.3 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;padding:10px 0;list-style-position:outside}
+.ent{display:grid;grid-template-columns:5.6em minmax(0,1fr);gap:4px 12px;padding:7px 0;border-top:1px dashed var(--line)}
+.ent:first-of-type{border-top:0}
+.ref{font-weight:600;font-size:14px;color:var(--accent);font-variant-numeric:tabular-nums}
+.ref a{text-decoration:none}
+.ent p{margin:0;font-size:15.5px}
+.badge{display:inline-block;font-size:12px;font-weight:600;padding:0 6px;border-radius:4px;background:var(--coral);color:var(--coralink);margin-inline-end:6px;white-space:nowrap}
+.src{font-size:13px;color:var(--muted)}
+.foot{margin-top:20px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px}
+.foot p{margin:0 0 6px}
+h3{font:700 18px/1.2 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;margin:20px 0 8px}
+.empty{color:var(--muted);padding:12px 0}
+:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
+.about{margin:8px 12px 24px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);font-size:14px}
+.about summary{font-size:15px;padding:4px 0}
+.about p{margin:8px 0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+main{grid-template-columns:260px 290px minmax(0,1fr)}
+main.tool{grid-template-columns:260px minmax(0,1fr)}
+main.tool #arts{display:none}
+#side{background:var(--pane)}
+.bi{display:grid;grid-template-columns:minmax(0,1fr);gap:0}
+.bi .col{padding:12px max(var(--gut),calc((100% - var(--mw))/2)) 20px}
+.bi .col[dir=rtl]{font-family:"Noto Naskh Arabic","Traditional Arabic","Segoe UI","Geeza Pro",Arial,serif;font-size:18px;line-height:1.9;border-top:1px dashed var(--line)}
+.bi .col p{margin:0 0 9px;overflow-wrap:anywhere}
+.bi .col h4{margin:0 0 6px;font:700 13px/1.2 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;letter-spacing:.05em;text-transform:uppercase;color:var(--accent)}
+.bi .col[dir=rtl] h4{letter-spacing:0;font-size:15px;font-family:inherit}
+.bi.only-en .col[dir=rtl],.bi.only-ar .col[dir=ltr]{display:none}
+.bi.only-ar .col[dir=rtl]{border-top:0}
+@media(min-width:1500px){.bi.both{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.bi.both .col{padding-inline:24px}.bi.both .col[dir=rtl]{border-top:0;border-inline-start:1px solid var(--line)}}
+.warn{background:var(--note);border-radius:8px;padding:8px 12px;margin:0 0 10px;font-size:14px}
+.st{display:inline-block;font-size:12px;font-weight:700;border-radius:999px;padding:1px 9px;margin-inline-end:6px;vertical-align:2px}
+.st.live{background:var(--sel);color:var(--selink)}.st.past{background:var(--note);color:var(--ink);border:1px solid var(--line)}.st.deleted,.st.repealed{background:var(--coral);color:var(--coralink)}
+.list button.off .nm{color:var(--muted);text-decoration:line-through;text-decoration-thickness:1px}
+.fnl{list-style:none;margin:0;padding:0}.fnl li{border-top:1px dashed var(--line);padding:6px 0;font-size:14px}.fnl li span[lang=ar]{display:block;color:var(--muted);font-family:"Noto Naskh Arabic","Traditional Arabic",serif;font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}.chips span{background:var(--sel);color:var(--selink);border-radius:999px;padding:2px 10px;font-size:13.5px;font-weight:600}
+.habit{border-inline-start:4px solid var(--coral);background:var(--pane);border-radius:0 8px 8px 0;padding:10px 14px;margin:0 0 14px;font-size:15.5px}
+.habit b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
+.alink{background:none;border:0;padding:0 2px;color:var(--accent);font-weight:600;cursor:pointer;text-decoration:underline;font-size:inherit;min-height:0}
+.tbl{width:100%;border-collapse:collapse;font-size:14.5px}.tbl th,.tbl td{text-align:start;padding:8px 6px;border-top:1px solid var(--line);vertical-align:top}.tbl thead th{border-top:0;color:var(--muted);font-size:13px}
+.tw{overflow-x:auto}
+.form{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:10px 16px;margin:0 0 14px}
+.form label{display:flex;flex-direction:column;gap:4px;font-size:14px;font-weight:600}
+.form input,.form select{font:inherit;font-weight:400;padding:8px 10px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);min-height:40px}
+.form small{font-weight:400;color:var(--muted)}
+.res{border:1px solid var(--line);border-radius:10px;padding:12px 16px;background:var(--pane);margin:0 0 14px}
+.res .big{font:700 24px/1.2 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.q{font-size:15px;font-style:normal}
+.pc{border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:0 0 12px;background:var(--bg)}
+.pc blockquote{margin:0 0 8px;padding:0 0 0 12px;border-inline-start:3px solid var(--band);font-size:15px}
+.pc .cm{font-size:13px;color:var(--muted);margin:0 0 6px}
+.pc .cm b{color:var(--ink)}
+.kind{font-size:11.5px;font-weight:700;border-radius:4px;padding:0 6px;margin-inline-end:6px}.kind.zakat{background:var(--sel);color:var(--selink)}.kind.tax{background:var(--note);border:1px solid var(--line)}
+.more{margin:6px 0 16px}
+.more button{font:inherit;font-weight:600;border:1px solid var(--line);background:var(--pane);border-radius:8px;padding:8px 14px;cursor:pointer;min-height:40px}
+.issue{border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:0 0 14px;background:var(--bg)}
+.issue h3{margin:0 0 4px}.issue .qq{color:var(--muted);margin:0 0 10px}
+.issue dl{display:grid;grid-template-columns:7.5em minmax(0,1fr);gap:6px 12px;margin:0 0 10px;font-size:15px}.issue dt{font-weight:700;color:var(--accent);font-size:13px;letter-spacing:.03em;text-transform:uppercase;padding-top:2px}.issue dd{margin:0}
+@media(max-width:700px){.issue dl{grid-template-columns:minmax(0,1fr)}}
+.src a{word-break:break-word}
+.hint{font-size:13px;color:var(--muted);margin:4px 0 12px}
+@media(max-width:1100px){main{grid-template-columns:250px minmax(0,1fr)}main.tool{grid-template-columns:250px minmax(0,1fr)}.trail{display:flex}.tabs button{padding:10px 12px;font-size:14px}}
+@media(min-width:701px) and (max-width:1100px){main.showarts #side{display:none}main.showarts #arts{display:block}main:not(.showarts) #arts{display:none}}
+@media(max-width:700px){header p{display:none}header .as{margin-inline-start:0}main,main.tool{grid-template-columns:minmax(0,1fr)}#side,#arts,#read{display:none}main.v-list #side{display:block}main.v-arts #arts{display:block}main.v-read #read{display:block}main.tool.v-read #arts{display:none}}
+@media print{header,.trail,#side,#arts,.tabs,.lang{display:none!important}main{display:block}#read{overflow:visible}.panel{display:block!important}}
+</style>
+</head>
+<body>
+<header>
+  <h1>KSA Tax &amp; Zakat Library</h1>
+  <p>The Income Tax Law, its Bylaws and the Zakat Regulations article by article: English beside the official Arabic, plain-words notes, ZATCA guidelines, committee principles, the old-to-new Zakat map and the 2023 draft laws. By <a href="https://shamoilp.github.io/">Shamoil Plumber</a>.</p>
+  <span class="as" id="asat">Loading…</span>
+</header>
+<nav class="trail" id="trail" aria-label="Where you are"></nav>
+<main id="main" class="v-list">
+  <section class="pane" id="side" aria-label="Laws, regulations and tools">
+    <div class="find"><label for="q" class="sr">Search the library</label><input id="q" type="search" placeholder="Search the library" autocomplete="off"><small id="count">Type two or more letters and press Enter</small></div>
+    <ul class="list" id="ilist"></ul>
+    <details class="about"><summary>About this library</summary>
+      <p>Built by <a href="https://shamoilp.github.io/">Shamoil Plumber</a> as a ready reference for Saudi income tax and Zakat work, written so that a non-specialist can follow it.</p>
+      <p>The Arabic texts are the official texts published by ZATCA, and the Arabic prevails. English texts are labelled by source: ZATCA's own translations, the 2004 translation of the Income Tax Law filed with the WTO, or translations and summaries made for this library. Plain-words notes, habits and issue guides are our own.</p>
+      <p>Committee principles are quoted from the English volumes published by the General Secretariat of Zakat, Tax and Customs Committees (GSTC) and linked to their pages; links from a principle to an article are made by keyword and are a starting point, not a ruling. The 2023 draft laws are described from firms' public summaries because the drafts themselves could not be downloaded.</p>
+      <p>Check the official text before relying on any point. This is not legal or tax advice. No cookies or tracking on this page.</p>
+    </details>
+  </section>
+  <section class="pane" id="arts" aria-label="Articles"></section>
+  <section class="pane" id="read" aria-label="Reader"></section>
+</main>
+<script>
+{
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const OFF = window.OFFLINE_DATA || null;
+const cache = {};
+const get = p => cache[p] || (cache[p] = OFF && OFF[p] ? Promise.resolve(OFF[p]) : fetch(p).then(r => { if (!r.ok) throw new Error(p + ' ' + r.status); return r.json(); }));
+const setHash = h => { try { if (location.hash.slice(1) !== h) history.replaceState(null, '', '#' + h); } catch (e) {} };
+const main = $('#main'), side = $('#side'), arts = $('#arts'), read = $('#read');
+const TOOLS = [['year','Which rules apply to my year?'],['calc','Zakat base walkthrough (1445H)'],['map','Old to new Zakat map'],['issues','How the old rulings apply now'],['cases','Committee principles'],['guides','ZATCA guidelines and FAQs'],['numbers','Key numbers and deadlines'],['glossary','Glossary'],['drafts','Draft laws 2023']];
+let IDX = null, EX = null, cur = {i:null, n:null, tab:'plain', tool:null}, lang = matchMedia('(min-width:1500px)').matches ? 'both' : 'en';
+const inst = id => IDX.inst.find(x => x.id === id);
+const artLabel = (id, n) => (id === 'deemed' ? 'Rule ' : 'Article ') + String(n).replace('bis', ' bis');
+const short = id => (inst(id) || {}).short || id;
+const aref = (id, n, txt) => '<button class="alink" data-go="' + esc(id + '/' + n) + '">' + esc(txt || short(id) + ' ' + String(n).replace('bis', ' bis')) + '</button>';
+const arefs = (id, list) => (list || []).map(n => aref(id, n, 'Art ' + String(n).replace('bis', ' bis'))).join(', ');
+const paras = t => esc(t).split(/\n+/).map(s => s.trim()).filter(Boolean).map(s => '<p>' + s + '</p>').join('');
+const titleOf = (id, n) => { const a = (inst(id).arts.find(x => x[0] === String(n)) || []); return a[1] || ''; };
+const ST = {live:'In force', past:'Earlier rule', deleted:'Deleted', repealed:'Repealed'};
+
+function view(v) { main.classList.remove('v-list','v-arts','v-read'); main.classList.add('v-' + v); main.classList.toggle('showarts', v !== 'list' && !main.classList.contains('tool')); trail(v); }
+function trail(v) {
+  const t = $('#trail'); const parts = ['<button data-v="list">Library</button>'];
+  if (cur.i && !cur.tool) parts.push('› <button data-v="arts">' + esc(short(cur.i)) + '</button>');
+  if (v === 'read') parts.push('› <span>' + esc(cur.tool ? (TOOLS.find(x => x[0] === cur.tool) || ['', 'Search'])[1] : artLabel(cur.i, cur.n)) + '</span>');
+  t.innerHTML = parts.join(' ');
+}
+function renderSide() {
+  const groups = [];
+  for (const m of IDX.inst) { let g = groups.find(x => x[0] === m.grp); if (!g) groups.push(g = [m.grp, []]); g[1].push(m); }
+  let h = '';
+  for (const [g, ms] of groups) {
+    h += '<li class="grp">' + esc(g) + '</li>';
+    for (const m of ms) h += '<li><button data-inst="' + m.id + '" aria-current="' + (cur.i === m.id && !cur.tool) + '"><span class="nm">' + esc(m.name) + '</span><span class="tag">' + m.arts.length + '</span><span class="sub">' + esc(m.status) + '</span></button></li>';
+  }
+  h += '<li class="grp">Tools and references</li>';
+  for (const [k, nm] of TOOLS) h += '<li><button data-tool="' + k + '" aria-current="' + (cur.tool === k) + '"><span class="nm">' + esc(nm) + '</span></button></li>';
+  $('#ilist').innerHTML = h;
+}
+function renderArts(filter) {
+  const m = inst(cur.i); if (!m) { arts.innerHTML = ''; return; }
+  const f = (filter || '').toLowerCase();
+  let h = '<h2>' + esc(m.name) + '</h2><p class="meta">' + esc(m.ref) + '</p><div class="find"><label for="af" class="sr">Filter articles</label><input id="af" type="search" placeholder="Filter by number or title" value="' + esc(filter || '') + '" autocomplete="off"></div><ul class="list">';
+  let g = null;
+  for (const [n, t, st, grp] of m.arts) {
+    if (f && !(String(n) === f || (t || '').toLowerCase().includes(f))) continue;
+    if (grp !== g) { h += '<li class="grp">' + esc(grp) + '</li>'; g = grp; }
+    h += '<li><button class="' + (st === 'deleted' || st === 'repealed' ? 'off' : '') + '" data-go="' + m.id + '/' + n + '" aria-current="' + (cur.n === String(n)) + '"><span class="nm">' + esc(artLabel(m.id, n)) + '</span>' + (st === 'deleted' || st === 'repealed' ? '<span class="tag">' + ST[st] + '</span>' : '') + '<span class="sub">' + esc(t) + '</span></button></li>';
+  }
+  arts.innerHTML = h + '</ul>';
+  const af = $('#af'); af.addEventListener('input', () => { renderArts(af.value); const x = $('#af'); x.focus(); x.setSelectionRange(x.value.length, x.value.length); });
+}
+async function openArt(id, n, tab) {
+  main.classList.remove('tool'); cur.tool = null; cur.i = id; cur.n = String(n); if (tab) cur.tab = tab;
+  renderSide(); renderArts();
+  const m = inst(id), A = await get('data/' + id + '.json'), a = A[cur.n];
+  if (!a) { read.innerHTML = '<div class="rhead"><h2>Not found</h2></div>'; view('read'); return; }
+  const [cases, ex] = await Promise.all([get('data/cases.json'), Promise.resolve(EX)]);
+  const myCases = cases.filter(c => c.refs.some(r => r[0] === id && r[1] === cur.n));
+  const myGuides = ex.guides.filter(gd => gd.refs.some(r => r[0] === id && r[1] === cur.n));
+  const dr = draftRows(id, cur.n);
+  const tabs = [['plain','In plain words'],['guides','Guidelines (' + myGuides.length + ')'],['cases','Committee principles (' + myCases.length + ')'],['map', id === 'itl' || id === 'itr' ? 'Law and Bylaws' : 'Old and new']];
+  if (dr.length) tabs.push(['draft','Draft law (' + dr.length + ')']);
+  if (!tabs.some(t => t[0] === cur.tab)) cur.tab = 'plain';
+  let h = '<div class="rhead"><p class="who">' + esc(m.name) + '</p><h2>' + esc(artLabel(id, cur.n)) + (a.t ? ' · ' + esc(a.t) : '') + '</h2>' +
+    '<p class="who"><span class="st ' + a.st + '">' + ST[a.st] + '</span>' + esc(m.ref) + '</p><div class="links">' +
+    (m.enurl ? '<a href="' + esc(m.enurl) + '" target="_blank" rel="noopener">English source</a>' : '') + (m.arurl ? '<a href="' + esc(m.arurl) + '" target="_blank" rel="noopener">Arabic source (official)</a>' : '') + '</div></div>';
+  h += '<div class="tbar"><div class="lang" role="group" aria-label="Language"><button data-lang="en" aria-pressed="' + (lang === 'en') + '">English</button><button data-lang="ar" lang="ar" aria-pressed="' + (lang === 'ar') + '">العربية</button><button data-lang="both" aria-pressed="' + (lang === 'both') + '">Both</button></div>' + (a.stn ? '<p class="warn"><b>' + ST[a.st] + ':</b> ' + esc(a.stn) + '</p>' : '') + '</div>';
+  h += '<div class="bi ' + (lang === 'both' ? 'both' : 'only-' + lang) + '" id="bi"><div class="col" dir="ltr"><h4>' + esc(m.enlab) + '</h4>' + (a.enw ? '<p class="warn">' + esc(a.enw) + '</p>' : '') + (a.en ? paras(a.en) : '<p class="empty">' + (a.st === 'deleted' || a.st === 'repealed' ? 'No current text.' : 'No English text.') + '</p>') + '</div>' +
+    '<div class="col" dir="rtl" lang="ar"><h4>النص العربي الرسمي' + (a.ta ? ' · ' + esc(a.ta) : '') + '</h4>' + (a.ar ? paras(a.ar) : '<p class="empty" dir="ltr" lang="en">' + esc(a.arnote || 'No Arabic text.') + '</p>') + '</div></div>';
+  if (a.fn && a.fn.length) h += '<div class="text"><details><summary>Amendment notes from the official Arabic (' + a.fn.length + ')</summary><p class="hint">Printed as footnotes in the consolidated Arabic text. A footnote can sit beside a neighbouring article on the same page. English renderings are ours.</p><ul class="fnl">' + a.fn.map(f => '<li>' + esc(f.en) + '<span lang="ar" dir="rtl">' + esc(f.ar) + '</span></li>').join('') + '</ul></details></div>';
+  h += '<div class="tabs" role="tablist" aria-label="Notes on this article">' + tabs.map(([k, nm]) => '<button role="tab" data-tab="' + k + '" aria-selected="' + (cur.tab === k) + '">' + esc(nm) + '</button>').join('') + '</div>';
+  h += '<div class="panel" id="pnl" style="display:block"></div>';
+  read.classList.remove('ovmode'); read.innerHTML = h;
+  const panes = {plain: () => plainHTML(id, cur.n, a), guides: () => guidesHTML(myGuides, id, cur.n), cases: () => casesHTML(myCases), map: () => oldNewHTML(id, cur.n, a), draft: () => draftHTML(dr)};
+  const show = k => { cur.tab = k; for (const b of read.querySelectorAll('[data-tab]')) b.setAttribute('aria-selected', b.dataset.tab === k); $('#pnl').innerHTML = panes[k](); bindMore(); setHash(id + '/' + cur.n + (k !== 'plain' ? '/' + k : '')); };
+  read.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => show(b.dataset.tab)));
+  read.querySelectorAll('[data-lang]').forEach(b => b.addEventListener('click', () => { lang = b.dataset.lang; $('#bi').className = 'bi ' + (lang === 'both' ? 'both' : 'only-' + lang); read.querySelectorAll('[data-lang]').forEach(x => x.setAttribute('aria-pressed', x.dataset.lang === lang)); }));
+  show(cur.tab); read.scrollTop = 0; view('read');
+}
+function plainHTML(id, n, a) {
+  const x = a.n || {}; let h = '';
+  if (x.p) h += '<p class="lead">' + esc(x.p) + '</p>';
+  if (x.k && x.k.length) h += '<div class="chips">' + x.k.map(k => '<span>' + esc(k) + '</span>').join('') + '</div>';
+  if (x.x) h += '<div class="ex"><b>Example</b>' + esc(x.x) + '</div>';
+  if (x.w) h += '<div class="tip"><b>Watch out</b>' + esc(x.w) + '</div>';
+  if (a.chg) h += '<div class="tip"><b>What changed in 1445H</b>' + esc(a.chg) + (a.now && a.now.length ? ' See ' + arefs('z45', a.now) + '.' : '') + '</div>';
+  else if (a.now && a.now.length) h += '<div class="tip"><b>Where this is now</b>Zakat Regulations 1445H ' + arefs('z45', a.now) + '.</div>';
+  if (a.law && a.law.length) h += '<p>Implements Income Tax Law ' + arefs('itl', a.law) + '.</p>';
+  if (x.h) h += '<div class="habit"><b>Habit</b>' + esc(x.h) + '</div>';
+  if (!h) h = '<p class="empty">' + (a.st === 'deleted' || a.st === 'repealed' ? 'This article no longer applies. The old text is kept for reference.' : 'No note yet.') + '</p>';
+  if (id === 'z40' || id === 'z38') h += '<p class="hint">The English for this instrument is our own summary; the Arabic beside it is the official text.</p>';
+  return h;
+}
+function guidesHTML(list, id, n) {
+  if (!list.length) return '<p class="empty">No ZATCA guideline points to this article yet. See <button class="alink" data-tool="guides">all guidelines</button>.</p>';
+  return '<p class="hint">Pages found where the guideline cites this article. Guidelines explain ZATCA\'s view; they bind ZATCA from their issue date but are not law.</p><ul class="clist">' + list.map(g => { const r = g.refs.find(r => r[0] === id && r[1] === n); return '<li><a href="' + esc(g.u) + (r && r[2] ? '#page=' + r[2] : '') + '" target="_blank" rel="noopener">' + esc(g.t) + '</a> <span class="src">' + esc(g.d || '') + (r && r[2] ? ' · page ' + r[2] : '') + (g.lang === 'ar' ? ' · Arabic' : '') + '</span></li>'; }).join('') + '</ul>';
+}
+function caseCard(c) {
+  const z45 = c.k === 'zakat' ? c.refs.filter(r => r[0] === 'z45').map(r => r[1]) : [];
+  const old = c.refs.filter(r => r[0] !== 'z45');
+  return '<div class="pc"><p class="cm"><span class="kind ' + c.k + '">' + (c.k === 'zakat' ? 'Zakat' : 'Tax') + '</span><b>' + esc(c.topic || 'Principle') + '</b> · Principle ' + c.pno + (c.dec ? ' · Decision ' + esc(c.dec) : '') + '</p><blockquote>' + esc(c.p) + '</blockquote>' +
+    '<p class="cm">' + (c.yrs && c.yrs.length ? 'Years mentioned: ' + esc(c.yrs.join(', ')) + ' · ' : '') + '<a href="' + esc(c.u) + '" target="_blank" rel="noopener">' + esc(c.vol) + (c.pg ? ', page ' + c.pg : '') + '</a></p>' +
+    (old.length ? '<p class="cm">Linked articles: ' + old.map(r => aref(r[0], r[1])).join(', ') + '</p>' : '') +
+    (z45.length ? '<p class="cm">Under the 1445H Regulations see ' + arefs('z45', z45) + ' - check whether the rule changed.</p>' : '') + (c.g ? '<p class="cm">The extracted wording may be imperfect; read the page.</p>' : '') + '</div>';
+}
+function casesHTML(list) {
+  if (!list.length) return '<p class="empty">No committee principle is linked to this article. Search <button class="alink" data-tool="cases">all principles</button>.</p>';
+  return '<p class="hint">Principles quoted in the official English of the GSTC volumes. Links to articles are made by keyword - read the decision before relying on it.</p>' + pageList(list, caseCard, 12);
+}
+let MORE = null;
+function pageList(list, fn, size) { MORE = {list, fn, size, shown: size}; return '<div id="plist">' + list.slice(0, size).map(fn).join('') + '</div>' + (list.length > size ? '<div class="more"><button id="morebtn">Show more (' + (list.length - size) + ' left)</button></div>' : ''); }
+function bindMore() { const b = $('#morebtn'); if (!b || !MORE) return; b.addEventListener('click', () => { const s = MORE.shown; MORE.shown += MORE.size; $('#plist').insertAdjacentHTML('beforeend', MORE.list.slice(s, MORE.shown).map(MORE.fn).join('')); const left = MORE.list.length - MORE.shown; if (left > 0) b.textContent = 'Show more (' + left + ' left)'; else b.parentNode.remove(); }); }
+function oldNewHTML(id, n, a) {
+  let h = '';
+  if (id === 'z45') {
+    const o40 = a.old40 || [], o38 = a.old38 || [];
+    if (!o40.length && !o38.length) return '<p class="empty">New in the 1445H Regulations - no direct match in the earlier rules.</p>';
+    h += '<p class="hint">Earlier articles that dealt with the same subject. Decisions on those years were made under the earlier rule.</p>';
+    if (o40.length) h += '<h3>1440H Regulations (years 2019-2023)</h3><ul class="clist">' + o40.map(k => '<li>' + aref('z40', k, 'Article ' + k.replace('bis', ' bis')) + ' · ' + esc(titleOf('z40', k)) + '</li>').join('') + '</ul>';
+    if (o38.length) h += '<h3>1438H Regulations</h3><ul class="clist">' + o38.map(k => '<li>' + aref('z38', k, 'Article ' + k) + ' · ' + esc(titleOf('z38', k)) + '</li>').join('') + '</ul>';
+    return h;
+  }
+  if (id === 'itl') {
+    return '<div id="lawby">Loading…</div>' + (setTimeout(async () => { const B = await get('data/itr.json'); const l = Object.entries(B).filter(([k, v]) => (v.law || []).includes(n)); const el = $('#lawby'); if (el) el.innerHTML = l.length ? '<p class="hint">Bylaws articles that carry out this Article.</p><ul class="clist">' + l.map(([k, v]) => '<li>' + aref('itr', k, 'Bylaws Article ' + k) + ' · ' + esc(v.t) + '</li>').join('') + '</ul>' : '<p class="empty">No Bylaws article is linked to this Article.</p>'; bindGo(el); }, 0), '');
+  }
+  if (id === 'itr') return a.law && a.law.length ? '<ul class="clist">' + a.law.map(k => '<li>' + aref('itl', k, 'Income Tax Law Article ' + k) + ' · ' + esc(titleOf('itl', k)) + '</li>').join('') + '</ul>' : '<p class="empty">No Law article linked.</p>';
+  if (a.now) return (a.chg ? '<p>' + esc(a.chg) + '</p>' : '') + (a.now.length ? '<h3>Now in the 1445H Regulations</h3><ul class="clist">' + a.now.map(k => '<li>' + aref('z45', k, 'Article ' + k) + ' · ' + esc(titleOf('z45', k)) + '</li>').join('') + '</ul>' : '<p class="empty">No direct successor.</p>');
+  return '<p class="empty">No mapping.</p>';
+}
+function draftRows(id, n) {
+  if (!EX) return [];
+  const d = EX.drafts, out = [];
+  if (id === 'itl') { for (const r of d.itl) if ((r.now || []).includes(n)) out.push(['Draft Income Tax Law', r]); for (const r of d.ztpl) if ((r.nowITL || []).includes(n)) out.push(['Draft Zakat and Tax Procedures Law', r]); }
+  if (id === 'itr') for (const r of d.itl) if ((r.by || []).includes(n)) out.push(['Draft Income Tax Law', r]);
+  if (id === 'z45') for (const r of d.ztpl) if ((r.nowZ || []).includes(n)) out.push(['Draft Zakat and Tax Procedures Law', r]);
+  return out;
+}
+function draftHTML(rows) {
+  return '<p class="warn">' + esc(EX.drafts.meta.status) + '</p>' + rows.map(([w, r]) => '<div class="pc"><p class="cm"><b>' + esc(w) + '</b> · ' + esc(r.topic) + '</p><p>' + esc(r.d) + '</p><p class="cm">Source: ' + esc(r.src) + '</p></div>').join('') + '<p class="hint">' + esc(EX.drafts.meta.why) + '</p>';
+}
+function bindGo(root) { (root || document).querySelectorAll('[data-go]').forEach(b => { if (b._g) return; b._g = 1; b.addEventListener('click', () => go(b.dataset.go)); }); (root || document).querySelectorAll('[data-tool]').forEach(b => { if (b._g || b.closest('#ilist')) return; b._g = 1; b.addEventListener('click', () => openTool(b.dataset.tool)); }); }
+function go(path) { const [i, n, t] = path.split('/'); setHash(path); openArt(i, n, t || 'plain').then(() => bindGo(read)); }
+
+// ---------- tools ----------
+function toolShell(k, title, intro, body) {
+  read.innerHTML = '<div class="rhead"><p class="who">Tools and references</p><h2>' + esc(title) + '</h2>' + (intro ? '<p class="who">' + intro + '</p>' : '') + '</div><div class="text">' + body + '</div>';
+  bindGo(read); bindMore(); read.scrollTop = 0;
+}
+async function openTool(k, arg) {
+  cur.tool = k; cur.i = null; main.classList.add('tool'); renderSide(); setHash('tool/' + k + (arg ? '/' + encodeURIComponent(arg) : ''));
+  const T = {year: toolYear, calc: toolCalc, map: toolMap, issues: toolIssues, cases: toolCases, guides: toolGuides, numbers: toolNumbers, glossary: toolGlossary, drafts: toolDrafts, search: toolSearch};
+  await (T[k] || toolYear)(arg); view('read');
+}
+const addDays = (d, n) => { const x = new Date(d.getTime()); x.setUTCDate(x.getUTCDate() + n); return x; };
+const fmt = d => d.toLocaleDateString('en-GB', {day:'numeric', month:'short', year:'numeric', timeZone:'UTC'});
+function toolYear() {
+  const body = '<div class="form"><label>First day of the financial year<input type="date" id="ys" value="2024-01-01"></label><label>Last day of the financial year<input type="date" id="ye" value="2024-12-31"></label><label>Who<select id="yw"><option value="acc">Zakat payer with statutory accounts</option><option value="deemed">Small payer without accounts (deemed basis)</option><option value="fin">Bank or finance company</option><option value="tax">Income taxpayer</option></select></label></div><div id="yout"></div><p class="hint">Today is taken as ' + esc(IDX.asOf) + '. Dates assume no extension or holiday shift; check the return\'s actual filing date for the 10-year cases.</p>';
+  toolShell('year', 'Which rules apply to my year?', 'Pick a financial year to see which rules govern it and whether ZATCA can still reopen it.', body);
+  const run = () => {
+    const s = new Date($('#ys').value + 'T00:00:00Z'), e = new Date($('#ye').value + 'T00:00:00Z'), w = $('#yw').value, today = new Date(IDX.asOf + 'T00:00:00Z');
+    if (isNaN(s) || isNaN(e) || e < s) { $('#yout').innerHTML = '<p class="warn">Enter a valid start and end date.</p>'; return; }
+    const y = s.getUTCFullYear() * 10000 + (s.getUTCMonth() + 1) * 100 + s.getUTCDate();
+    let rules = '';
+    if (w === 'tax') rules = '<p><b>Income tax:</b> ' + aref('itl', '1', 'Income Tax Law') + ' and ' + aref('itr', '1', 'Bylaws') + ' as in force for the year' + (y >= 20180101 ? '' : ' (the natural gas investment tax rules, deleted from 2018, may also matter)') + '. The Bylaws amendments of Ministerial Resolution 25 (8/1/1445H) apply from their effective dates.</p>';
+    else if (y >= 20240101) rules = '<p><b>Zakat:</b> ' + aref('z45', '1', 'Zakat Regulations 1445H') + (w === 'deemed' ? ' - Chapter 3, ' + aref('z45', '82', 'Articles 82-91') : w === 'fin' ? ' - financing activities, ' + aref('z45', '66', 'Articles 66-72') : '') + '.</p>';
+    else if (y >= 20190101) rules = '<p><b>Zakat:</b> ' + aref('z40', '1', 'Zakat Regulations 1440H') + (w === 'deemed' ? ' with the ' + aref('deemed', '1', 'deemed-basis rules') + ' (returns filed after 31 December 2019)' : w === 'fin' ? ' with the ' + aref('fin', '1', 'financing-activities rules') : '') + '.</p><p class="hint">Ministerial Resolution 1007 let payers ask to apply the 1445H rules to years that started before 2024; Ministerial Resolutions 947 and 1463 extended the request window to 31 August 2025. Check whether this payer applied and ZATCA agreed.</p>';
+    else rules = '<p><b>Zakat:</b> ' + aref('z38', '1', 'Zakat Regulations 1438H') + ' (issued 28 February 2017) or, for earlier years, the rules and circulars in force before them. Ministerial Resolution 13957 (October 2022) let payers with accounts ask to apply the 1440H rules to years that started before 2019, subject to conditions.</p>';
+    const due = addDays(e, 120), bar5 = new Date(Date.UTC(due.getUTCFullYear() + 5, due.getUTCMonth(), due.getUTCDate()));
+    const open = today <= bar5;
+    $('#yout').innerHTML = '<div class="res">' + rules + '<p><b>Return and payment due:</b> ' + fmt(due) + ' (120 days after year end)</p><p><b>Normal time limit for ZATCA to assess:</b> ' + fmt(bar5) + ' - ' + (open ? 'still open' : 'passed') + ' on ' + fmt(today) + '.</p><p class="hint">Ten years apply where the return was late, incomplete or not paid (' + aref(w === 'tax' ? 'itl' : y >= 20240101 ? 'z45' : 'z40', w === 'tax' ? '65' : y >= 20240101 ? '106' : '22') + '); there is no limit for intentional evasion under the 1445H Zakat rules.</p></div>';
+    bindGo($('#yout'));
+  };
+  ['#ys', '#ye', '#yw'].forEach(s => $(s).addEventListener('input', run)); run();
+}
+function toolCalc() {
+  const F = [['eq','Equity and equivalents at year end','Capital, reserves, retained earnings, provisions treated as equity (Art 24), partner loans treated as equity (Art 30), declared dividends (Art 36)', 10000000],
+    ['ncl','Non-current liabilities','Long-term debt, end-of-service and leave provisions, lease liabilities, deferred tax and other items in Art 29', 4000000],
+    ['nca','Total non-current assets','All non-current assets on the balance sheet', 9000000],
+    ['ded','Non-current assets you may deduct','Net fixed assets, intangibles, qualifying investments and other Art 26 items', 7000000],
+    ['cad','Current assets you may deduct','For example materials not for sale (Art 52); leave 0 if none', 0],
+    ['ca','Total current assets','Needed only if you deduct a current asset', 6000000],
+    ['cl','Current liabilities','Needed only if you deduct a current asset', 3000000],
+    ['anp','Adjusted net profit','Book profit after the Zakat adjustments (Arts 62-65)', 1500000],
+    ['bnp','Book net profit after Zakat and tax','From the income statement', 1200000],
+    ['days','Days in the financial year','354 for a Hijri year, 365 or 366 for a Gregorian year', 365]];
+  const body = '<p class="warn">An illustration of how Articles 21-28 fit together, not a return. Real cases need the detailed rules, ZATCA\'s guidelines and judgement on every line.</p><div class="form">' + F.map(([k, l, s, v]) => '<label>' + esc(l) + '<input type="number" id="c-' + k + '" value="' + v + '" step="any"><small>' + esc(s) + '</small></label>').join('') + '</div><div id="cout"></div>';
+  toolShell('calc', 'Zakat base walkthrough (1445H)', 'Equity in, deducted assets out, liabilities only in proportion, then the floor and the ceiling.', body);
+  const num = k => { const v = parseFloat($('#c-' + k).value); return isFinite(v) ? v : 0; };
+  const money = v => (v < 0 ? '-' : '') + 'SAR ' + Math.round(Math.abs(v)).toLocaleString('en-US');
+  const run = () => {
+    const eq = num('eq'), ncl = num('ncl'), nca = num('nca'), ded = Math.min(num('ded'), nca), cad = num('cad'), ca = num('ca'), cl = num('cl'), anp = num('anp'), bnp = num('bnp'), days = num('days') || 354;
+    const undNca = Math.max(nca - ded, 0);
+    const exclNcl = nca > 0 ? Math.min(undNca / nca * ncl, undNca) : 0;
+    const nclAdd = Math.max(ncl - exclNcl, 0);
+    const clAdd = cad > 0 && ca > 0 ? Math.min(cad / ca * cl, cad) : 0;
+    const liab = Math.min(nclAdd + clAdd, ded + cad);
+    const adj = anp - bnp;
+    const raw = eq + liab + adj - ded - cad;
+    const ceil = eq + adj;
+    let base = Math.min(raw, ceil), why = raw > ceil ? 'capped at the ceiling (Art 28)' : 'as computed';
+    const undAll = undNca + Math.max(ca - cad, 0);
+    if (anp > 0 && base < anp) { const alt = Math.min(anp, undAll + adj); base = alt; why = 'floor applied (Art 27): lower of adjusted profit and undeducted assets plus adjustments'; }
+    else if (anp <= 0 && base < 0) { base = 0; why = 'negative with no adjusted profit - no Zakat base (Art 27(3))'; }
+    const rate = 0.025 / 354 * days;
+    const rows = [['Equity and equivalents (Art 23(1))', eq], ['Non-current liabilities added (Arts 25, 29)', nclAdd, 'excluded share ' + money(exclNcl) + ' for assets not deducted'], ['Current liabilities added (Art 25(3))', clAdd], ['Liabilities added, capped at total deductions (Art 25(4))', liab], ['Profit adjustments: adjusted less book profit (Art 23(3))', adj], ['Less: deducted assets (Art 26)', -(ded + cad)], ['Computed base', raw], ['Ceiling: equity plus adjustments (Art 28)', ceil], ['Zakat base used', base, why]];
+    $('#cout').innerHTML = '<div class="tw"><table class="tbl"><thead><tr><th>Step</th><th>Amount</th><th>Note</th></tr></thead><tbody>' + rows.map(r => '<tr><td>' + esc(r[0]) + '</td><td>' + money(r[1]) + '</td><td>' + esc(r[2] || '') + '</td></tr>').join('') + '</tbody></table></div><div class="res"><p class="big">Zakat ≈ ' + money(base * rate) + '</p><p>Rate ' + (rate * 100).toFixed(4) + '% = 2.5% ÷ 354 × ' + days + ' days (' + aref('z45', '15', 'Art 15') + ').</p></div><p class="hint">Read ' + aref('z45', '21', 'Art 21') + ', ' + aref('z45', '23', 'Art 23') + ', ' + aref('z45', '25', 'Art 25') + ', ' + aref('z45', '27', 'Art 27') + ' and ' + aref('z45', '28', 'Art 28') + ' with ZATCA\'s Guideline for Zakat Base Additions before relying on a figure.</p>';
+    bindGo($('#cout'));
+  };
+  read.querySelectorAll('input').forEach(i => i.addEventListener('input', run)); run();
+}
+async function toolMap() {
+  const [A40, A38] = await Promise.all([get('data/z40.json'), get('data/z38.json')]);
+  const row = (id, k, v) => '<tr><td>' + aref(id, k, 'Art ' + k.replace('bis', ' bis')) + '<br>' + esc(v.t) + '</td><td>' + (v.now.length ? arefs('z45', v.now) : '-') + '</td><td>' + esc(v.chg || '') + '</td></tr>';
+  const body = '<p class="hint">Which 1445H article now deals with each earlier article, and what changed. Use it when an old-year assessment or decision cites an article number that no longer exists.</p><h3>1440H Regulations (financial years 2019-2023) → 1445H</h3><div class="tw"><table class="tbl"><thead><tr><th>1440H article</th><th>1445H articles</th><th>What changed</th></tr></thead><tbody>' + Object.entries(A40).map(([k, v]) => row('z40', k, v)).join('') + '</tbody></table></div><h3>1438H Regulations → 1445H</h3><div class="tw"><table class="tbl"><thead><tr><th>1438H article</th><th>1445H articles</th><th></th></tr></thead><tbody>' + Object.entries(A38).map(([k, v]) => row('z38', k, v)).join('') + '</tbody></table></div><h3>Side rules</h3><p>' + aref('fin', '1', 'Financing-activities rules') + ' → ' + aref('z45', '66', '1445H Articles 66-72') + '. ' + aref('deemed', '1', 'Deemed-basis rules') + ' → ' + aref('z45', '82', '1445H Articles 82-91') + '. The investment-funds rules (Ministerial Resolution 29791 dated 9/5/1444H) → ' + aref('z45', '75', '1445H Articles 75-80') + '.</p>';
+  toolShell('map', 'Old to new Zakat map', '', body);
+}
+async function toolIssues() {
+  const cases = await get('data/cases.json'); const byId = Object.fromEntries(cases.map(c => [c.id, c]));
+  const body = '<p class="hint">Recurring questions, how the committees decided them under the earlier rules, and where the answer now sits. The summaries are ours; open each principle to read the committee\'s words.</p>' + EX.issues.map(s => '<div class="issue" id="is-' + s.id + '"><h3>' + esc(s.t) + '</h3><p class="qq">' + esc(s.q) + '</p><dl><dt>Before 2024</dt><dd>' + esc(s.old) + '</dd><dt>Committees</dt><dd>' + s.cases.filter(id => byId[id]).map(id => { const c = byId[id]; return '<details><summary class="q">' + esc(c.p.slice(0, 110)) + (c.p.length > 110 ? '…' : '') + '</summary>' + caseCard(c) + '</details>'; }).join('') + '</dd><dt>Now</dt><dd>' + esc(s.take) + ' ' + arefs(['loans','anp','retained','invest','provisions','statute'].includes(s.id) ? 'z45' : 'itl', s.now) + '</dd></dl><div class="habit"><b>Habit</b>' + esc(s.h) + '</div></div>').join('');
+  toolShell('issues', 'How the old rulings apply now', '', body);
+}
+async function toolCases(q) {
+  const cases = await get('data/cases.json');
+  const vols = [...new Set(cases.map(c => c.vol))];
+  const body = '<div class="form"><label>Search the principles<input type="search" id="cq" value="' + esc(q || '') + '" placeholder="For example: provisions, royalties, 354"></label><label>Type<select id="ck"><option value="">Zakat and tax</option><option value="zakat">Zakat</option><option value="tax">Tax</option></select></label><label>Volume<select id="cv"><option value="">All volumes</option>' + vols.map(v => '<option>' + esc(v) + '</option>').join('') + '</select></label></div><p class="hint" id="cn"></p><div id="cl"></div>';
+  toolShell('cases', 'Committee principles', IDX.counts.cases + ' principles from ' + vols.length + ' GSTC volumes (income tax, withholding tax and Zakat; VAT and customs left out).', body);
+  const run = () => { const s = $('#cq').value.toLowerCase().trim(), k = $('#ck').value, v = $('#cv').value; const l = cases.filter(c => (!k || c.k === k) && (!v || c.vol === v) && (!s || (c.p + ' ' + c.topic + ' ' + c.dec).toLowerCase().includes(s))); $('#cn').textContent = l.length + ' principles'; $('#cl').innerHTML = pageList(l, caseCard, 20); bindGo($('#cl')); bindMore(); };
+  ['#cq', '#ck', '#cv'].forEach(s => $(s).addEventListener('input', run)); run();
+}
+function toolGuides() {
+  const body = '<p class="hint">ZATCA guidelines, FAQs and circulars used in this library, with the articles they cite. ZATCA is bound by a guideline for periods after it is issued (1440H Art 30 bis).</p>' + EX.guides.map(g => '<div class="pc"><p class="cm"><b><a href="' + esc(g.u) + '" target="_blank" rel="noopener">' + esc(g.t) + '</a></b>' + (g.d ? ' · ' + esc(g.d) : '') + (g.pages ? ' · ' + g.pages + ' pages' : '') + (g.lang === 'ar' ? ' · Arabic' : '') + '</p>' + (g.refs.length ? '<p class="cm">Cites: ' + g.refs.slice(0, 16).map(r => aref(r[0], r[1])).join(', ') + (g.refs.length > 16 ? ' and ' + (g.refs.length - 16) + ' more' : '') + '</p>' : '') + '</div>').join('');
+  toolShell('guides', 'ZATCA guidelines and FAQs', '', body);
+}
+function toolNumbers() {
+  const body = '<div class="tw"><table class="tbl"><thead><tr><th>What</th><th>Number or deadline</th><th>Where</th></tr></thead><tbody>' + EX.numbers.map(r => '<tr><td>' + esc(r[0]) + '</td><td>' + esc(r[1]) + '</td><td>' + aref(r[2], r[3]) + '</td></tr>').join('') + '</tbody></table></div><p class="hint">Deadlines move to the next working day when they fall on an official holiday.</p>';
+  toolShell('numbers', 'Key numbers and deadlines', '', body);
+}
+function toolGlossary() {
+  const body = '<div class="tw"><table class="tbl"><thead><tr><th>Term</th><th>Meaning</th><th>Arabic</th><th>Where</th></tr></thead><tbody>' + EX.glossary.map(r => '<tr><td><b>' + esc(r[0]) + '</b></td><td>' + esc(r[1]) + '</td><td lang="ar" dir="rtl">' + esc(r[2]) + '</td><td>' + r[3].map(x => aref(x[0], x[1])).join(', ') + '</td></tr>').join('') + '</tbody></table></div>';
+  toolShell('glossary', 'Glossary', '', body);
+}
+function toolDrafts() {
+  const d = EX.drafts;
+  const t = (rows, z) => '<div class="tw"><table class="tbl"><thead><tr><th>Topic</th><th>Today</th><th>Draft proposal</th><th>Source</th></tr></thead><tbody>' + rows.map(r => '<tr><td><b>' + esc(r.topic) + '</b></td><td>' + (z ? [arefs('itl', r.nowITL), arefs('z45', r.nowZ)].filter(Boolean).join('<br>') : (r.now && r.now.length ? arefs('itl', r.now) : 'No equivalent')) + '</td><td>' + esc(r.d) + '</td><td>' + esc(r.src) + '</td></tr>').join('') + '</tbody></table></div>';
+  const body = '<p class="warn">' + esc(d.meta.status) + '</p><p class="hint">' + esc(d.meta.why) + ' For the separate draft Domestic Minimum Tax (Pillar Two) law, see the <a href="https://shamoilp.github.io/ksa-dmt-study/">KSA DMT Study</a>.</p><h3>Draft Income Tax Law</h3>' + t(d.itl, false) + '<h3>Draft Zakat and Tax Procedures Law</h3><p class="hint">Today\'s rules: Income Tax Law (first line) and Zakat Regulations 1445H (second line).</p>' + t(d.ztpl, true) + '<h3>Sources</h3><ul class="clist src">' + d.meta.sources.map(s => '<li><a href="' + esc(s[2]) + '" target="_blank" rel="noopener">' + esc(s[1]) + '</a></li>').join('') + '</ul>';
+  toolShell('drafts', 'Draft laws 2023', '', body);
+}
+async function toolSearch(q) {
+  q = (q || '').trim(); const s = q.toLowerCase();
+  if (s.length < 2) { toolShell('search', 'Search', '', '<p class="empty">Type two or more letters.</p>'); return; }
+  const ids = IDX.inst.map(m => m.id); const all = await Promise.all(ids.map(id => get('data/' + id + '.json'))); const cases = await get('data/cases.json');
+  const hits = [];
+  ids.forEach((id, i) => { for (const [n, a] of Object.entries(all[i])) { const hay = [a.t, a.en, a.n && a.n.p, a.n && a.n.h, a.ar].join(' ').toLowerCase(); const j = hay.indexOf(s); if (j >= 0) hits.push([id, n, a.t, hay.slice(Math.max(0, j - 70), j + 110)]); } });
+  const ch = cases.filter(c => (c.p + ' ' + c.topic).toLowerCase().includes(s));
+  const body = '<p class="hint">' + hits.length + ' articles and ' + ch.length + ' committee principles mention “' + esc(q) + '”.</p><ul class="clist">' + hits.slice(0, 150).map(h => '<li>' + aref(h[0], h[1], short(h[0]) + ' ' + artLabel(h[0], h[1])) + ' · ' + esc(h[2]) + '<br><span class="src">…' + esc(h[3]) + '…</span></li>').join('') + '</ul>' + (ch.length ? '<p><button class="alink" id="tocases">Show the ' + ch.length + ' principles</button></p>' : '');
+  toolShell('search', 'Search: ' + q, '', body);
+  const b = $('#tocases'); if (b) b.addEventListener('click', () => openTool('cases', q));
+}
+
+// ---------- events and routing ----------
+$('#ilist').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; if (b.dataset.inst) { cur.i = b.dataset.inst; cur.tool = null; cur.n = null; main.classList.remove('tool'); renderSide(); renderArts(); bindGo(arts); setHash(cur.i); view('arts'); if (matchMedia('(min-width:1101px)').matches) { const m = inst(cur.i); const first = m.arts.find(a => a[2] === 'live' || a[2] === 'past'); if (first) go(cur.i + '/' + first[0]); } } else if (b.dataset.tool) openTool(b.dataset.tool); });
+arts.addEventListener('click', e => { const b = e.target.closest('[data-go]'); if (b) go(b.dataset.go); });
+read.addEventListener('click', e => { const b = e.target.closest('[data-go]'); if (b && !b._g) go(b.dataset.go); const t = e.target.closest('[data-tool]'); if (t && !t._g) openTool(t.dataset.tool); });
+$('#trail').addEventListener('click', e => { const b = e.target.closest('[data-v]'); if (b) view(b.dataset.v); });
+$('#q').addEventListener('keydown', e => { if (e.key === 'Enter') openTool('search', $('#q').value); });
+function route() {
+  const h = decodeURIComponent(location.hash.slice(1));
+  if (h.startsWith('tool/')) { const [, k, ...rest] = h.split('/'); openTool(k, rest.join('/')); return; }
+  const [i, n, t] = h.split('/');
+  if (i && inst(i)) { if (n) { openArt(i, n, t || 'plain').then(() => bindGo(read)); } else { cur.i = i; renderSide(); renderArts(); view('arts'); } return; }
+  openTool('year'); view(matchMedia('(max-width:700px)').matches ? 'list' : 'read');
+}
+Promise.all([get('data/index.json'), get('data/extra.json')]).then(([i, x]) => {
+  IDX = i; EX = x;
+  $('#asat').textContent = 'As at ' + new Date(IDX.asOf + 'T00:00:00Z').toLocaleDateString('en-GB', {day:'numeric', month:'long', year:'numeric', timeZone:'UTC'});
+  renderSide(); route();
+  addEventListener('hashchange', () => { const h = location.hash.slice(1); const now = cur.tool ? 'tool/' + cur.tool : cur.i + '/' + cur.n; if (!h.startsWith(now)) route(); });
+}).catch(err => { read.innerHTML = '<div class="rhead"><h2>Could not load the library</h2><p class="who">' + esc(err.message) + '. If you opened the file directly, use the offline copy, which has the data built in.</p></div>'; });
+}
+</script>
+</body>
+</html>

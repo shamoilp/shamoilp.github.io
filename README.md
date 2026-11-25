@@ -9,6 +9,7 @@ Four static pages, with no build step and no cookies or tracking:
 - `index.html`: services, how client books are kept safe, free tools, and how to get in touch. No JavaScript.
 - `saudi-wht-checker/index.html`: the **Saudi WHT Checker** at https://shamoilp.github.io/saudi-wht-checker/. It runs its rules in the visitor's browser and sends nothing anywhere.
 - `ksa-treaty-library/`: the **KSA Treaty Library** at https://shamoilp.github.io/ksa-treaty-library/. Saudi Arabia's treaties article by article: the text, a plain-words guide with diagrams, the OECD Commentary digest and the BEPS MLI changes. The UAE treaty also has an unofficial English translation. The page reads its own JSON files in `ksa-treaty-library/data/` and loads nothing from other sites.
+- `ksa-tax-zakat-library/`: the **KSA Tax & Zakat Library** at https://shamoilp.github.io/ksa-tax-zakat-library/. The Income Tax Law, its Bylaws, the Zakat Regulations 1445H, the earlier 1440H and 1438H Zakat Regulations and the financing and deemed-basis rules, article by article, English beside the official Arabic. Each article has a plain-words note with a habit line, the ZATCA guidelines that cite it, the tax committee (GSTC) principles linked to it, its old-to-new map and, where relevant, what the 2023 draft laws would change. Tools: which rules apply to a year, a 1445H Zakat base walkthrough, the old-to-new map, issue guides, a searchable set of committee principles, key numbers and a glossary. The page reads its own JSON files in `ksa-tax-zakat-library/data/` and loads nothing from other sites.
 - `ksa-dmt-study/index.html`: the **KSA DMT Study** at https://shamoilp.github.io/ksa-dmt-study/. A study course on Saudi Arabia's draft Domestic Minimum Tax (Pillar Two) Law in English and Arabic: 15 modules, 45 case studies with diagrams, 180 quiz questions and spaced-repetition flashcards, with the draft's 106 articles in a side-by-side reader. Every key point leads with a one-line plain version, and a Quick view shows just the essentials. One self-contained file that also works offline. It keeps the visitor's study progress in their own browser (one `localStorage` key, `ksaDmtStudy.v1`) and sends nothing anywhere.
 
 ## Edit and preview
@@ -58,3 +59,15 @@ npm test
 The tests check that every link has a target, every image has a description and size, every local file exists, and the contact links and link-preview tags are in place. For the checker they also check its link preview, that it loads nothing from other sites, and that no rule is awaiting sign-off. For the treaty library they check its link preview, that it loads nothing from other sites and stores nothing in the browser, that every data file it needs exists and parses, that every article has a plain-words note, and that the UAE translation covers every paragraph. For the DMT study they check its link preview, that it loads nothing from other sites and keeps only its own progress key in the browser, that the course covers all 106 articles with every quiz answer and flashcard citing one, and that every screen has Arabic as well as English.
 
 `assets/og.png` is the image LinkedIn and WhatsApp show when the link is shared.
+
+## KSA Tax & Zakat Library
+
+All content sits in `ksa-tax-zakat-library/data/`:
+
+- `index.json`: the instruments (official reference, sources, status) and their article lists, with the as-at date.
+- `itl.json`, `itr.json`, `z45.json`, `z40.json`, `z38.json`, `fin.json`, `deemed.json`: one file per instrument. Each article has its English (`en`, source named on the page), the official Arabic (`ar`), amendment footnotes from the Arabic with an English rendering (`fn`), its status, and notes (`n`: plain words, example, watch-out, key numbers, habit). Earlier Zakat rules carry `now` (the 1445H articles that replaced them) and `chg` (what changed).
+- `cases.json`: tax committee principles quoted from the GSTC's English volumes, each with its volume, page, decision number and keyword links to articles.
+- `extra.json`: issue guides, glossary, key numbers, ZATCA guidelines with the articles they cite, and the 2023 draft laws (from firms' summaries, each line with its source).
+
+The data is assembled from source files kept outside this repo (official PDFs from ZATCA, the WTO and the GSTC, translations and notes). When a law, regulation or guideline changes, update the article, its notes and the `asOf` date in `index.json`. `ksa-tax-zakat-library/og.png` is the image shown when the link is shared.
+
